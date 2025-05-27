@@ -48,15 +48,32 @@ button {
 .social-buttons {
   display: flex;
   flex-direction: column;
+  align-items: center; 
   gap: 10px;
+  margin-top: 20px;
+}
+.social-buttons a {
+  width: 300px; /* Ou use 100% se o container tiver largura limitada */
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-button.google {
+a.google {
   background-color: #db4437;
   color: white;
 }
 
-button.outlook {
+a.outlook {
   background-color: #0072c6;
   color: white;
+}
+
+.social-buttons a img {
+  height: 28px; 
+  margin-right: 10px;
+  vertical-align: middle;
 }
