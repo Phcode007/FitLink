@@ -40,6 +40,7 @@ header {
 
 .logo img {
   height: 40px;
+  width: auto;
 }
 
 .nav-buttons a {
