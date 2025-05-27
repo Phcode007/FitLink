@@ -55,7 +55,7 @@ header {
     center/cover no-repeat;
   padding: 8rem 2rem 6rem;
   text-align: center;
-  color: white;
+  color: var(--green-dark);
 }
 
 .hero h1 {
