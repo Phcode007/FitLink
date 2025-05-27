@@ -20,15 +20,17 @@ body {
 
 input {
   display: block;
-  width: 100%;
-  margin: 12px 0;
+  width: 90%; 
+  max-width: 320px; 
+  margin: 12px auto;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
 }
 
+
 button {
-  width: 100%;
+  width: 90%;
   padding: 12px;
   border: none;
   border-radius: 8px;
