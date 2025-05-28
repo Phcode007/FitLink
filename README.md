@@ -15,5 +15,5 @@
 
 - **ReactJS** 
 - **Node.js**
-- PostgreSQL 
+- **PostgreSQL**
 
