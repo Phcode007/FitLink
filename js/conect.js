@@ -1,20 +1,26 @@
-const { Pool } = require('pg');
+// db.js
 
 // Configuração da conexão
+import {Pool} from "pg";
+
 const pool = new Pool({
     user: 'postgres',
-    host: 'localhost', // ou IP do servidor remoto
+    host: 'localhost',
     database: 'fit-link',
     password: 'postgres',
     port: 5432,
 });
 
-// Teste de conexão
-pool.query('SELECT NOW()', (err, res) => {
-    if (err) {
-        console.error('Erro na conexão:', err);
-    } else {
-        console.log('Conexão bem-sucedida! Hora do servidor:', res.rows[0].now);
+
+export async function getClientes() {
+    try {
+        const res = await pool.query('SELECT * FROM Clientes');
+        console.log(res)
+        return res.rows;
+    } catch (err) {
+        console.error('Erro na busca de clientes:', err);
+        return [];
     }
-    pool.end(); // Encerra a conexão
-});
+}
+
+getClientes()
