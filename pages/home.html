@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - FitLink</title>
+    <link rel="stylesheet" href="/styles/home.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<!-- Botão hamburguer com animação -->
+<button class="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<!-- Menu lateral -->
+<div class="sidebar">
+    <h2>FitLink</h2>
+    <nav>
+        <a href="home.html"><i data-lucide="home"></i> Início</a>
+        <a href="treino.html"><i data-lucide="dumbbell"></i> Treino</a>
+        <a href="dieta.html"><i data-lucide="utensils"></i> Dieta</a>
+        <a href="perfil.html"><i data-lucide="user"></i> Perfil</a>
+        <a href="login.html"><i data-lucide="log-out"></i> Sair</a>
+    </nav>
+</div>
+
+<!-- Conteúdo principal -->
+<div class="main-content">
+    <header>
+        <h1>Olá, João! Bem-vindo ao FitLink 👋</h1>
+        <p>Agora você faz parte da comunidade que equilibra saúde, foco e desempenho.</p>
+    </header>
+
+    <section class="profile-card">
+        <img src="../images/avatar-placeholder.png" alt="Foto do Usuário" />
+        <div>
+            <h2>João Silva</h2>
+            <p>Idade: 24</p>
+            <p>Função: Cliente</p>
+            <a href="perfil.html" class="btn-profile">Ver meu perfil completo</a>
+        </div>
+    </section>
+
+    <section class="quick-actions">
+        <a href="treino.html" class="action-button">Iniciar treino de hoje</a>
+        <a href="dieta.html" class="action-button">Ver minha dieta</a>
+        <a href="perfil.html" class="action-button">Meu perfil</a>
+        <a href="dashboard.html" class="action-button">Acessar dashboard</a>
+    </section>
+
+    <footer>
+        <p>Vamos juntos evoluir todos os dias 💪</p>
+    </footer>
+</div>
+
+<!-- Script do menu -->
+<script>
+    function toggleMenu() {
+        document.body.classList.toggle('menu-open');
+    }
+    lucide.createIcons();
+</script>
+</body>
+</html>
