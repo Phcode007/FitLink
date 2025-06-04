@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>FitLink | Dieta</title>
+    <link rel="stylesheet" href="/styles/dieta.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<div class="sidebar" id="sidebar">
+    <div class="logo">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <span class="logo-text" id="logoText">FitLink</span>
+    </div>
+    <nav class="nav">
+        <a href="home.html"><i data-lucide="home"></i> Início</a>
+        <a href="treino.html"><i data-lucide="dumbbell"></i> Treinos</a>
+        <a href="dieta.html"><i data-lucide="apple"></i> Dieta</a>
+        <a href="dashboard.html"><i data-lucide="bar-chart-3"></i> Desempenho</a>
+        <a href="perfil.html"><i data-lucide="user"></i> Perfil</a>
+    </nav>
+</div>
+
+<div class="main-content">
+    <h1>Plano Alimentar de Hoje</h1>
+    <p>Olá, João! Aqui está sua dieta recomendada para hoje:</p>
+
+    <div class="dieta-lista">
+        <div class="dieta-card">
+            <h2>Café da Manhã</h2>
+            <p>Ovos mexidos, pão integral e suco de laranja.</p>
+        </div>
+        <div class="dieta-card">
+            <h2>Almoço</h2>
+            <p>Frango grelhado, arroz integral, salada e feijão.</p>
+        </div>
+        <div class="dieta-card">
+            <h2>Jantar</h2>
+            <p>Omelete de claras com legumes e chá verde.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+
+    menuToggle.addEventListener('click', () => {
+        const isExpanded = sidebar.classList.toggle('expanded');
+        if (isExpanded) {
+            menuToggle.style.opacity = 0;
+            setTimeout(() => menuToggle.style.display = 'none', 300);
+        } else {
+            menuToggle.style.display = 'inline';
+            setTimeout(() => menuToggle.style.opacity = 1, 10);
+        }
+    });
+
+    lucide.createIcons();
+</script>
+</body>
+</html>

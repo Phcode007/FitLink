@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>FitLink | Perfil</title>
+    <link rel="stylesheet" href="/styles/perfil.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<div class="sidebar" id="sidebar">
+    <div class="logo">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <span class="logo-text" id="logoText">FitLink</span>
+    </div>
+    <nav class="nav">
+        <a href="home.html"><i data-lucide="home"></i> Início</a>
+        <a href="treino.html"><i data-lucide="dumbbell"></i> Treinos</a>
+        <a href="dieta.html"><i data-lucide="apple"></i> Dieta</a>
+        <a href="dash.html"><i data-lucide="bar-chart-3"></i> Desempenho</a>
+        <a href="perfil.html"><i data-lucide="user"></i> Perfil</a>
+    </nav>
+</div>
+
+<div class="main-content">
+    <h1>Meu Perfil</h1>
+    <div class="perfil-container">
+        <img src="https://via.placeholder.com/120" alt="Foto do usuário" class="perfil-foto"/>
+        <div class="perfil-info">
+            <p><strong>Nome:</strong> João Silva</p>
+            <p><strong>Idade:</strong> 24</p>
+            <p><strong>Email:</strong> joao@exemplo.com</p>
+            <p><strong>Telefone:</strong> (11) 91234-5678</p>
+            <p><strong>Tipo de Usuário:</strong> Cliente</p>
+            <button class="editar-btn">Editar Perfil</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+
+    menuToggle.addEventListener('click', () => {
+        const isExpanded = sidebar.classList.toggle('expanded');
+        if (isExpanded) {
+            menuToggle.style.opacity = 0;
+            setTimeout(() => menuToggle.style.display = 'none', 300);
+        } else {
+            menuToggle.style.display = 'inline';
+            setTimeout(() => menuToggle.style.opacity = 1, 10);
+        }
+    });
+
+    lucide.createIcons();
+</script>
+</body>
+</html>

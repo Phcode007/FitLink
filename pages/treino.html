@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>FitLink | Treinos</title>
+    <link rel="stylesheet" href="/styles/treino.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<div class="sidebar" id="sidebar">
+    <div class="logo">
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <span class="logo-text" id="logoText">FitLink</span>
+    </div>
+    <nav class="nav">
+        <a href="home.html"><i data-lucide="home"></i> Início</a>
+        <a href="treino.html"><i data-lucide="dumbbell"></i> Treinos</a>
+        <a href="dieta.html"><i data-lucide="apple"></i> Dieta</a>
+        <a href="dash.html"><i data-lucide="bar-chart-3"></i> Desempenho</a>
+        <a href="perfil.html"><i data-lucide="user"></i> Perfil</a>
+    </nav>
+</div>
+
+<div class="main-content">
+    <h1>Treinos de Hoje</h1>
+    <p>Olá, João! Aqui estão seus exercícios do dia:</p>
+
+    <div class="treino-lista">
+        <div class="treino-card">
+            <h2>Agachamento</h2>
+            <p>3 séries de 12 repetições</p>
+        </div>
+        <div class="treino-card">
+            <h2>Supino reto</h2>
+            <p>3 séries de 10 repetições</p>
+        </div>
+        <div class="treino-card">
+            <h2>Abdominal</h2>
+            <p>4 séries de 15 repetições</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+
+    menuToggle.addEventListener('click', () => {
+        const isExpanded = sidebar.classList.toggle('expanded');
+        if (isExpanded) {
+            menuToggle.style.opacity = 0;
+            setTimeout(() => menuToggle.style.display = 'none', 300);
+        } else {
+            menuToggle.style.display = 'inline';
+            setTimeout(() => menuToggle.style.opacity = 1, 10);
+        }
+    });
+
+    lucide.createIcons();
+</script>
+</body>
+</html>
