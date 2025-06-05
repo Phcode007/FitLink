@@ -1,76 +1,317 @@
-body {
+/* Estilos Base */
+* {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: #e6f5ee;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f5f7fa;
+  color: #2c7d32;
+  line-height: 1.6;
+  padding: 20px;
 }
 
 .container {
-  background-color: white;
-  padding: 40px 30px;
-  border-radius: 20px;
-  max-width: 700px;
-  width: 90%;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem;
+  margin: 2rem auto;
 }
 
-h1 {
+.header {
   text-align: center;
-  color: #2e7d67;
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
 }
 
-.form {
+.header h1 {
+  color: #2c7d32;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.header p {
+  color: #2c7d32;
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* Seções do Formulário */
+.form-section {
+  border: 1px solid rgba(44, 125, 50, 0.3);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: rgba(44, 125, 50, 0.05);
+}
+
+.form-section legend {
+  padding: 0 0.75rem;
+  font-weight: 600;
+  color: #2c7d32;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: white;
+}
+
+/* Grupos de Campos */
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .form-group {
-  flex: 1 1 45%;
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2c7d32;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(44, 125, 50, 0.5);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #2c7d32;
+  box-shadow: 0 0 0 0.2rem rgba(44, 125, 50, 0.25);
+}
+
+/* Upload de Foto */
+.photo-upload {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-.form-group.full-width {
-  flex: 1 1 100%;
+.photo-preview {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border: 3px solid rgba(44, 125, 50, 0.3);
+  background-color: rgba(44, 125, 50, 0.1);
 }
 
-label {
-  margin-bottom: 5px;
-  color: #333;
-  font-weight: 500;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="number"],
-input[type="tel"],
-input[type="file"] {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  font-size: 16px;
-}
-
-button {
-  margin-top: 30px;
+.photo-preview img {
   width: 100%;
-  padding: 14px;
-  font-size: 18px;
-  font-weight: bold;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upload-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #2c7d32;
   color: white;
-  background: linear-gradient(to right, #34c662, #28a150);
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
   border: none;
-  border-radius: 12px;
+  transition: all 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+.upload-btn:hover {
+  background: #1e5a23;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.upload-btn input[type="file"] {
+  display: none;
+}
+
+/* Estilo para o input file padrão */
+.file-input-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+.file-input-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: #2c7d32;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.file-input-label:hover {
+  background: #1e5a23;
+}
+
+.file-input-wrapper input[type="file"] {
+  position: absolute;
+  font-size: 100px;
+  opacity: 0;
+  right: 0;
+  top: 0;
   cursor: pointer;
 }
 
-@media (max-width: 600px) {
-  .form-group {
-    flex: 1 1 100%;
+/* Termos e Condições */
+.terms {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.terms input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  accent-color: #2c7d32;
+}
+
+.terms label {
+  font-weight: normal;
+  font-size: 0.9rem;
+  color: #2c7d32;
+}
+
+.terms a {
+  color: #2c7d32;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+/* Botão de Envio */
+.btn-submit {
+  width: 100%;
+  padding: 1rem;
+  background: #2c7d32;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.btn-submit:hover {
+  background: #1e5a23;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Link para Login */
+.login-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #2c7d32;
+  font-size: 0.95rem;
+}
+
+.login-link a {
+  color: #2c7d32;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Dicas e Mensagens */
+.form-hint {
+  display: block;
+  font-size: 0.8rem;
+  color: rgba(44, 125, 50, 0.8);
+  margin-top: 0.25rem;
+}
+
+.password-strength {
+  font-size: 0.8rem;
+  height: 1rem;
+  margin-top: 0.25rem;
+}
+
+/* Validação */
+.error-message {
+  color: #d32f2f;
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .form-section {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1.25rem;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .btn-submit {
+    font-size: 1rem;
   }
 }

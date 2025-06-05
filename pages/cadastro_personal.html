@@ -3,43 +3,185 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cadastro de Personal</title>
+  <title>Cadastro de Personal Trainer - FitLink</title>
   <link rel="stylesheet" href="/styles/cad_personal.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Cadastro de Personal</h1>
-    <form class="form">
-      <div class="form-group">
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" name="nome" required />
-      </div>
-      <div class="form-group">
-        <label for="idade">Idade</label>
-        <input type="number" id="idade" name="idade" required />
-      </div>
-      <div class="form-group">
-        <label for="endereco">Endereço</label>
-        <input type="text" id="endereco" name="endereco" required />
-      </div>
-      <div class="form-group">
-        <label for="telefone">Telefone</label>
-        <input type="tel" id="telefone" name="telefone" required />
-      </div>
-      <div class="form-group">
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" required />
-      </div>
-      <div class="form-group">
-        <label for="cref">CREF</label>
-        <input type="text" id="cref" name="cref" required />
-      </div>
-      <div class="form-group full-width">
-        <label for="foto">Foto</label>
-        <input type="file" id="foto" name="foto" />
-      </div>
-      <button type="submit">Cadastrar</button>
-    </form>
+<div class="container">
+  <div class="header">
+    <h1><i class="fas fa-dumbbell"></i> Cadastro de Personal Trainer</h1>
+    <p>Complete seu cadastro profissional para conectar-se com clientes</p>
   </div>
+
+  <form id="personalForm" class="form">
+    <!-- Seção de Dados Pessoais -->
+    <fieldset class="form-section">
+      <legend><i class="fas fa-user"></i> Dados Pessoais</legend>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nome">Nome Completo*</label>
+          <input type="text" id="nome" name="nome" required placeholder="Seu nome completo" />
+        </div>
+
+        <div class="form-group">
+          <label for="data_nascimento">Data de Nascimento*</label>
+          <input type="date" id="data_nascimento" name="data_nascimento" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="bio">Biografia Profissional</label>
+        <textarea id="bio" name="bio" rows="3" placeholder="Fale sobre sua experiência e abordagem de treino"></textarea>
+      </div>
+    </fieldset>
+
+    <!-- Seção de Contato -->
+    <fieldset class="form-section">
+      <legend><i class="fas fa-address-book"></i> Contato</legend>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">E-mail*</label>
+          <input type="email" id="email" name="email" required placeholder="seu@email.com" />
+          <small class="form-hint">Será usado para login</small>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmar_email">Confirmar E-mail*</label>
+          <input type="email" id="confirmar_email" name="confirmar_email" required placeholder="Confirme seu e-mail" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="telefone">Telefone*</label>
+          <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000" />
+        </div>
+
+        <div class="form-group">
+          <label for="whatsapp">WhatsApp</label>
+          <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="endereco">Endereço Completo*</label>
+        <input type="text" id="endereco" name="endereco" required placeholder="Rua, número, complemento, cidade" />
+      </div>
+    </fieldset>
+
+    <!-- Seção de Dados Profissionais -->
+    <fieldset class="form-section">
+      <legend><i class="fas fa-certificate"></i> Dados Profissionais</legend>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cref">CREF*</label>
+          <input type="text" id="cref" name="cref" required placeholder="Número de registro no conselho" />
+          <small class="form-hint">Formato: CREF XXXX-X/UF</small>
+        </div>
+
+        <div class="form-group">
+          <label for="especialidade">Especialidade Principal*</label>
+          <select id="especialidade" name="especialidade" required>
+            <option value="">Selecione</option>
+            <option value="musculacao">Musculação</option>
+            <option value="crossfit">CrossFit</option>
+            <option value="funcional">Treino Funcional</option>
+            <option value="emagrecimento">Emagrecimento</option>
+            <option value="reabilitacao">Reabilitação Física</option>
+            <option value="outra">Outra</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="anos_experiencia">Anos de Experiência*</label>
+          <input type="number" id="anos_experiencia" name="anos_experiencia" min="0" max="50" required />
+        </div>
+
+        <div class="form-group">
+          <label for="valor_hora">Valor por Hora (R$)*</label>
+          <input type="number" id="valor_hora" name="valor_hora" min="50" step="10" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="formacao">Formação Acadêmica*</label>
+        <textarea id="formacao" name="formacao" rows="2" required placeholder="Graduação, certificações, etc."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="metodologia">Metodologia de Trabalho</label>
+        <textarea id="metodologia" name="metodologia" rows="3" placeholder="Descreva sua abordagem de treino"></textarea>
+      </div>
+    </fieldset>
+
+    <!-- Seção de Segurança -->
+    <fieldset class="form-section">
+      <legend><i class="fas fa-lock"></i> Segurança</legend>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="senha">Senha*</label>
+          <input type="password" id="senha" name="senha" required placeholder="Mínimo 8 caracteres" minlength="8" />
+          <div class="password-strength"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmar_senha">Confirmar Senha*</label>
+          <input type="password" id="confirmar_senha" name="confirmar_senha" required placeholder="Digite a senha novamente" />
+        </div>
+      </div>
+    </fieldset>
+
+    <!-- Seção de Foto e Documentos -->
+    <fieldset class="form-section">
+      <legend><i class="fas fa-file-upload"></i> Documentos</legend>
+
+      <div class="form-group">
+        <label>Foto de Perfil*</label>
+        <div class="photo-upload">
+          <div class="photo-preview">
+            <img id="fotoPreview" src="/images/default-trainer.jpg" alt="Pré-visualização da foto" />
+          </div>
+          <label for="foto" class="upload-btn">
+            <i class="fas fa-camera"></i> Escolher Foto
+            <input type="file" id="foto" name="foto" accept="image/*" required />
+          </label>
+          <small class="form-hint">Formatos: JPG, PNG (Máx. 2MB)</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="documento_cref">Documento do CREF*</label>
+        <input type="file" id="documento_cref" name="documento_cref" accept=".pdf,.jpg,.png" required />
+        <small class="form-hint">Envie uma foto ou scan do seu registro profissional</small>
+      </div>
+    </fieldset>
+
+    <!-- Termos e Condições -->
+    <div class="form-group terms">
+      <input type="checkbox" id="termos" name="termos" required />
+      <label for="termos">Li e aceito os <a href="/termos" target="_blank">Termos de Uso</a> e <a href="/privacidade" target="_blank">Política de Privacidade</a> do FitLink*</label>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-submit">
+        <i class="fas fa-user-plus"></i> Completar Cadastro
+      </button>
+      <p class="login-link">
+        Já possui uma conta? <a href="/login">Faça login aqui</a>
+      </p>
+    </div>
+  </form>
+</div>
+
+<script src="/scripts/masks.js"></script>
+<script src="/scripts/validate-personal.js"></script>
+<script src="/scripts/personal-form.js"></script>
 </body>
 </html>
