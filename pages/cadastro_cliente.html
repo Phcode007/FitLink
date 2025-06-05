@@ -1,51 +1,134 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro de Cliente</title>
-    <link rel="stylesheet" href="/styles/cad_clients.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h1>Cadastro de Cliente</h1>
-      <form>
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Cliente - FitLink</title>
+  <link rel="stylesheet" href="/styles/cad_clients.css" />
 
-        <label for="sexo">Sexo:</label>
-        <select id="sexo" name="sexo" required>
-          <option value="">Selecione</option>
-          <option value="masculino">Masculino</option>
-          <option value="feminino">Feminino</option>
-          <option value="outro">Outro</option>
-        </select>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1><i class="fas fa-user-plus"></i> Cadastro de Cliente</h1>
+    <p>Preencha seus dados para criar sua conta no FitLink</p>
+  </div>
 
-        <label for="idade">Idade:</label>
-        <input type="number" id="idade" name="idade" required />
+  <form id="formCadastroCliente">
 
-        <label for="endereco">Endereço:</label>
-        <input type="text" id="endereco" name="endereco" required />
+    <fieldset>
+      <legend><i class="fas fa-user"></i> Dados Pessoais</legend>
 
-        <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone" required />
+      <div class="form-group">
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo" />
+      </div>
 
+      <div class="form-row">
+        <div class="form-group">
+          <label for="sexo">Sexo:</label>
+          <select id="sexo" name="sexo" required>
+            <option value="">Selecione</option>
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+            <option value="outro">Outro</option>
+            <option value="nao_informar">Prefiro não informar</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="data_nascimento">Data de Nascimento:</label>
+          <input type="date" id="data_nascimento" name="data_nascimento" required />
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend><i class="fas fa-address-book"></i> Contato</legend>
+
+      <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
+        <input type="email" id="email" name="email" required placeholder="seu@email.com" />
+        <small class="form-text">Será usado para login</small>
+      </div>
 
-        <label for="turno">Turno:</label>
-        <select id="turno" name="turno" required>
-          <option value="">Selecione</option>
-          <option value="manha">Manhã</option>
-          <option value="tarde">Tarde</option>
-          <option value="noite">Noite</option>
-        </select>
+      <div class="form-group">
+        <label for="confirmar_email">Confirmar Email:</label>
+        <input type="email" id="confirmar_email" name="confirmar_email" required placeholder="Confirme seu email" />
+      </div>
 
-        <label for="foto">Foto:</label>
-        <input type="file" id="foto" name="foto" accept="image/*" />
+      <div class="form-row">
+        <div class="form-group">
+          <label for="telefone">Telefone:</label>
+          <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000" />
+        </div>
 
-        <button type="submit">Cadastrar</button>
-      </form>
+        <div class="form-group">
+          <label for="turno">Melhor horário para contato:</label>
+          <select id="turno" name="turno" required>
+            <option value="">Selecione</option>
+            <option value="manha">Manhã (8h-12h)</option>
+            <option value="tarde">Tarde (13h-18h)</option>
+            <option value="noite">Noite (18h-22h)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco" required placeholder="Rua, número, complemento" />
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend><i class="fas fa-lock"></i> Segurança</legend>
+
+      <div class="form-group">
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required placeholder="Mínimo 8 caracteres" minlength="8" />
+        <div class="password-strength"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmar_senha">Confirmar Senha:</label>
+        <input type="password" id="confirmar_senha" name="confirmar_senha" required placeholder="Digite a senha novamente" />
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend><i class="fas fa-camera"></i> Foto de Perfil</legend>
+
+      <div class="form-group photo-upload">
+        <div class="photo-preview">
+          <img id="fotoPreview" src="/images/default-avatar.jpg" alt="Pré-visualização da foto" />
+        </div>
+        <label for="foto" class="upload-btn">
+          <i class="fas fa-upload"></i> Escolher Foto
+          <input type="file" id="foto" name="foto" accept="image/*" capture="user" />
+        </label>
+        <small class="form-text">Formatos aceitos: JPG, PNG (Máx. 2MB)</small>
+      </div>
+    </fieldset>
+
+    <div class="form-group terms">
+      <input type="checkbox" id="termos" name="termos" required />
+      <label for="termos">Li e aceito os <a href="/termos" target="_blank">Termos de Uso</a> e <a href="/privacidade" target="_blank">Política de Privacidade</a> do FitLink</label>
     </div>
-  </body>
+
+    <div class="form-actions">
+      <button type="submit" class="btn-submit">
+        <i class="fas fa-user-plus"></i> Criar Conta
+      </button>
+      <p class="login-link">
+        Já tem uma conta? <a href="/login">Faça login</a>
+      </p>
+    </div>
+  </form>
+</div>
+
+<script src="/scripts/mask-input.js"></script>
+<script src="/scripts/validate-form.js"></script>
+<script src="/scripts/cad-cliente.js"></script>
+</body>
 </html>
