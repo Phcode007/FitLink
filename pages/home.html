@@ -6,43 +6,96 @@
     <title>FitLink | Home</title>
     <link rel="stylesheet" href="/styles/home.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 <div class="sidebar" id="sidebar">
     <div class="logo">
-        <button class="menu-toggle" id="menuToggle">☰</button>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
         <span class="logo-text" id="logoText">FitLink</span>
     </div>
     <nav class="nav">
-        <a href="home.html"><i data-lucide="home"></i> Início</a>
-        <a href="dash.html"><i data-lucide="bar-chart-3"></i> Desempenho</a>
-        <a href="dieta.html"><i data-lucide="apple"></i> Dieta</a>
-        <a href="treino.html"><i data-lucide="dumbbell"></i> Treinos</a>
-        <a href="perfil.html"><i data-lucide="user"></i> Perfil</a>
+        <a href="home.html" class="nav-link">
+            <i data-lucide="home" class="nav-icon"></i>
+            <span class="nav-text">Início</span>
+        </a>
+        <a href="dash.html" class="nav-link">
+            <i data-lucide="bar-chart-3" class="nav-icon"></i>
+            <span class="nav-text">Desempenho</span>
+        </a>
+        <a href="dieta.html" class="nav-link">
+            <i data-lucide="apple" class="nav-icon"></i>
+            <span class="nav-text">Dieta</span>
+        </a>
+        <a href="treino.html" class="nav-link">
+            <i data-lucide="dumbbell" class="nav-icon"></i>
+            <span class="nav-text">Treinos</span>
+        </a>
+        <a href="perfil.html" class="nav-link">
+            <i data-lucide="user" class="nav-icon"></i>
+            <span class="nav-text">Perfil</span>
+        </a>
     </nav>
 </div>
 
-<div class="main-content">
+<div class="main-content" id="mainContent">
     <h1>Bem-vindo ao FitLink!</h1>
     <p>Escolha uma opção no menu lateral para começar.</p>
 </div>
 
 <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const sidebar = document.getElementById('sidebar');
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
 
-    menuToggle.addEventListener('click', () => {
-        const isExpanded = sidebar.classList.toggle('expanded');
-        if (isExpanded) {
-            menuToggle.style.opacity = 0;
-            setTimeout(() => menuToggle.style.display = 'none', 300);
-        } else {
-            menuToggle.style.display = 'inline';
-            setTimeout(() => menuToggle.style.opacity = 1, 10);
+        // Inicializar ícones Lucide
+        lucide.createIcons();
+
+        // Verificar se é mobile
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+        // Estado do menu
+        let menuOpen = false;
+
+        // Função para alternar menu
+        function toggleMenu() {
+            menuOpen = !menuOpen;
+            sidebar.classList.toggle('expanded', menuOpen);
+            mainContent.classList.toggle('menu-open', menuOpen);
+
+            // Mudar ícone do botão
+            const icon = menuToggle.querySelector('i');
+            icon.className = menuOpen ? 'fas fa-times' : 'fas fa-bars';
         }
-    });
 
-    lucide.createIcons();
+        // Evento de clique no botão do menu
+        menuToggle.addEventListener('click', toggleMenu);
+
+        // Comportamento hover para desktop
+        if (!isMobile) {
+            sidebar.addEventListener('mouseenter', () => {
+                if (!menuOpen) {
+                    sidebar.classList.add('hover-expanded');
+                }
+            });
+
+            sidebar.addEventListener('mouseleave', () => {
+                if (!menuOpen) {
+                    sidebar.classList.remove('hover-expanded');
+                }
+            });
+        }
+
+        // Fechar menu ao clicar no conteúdo principal (para mobile)
+        mainContent.addEventListener('click', () => {
+            if (isMobile && menuOpen) {
+                toggleMenu();
+            }
+        });
+    });
 </script>
 </body>
 </html>

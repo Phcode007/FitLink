@@ -5,43 +5,177 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard - FitLink</title>
     <link rel="stylesheet" href="/styles/dash.css" />
+    <!-- Adicionando Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Adicionando Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 <div class="dashboard">
-    <div class="top-section">
-        <div class="card">
-            <h2>Desempenho</h2>
-            <p>Aqui vão os gráficos com progresso físico, como treinos e evolução corporal.</p>
-            <div class="grafico-placeholder">[Gráfico aqui]</div>
+    <header class="dashboard-header">
+        <h1>Bem-vindo, <span id="client-name">João</span>!</h1>
+        <div class="user-actions">
+            <button id="notifications-btn"><i class="fas fa-bell"></i></button>
+            <button id="settings-btn"><i class="fas fa-cog"></i></button>
         </div>
-        <div class="card">
-            <h2>Informações do Cliente</h2>
-            <p>Nome: João Silva</p>
-            <p>Idade: 24</p>
-            <p>Meta: Ganhar massa muscular</p>
+    </header>
+
+    <div class="top-section">
+        <div class="card performance-card">
+            <div class="card-header">
+                <h2><i class="fas fa-chart-line"></i> Desempenho</h2>
+                <select id="time-period">
+                    <option value="week">Semanal</option>
+                    <option value="month">Mensal</option>
+                    <option value="year">Anual</option>
+                </select>
+            </div>
+            <div class="chart-container">
+                <canvas id="performance-chart"></canvas>
+            </div>
+            <div class="stats-summary">
+                <div class="stat-item">
+                    <span class="stat-value" id="workouts-completed">12</span>
+                    <span class="stat-label">Treinos completos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="progress-percentage">75%</span>
+                    <span class="stat-label">Progresso</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card client-card">
+            <div class="card-header">
+                <h2><i class="fas fa-user"></i> Informações do Cliente</h2>
+                <button id="edit-profile"><i class="fas fa-edit"></i></button>
+            </div>
+            <div class="client-info">
+                <div class="info-item">
+                    <span class="info-label">Nome:</span>
+                    <span id="client-fullname">João Silva</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Idade:</span>
+                    <span id="client-age">24 anos</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Altura/Peso:</span>
+                    <span id="client-physical">1.75m / 68kg</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Meta:</span>
+                    <span id="client-goal">Ganhar massa muscular</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%;"></div>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="bottom-section">
         <div class="columns">
-            <div class="column">
-                <h3>Treino do Dia</h3>
-                <ul>
-                    <li>08:00 - Corrida leve</li>
-                    <li>10:00 - Treino de pernas</li>
-                    <li>17:00 - Yoga</li>
+            <div class="column workout-column">
+                <div class="column-header">
+                    <h3><i class="fas fa-dumbbell"></i> Treino do Dia</h3>
+                    <button id="view-full-workout">Ver completo</button>
+                </div>
+                <ul class="workout-list">
+                    <li class="workout-item">
+                        <span class="workout-time">08:00</span>
+                        <span class="workout-activity">Corrida leve (30min)</span>
+                        <button class="check-btn"><i class="far fa-check-circle"></i></button>
+                    </li>
+                    <li class="workout-item">
+                        <span class="workout-time">10:00</span>
+                        <span class="workout-activity">Treino de pernas (45min)</span>
+                        <button class="check-btn"><i class="far fa-check-circle"></i></button>
+                    </li>
+                    <li class="workout-item">
+                        <span class="workout-time">17:00</span>
+                        <span class="workout-activity">Yoga (60min)</span>
+                        <button class="check-btn"><i class="far fa-check-circle"></i></button>
+                    </li>
                 </ul>
+                <div class="workout-summary">
+                    <span>Total: 2h15min</span>
+                    <span>Calorias: ~650kcal</span>
+                </div>
             </div>
-            <div class="column">
-                <h3>Dieta Recomendada</h3>
-                <ul>
-                    <li>Café da manhã: Omelete + Aveia</li>
-                    <li>Almoço: Arroz, frango grelhado e legumes</li>
-                    <li>Jantar: Sopa leve + Fruta</li>
+
+            <div class="column diet-column">
+                <div class="column-header">
+                    <h3><i class="fas fa-utensils"></i> Dieta Recomendada</h3>
+                    <button id="view-full-diet">Ver cardápio</button>
+                </div>
+                <ul class="diet-list">
+                    <li class="meal-item">
+                        <span class="meal-time">Café da manhã</span>
+                        <span class="meal-description">Omelete (2 ovos) + Aveia com banana</span>
+                        <span class="meal-calories">~450kcal</span>
+                    </li>
+                    <li class="meal-item">
+                        <span class="meal-time">Almoço</span>
+                        <span class="meal-description">Arroz integral, frango grelhado e legumes</span>
+                        <span class="meal-calories">~600kcal</span>
+                    </li>
+                    <li class="meal-item">
+                        <span class="meal-time">Jantar</span>
+                        <span class="meal-description">Sopa de legumes + 1 fruta</span>
+                        <span class="meal-calories">~350kcal</span>
+                    </li>
                 </ul>
+                <div class="diet-summary">
+                    <span>Total: ~1400kcal</span>
+                    <span>Proteína: ~120g</span>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    // Inicialização do gráfico de desempenho
+    document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('performance-chart').getContext('2d');
+        const performanceChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+                datasets: [{
+                    label: 'Progresso Físico',
+                    data: [65, 59, 80, 81, 76, 85],
+                    fill: true,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+
+        // Adicionando interatividade aos botões de check
+        document.querySelectorAll('.check-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.innerHTML = '<i class="fas fa-check-circle"></i>';
+                this.parentElement.classList.add('completed');
+            });
+        });
+
+        // Simulando mudança de período
+        document.getElementById('time-period').addEventListener('change', function() {
+            // Aqui você faria uma requisição para atualizar os dados do gráfico
+            console.log('Período alterado para:', this.value);
+        });
+    });
+</script>
 </body>
 </html>

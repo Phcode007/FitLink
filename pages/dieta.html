@@ -6,58 +6,195 @@
     <title>FitLink | Dieta</title>
     <link rel="stylesheet" href="/styles/dieta.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 <div class="sidebar" id="sidebar">
     <div class="logo">
-        <button class="menu-toggle" id="menuToggle">☰</button>
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
         <span class="logo-text" id="logoText">FitLink</span>
     </div>
     <nav class="nav">
-        <a href="home.html"><i data-lucide="home"></i> Início</a>
-        <a href="treino.html"><i data-lucide="dumbbell"></i> Treinos</a>
-        <a href="dieta.html"><i data-lucide="apple"></i> Dieta</a>
-        <a href="dashboard.html"><i data-lucide="bar-chart-3"></i> Desempenho</a>
-        <a href="perfil.html"><i data-lucide="user"></i> Perfil</a>
+        <a href="home.html" class="nav-link">
+            <i data-lucide="home" class="nav-icon"></i>
+            <span class="nav-text">Início</span>
+        </a>
+        <a href="treino.html" class="nav-link">
+            <i data-lucide="dumbbell" class="nav-icon"></i>
+            <span class="nav-text">Treinos</span>
+        </a>
+        <a href="dieta.html" class="nav-link active">
+            <i data-lucide="apple" class="nav-icon"></i>
+            <span class="nav-text">Dieta</span>
+        </a>
+        <a href="dash.html" class="nav-link">
+            <i data-lucide="bar-chart-3" class="nav-icon"></i>
+            <span class="nav-text">Desempenho</span>
+        </a>
+        <a href="perfil.html" class="nav-link">
+            <i data-lucide="user" class="nav-icon"></i>
+            <span class="nav-text">Perfil</span>
+        </a>
     </nav>
 </div>
 
-<div class="main-content">
-    <h1>Plano Alimentar de Hoje</h1>
-    <p>Olá, João! Aqui está sua dieta recomendada para hoje:</p>
+<div class="main-content" id="mainContent">
+    <header class="content-header">
+        <h1><i class="fas fa-utensils"></i> Plano Alimentar</h1>
+        <div class="date-selector">
+            <button class="date-btn" id="prevDay"><i class="fas fa-chevron-left"></i></button>
+            <span id="currentDate">Hoje, 15 Jun 2023</span>
+            <button class="date-btn" id="nextDay"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </header>
 
-    <div class="dieta-lista">
+    <div class="user-greeting">
+        <p>Olá, <strong>João</strong>! Aqui está sua dieta recomendada:</p>
+    </div>
+
+    <div class="dieta-container">
         <div class="dieta-card">
-            <h2>Café da Manhã</h2>
-            <p>Ovos mexidos, pão integral e suco de laranja.</p>
+            <div class="meal-header">
+                <h2><i class="fas fa-sun"></i> Café da Manhã</h2>
+                <span class="meal-time">07:00 - 08:00</span>
+            </div>
+            <div class="meal-content">
+                <p>Ovos mexidos (2 ovos inteiros + 1 clara), 2 fatias de pão integral e suco de laranja natural (200ml)</p>
+                <div class="nutrition-info">
+                    <span><i class="fas fa-fire"></i> 450 kcal</span>
+                    <span><i class="fas fa-dumbbell"></i> 25g proteína</span>
+                    <span><i class="fas fa-bread-slice"></i> 45g carboidratos</span>
+                </div>
+            </div>
+            <button class="check-btn"><i class="far fa-check-circle"></i> Marcar como consumido</button>
         </div>
+
         <div class="dieta-card">
-            <h2>Almoço</h2>
-            <p>Frango grelhado, arroz integral, salada e feijão.</p>
+            <div class="meal-header">
+                <h2><i class="fas fa-utensils"></i> Almoço</h2>
+                <span class="meal-time">12:00 - 13:00</span>
+            </div>
+            <div class="meal-content">
+                <p>Frango grelhado (150g), arroz integral (1 concha), salada verde à vontade e feijão (1/2 concha)</p>
+                <div class="nutrition-info">
+                    <span><i class="fas fa-fire"></i> 600 kcal</span>
+                    <span><i class="fas fa-dumbbell"></i> 40g proteína</span>
+                    <span><i class="fas fa-bread-slice"></i> 55g carboidratos</span>
+                </div>
+            </div>
+            <button class="check-btn"><i class="far fa-check-circle"></i> Marcar como consumido</button>
         </div>
+
         <div class="dieta-card">
-            <h2>Jantar</h2>
-            <p>Omelete de claras com legumes e chá verde.</p>
+            <div class="meal-header">
+                <h2><i class="fas fa-moon"></i> Jantar</h2>
+                <span class="meal-time">19:00 - 20:00</span>
+            </div>
+            <div class="meal-content">
+                <p>Omelete de claras (4 claras) com espinafre e tomate, 1 fatia de pão integral e chá verde</p>
+                <div class="nutrition-info">
+                    <span><i class="fas fa-fire"></i> 350 kcal</span>
+                    <span><i class="fas fa-dumbbell"></i> 30g proteína</span>
+                    <span><i class="fas fa-bread-slice"></i> 25g carboidratos</span>
+                </div>
+            </div>
+            <button class="check-btn"><i class="far fa-check-circle"></i> Marcar como consumido</button>
+        </div>
+
+        <div class="snacks-section">
+            <h3><i class="fas fa-apple-alt"></i> Lanches</h3>
+            <div class="snack-card">
+                <p><strong>Manhã:</strong> 1 fruta (banana) + 10 castanhas</p>
+                <p><strong>Tarde:</strong> Iogurte natural + 1 colher de chia</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="daily-summary">
+        <h3>Resumo Nutricional Diário</h3>
+        <div class="summary-grid">
+            <div class="summary-item">
+                <span class="summary-value">1,400</span>
+                <span class="summary-label">kcal</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-value">120g</span>
+                <span class="summary-label">Proteínas</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-value">125g</span>
+                <span class="summary-label">Carboidratos</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-value">45g</span>
+                <span class="summary-label">Gorduras</span>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const sidebar = document.getElementById('sidebar');
+    document.addEventListener('DOMContentLoaded', function() {
+        // Menu toggle functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
 
-    menuToggle.addEventListener('click', () => {
-        const isExpanded = sidebar.classList.toggle('expanded');
-        if (isExpanded) {
-            menuToggle.style.opacity = 0;
-            setTimeout(() => menuToggle.style.display = 'none', 300);
-        } else {
-            menuToggle.style.display = 'inline';
-            setTimeout(() => menuToggle.style.opacity = 1, 10);
+        let menuOpen = false;
+
+        function toggleMenu() {
+            menuOpen = !menuOpen;
+            sidebar.classList.toggle('expanded', menuOpen);
+            mainContent.classList.toggle('menu-open', menuOpen);
+
+            const icon = menuToggle.querySelector('i');
+            icon.className = menuOpen ? 'fas fa-times' : 'fas fa-bars';
         }
-    });
 
-    lucide.createIcons();
+        menuToggle.addEventListener('click', toggleMenu);
+
+        // Date navigation
+        const prevDayBtn = document.getElementById('prevDay');
+        const nextDayBtn = document.getElementById('nextDay');
+        const currentDateEl = document.getElementById('currentDate');
+
+        let currentDate = new Date();
+
+        function updateDateDisplay() {
+            const options = { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' };
+            currentDateEl.textContent = currentDate.toLocaleDateString('pt-BR', options);
+        }
+
+        prevDayBtn.addEventListener('click', function() {
+            currentDate.setDate(currentDate.getDate() - 1);
+            updateDateDisplay();
+            // Aqui você carregaria os dados do dia anterior
+        });
+
+        nextDayBtn.addEventListener('click', function() {
+            currentDate.setDate(currentDate.getDate() + 1);
+            updateDateDisplay();
+            // Aqui você carregaria os dados do próximo dia
+        });
+
+        updateDateDisplay();
+
+        // Check buttons functionality
+        document.querySelectorAll('.check-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                icon.className = 'fas fa-check-circle';
+                this.classList.add('checked');
+                this.innerHTML = '<i class="fas fa-check-circle"></i> Refeição registrada';
+                // Aqui você enviaria para o backend o registro da refeição
+            });
+        });
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+    });
 </script>
 </body>
 </html>
