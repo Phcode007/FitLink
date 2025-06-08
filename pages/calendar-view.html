@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário | Academia PowerFit</title>
+    <link rel="stylesheet" href="/styles/calendar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="calendar-container">
+        <header class="calendar-header">
+            <h1><i class="fas fa-calendar-alt"></i> Calendário de Agendamentos</h1>
+            <div class="calendar-actions">
+                <button id="today-btn"><i class="fas fa-calendar-day"></i> Hoje</button>
+                <button id="back-to-schedules"><i class="fas fa-list"></i> Voltar para Lista</button>
+            </div>
+        </header>
+
+        <div class="calendar-toolbar">
+            <div class="month-navigator">
+                <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                <h2 id="current-month">Novembro 2023</h2>
+                <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            
+            <div class="view-options">
+                <select id="professional-filter">
+                    <option value="all">Todos os profissionais</option>
+                    <option value="personal">Personal Trainers</option>
+                    <option value="nutritionist">Nutricionistas</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="calendar-grid">
+            <div class="calendar-weekdays">
+                <div>Dom</div>
+                <div>Seg</div>
+                <div>Ter</div>
+                <div>Qua</div>
+                <div>Qui</div>
+                <div>Sex</div>
+                <div>Sáb</div>
+            </div>
+            
+            <div class="calendar-days" id="calendar-days">
+                <!-- Dias serão preenchidos via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalhes do Agendamento -->
+    <div id="event-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="event-modal-title"><i class="fas fa-calendar-check"></i> Detalhes do Agendamento</h2>
+            
+            <div class="event-details">
+                <div class="detail-row">
+                    <i class="fas fa-user"></i>
+                    <div>
+                        <h3>Cliente</h3>
+                        <p id="event-client">-</p>
+                    </div>
+                </div>
+                
+                <div class="detail-row">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <div>
+                        <h3>Profissional</h3>
+                        <p id="event-professional">-</p>
+                    </div>
+                </div>
+                
+                <div class="detail-row">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3>Horário</h3>
+                        <p id="event-time">-</p>
+                    </div>
+                </div>
+                
+                <div class="detail-row">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <h3>Tipo</h3>
+                        <p id="event-type">-</p>
+                    </div>
+                </div>
+                
+                <div class="detail-row">
+                    <i class="fas fa-sticky-note"></i>
+                    <div>
+                        <h3>Observações</h3>
+                        <p id="event-notes">-</p>
+                    </div>
+                </div>
+                
+                <div class="detail-row">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <h3>Status</h3>
+                        <p id="event-status">-</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="event-actions">
+                <button id="complete-event" class="btn-primary">
+                    <i class="fas fa-check"></i> Concluir
+                </button>
+                <button id="cancel-event" class="btn-danger">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+                <button id="edit-event" class="btn-secondary">
+                    <i class="fas fa-edit"></i> Editar
+                </button>
+                <button id="close-modal" class="btn-secondary">
+                    <i class="fas fa-times"></i> Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/calendar.js"></script>
+</body>
+</html>

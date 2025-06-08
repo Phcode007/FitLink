@@ -6,95 +6,219 @@
     <title>FitLink | Home</title>
     <link rel="stylesheet" href="/styles/home.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="sidebar" id="sidebar">
-    <div class="logo">
-        <button class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        <span class="logo-text" id="logoText">FitLink</span>
+<div class="app-container">
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i data-lucide="menu"></i>
+            </button>
+            <span class="logo-text" id="logoText">FitLink</span>
+        </div>
+        <nav class="nav">
+            <a href="home.html" class="nav-link active">
+                <i data-lucide="home" class="nav-icon"></i>
+                <span class="nav-text">Início</span>
+            </a>
+            <a href="dash.html" class="nav-link">
+                <i data-lucide="bar-chart-3" class="nav-icon"></i>
+                <span class="nav-text">Desempenho</span>
+            </a>
+            <a href="dieta.html" class="nav-link">
+                <i data-lucide="apple" class="nav-icon"></i>
+                <span class="nav-text">Dieta</span>
+            </a>
+            <a href="treino.html" class="nav-link">
+                <i data-lucide="dumbbell" class="nav-icon"></i>
+                <span class="nav-text">Treinos</span>
+            </a>
+            <a href="perfil.html" class="nav-link">
+                <i data-lucide="user" class="nav-icon"></i>
+                <span class="nav-text">Perfil</span>
+            </a>
+        </nav>
     </div>
-    <nav class="nav">
-        <a href="home.html" class="nav-link">
-            <i data-lucide="home" class="nav-icon"></i>
-            <span class="nav-text">Início</span>
-        </a>
-        <a href="dash.html" class="nav-link">
-            <i data-lucide="bar-chart-3" class="nav-icon"></i>
-            <span class="nav-text">Desempenho</span>
-        </a>
-        <a href="dieta.html" class="nav-link">
-            <i data-lucide="apple" class="nav-icon"></i>
-            <span class="nav-text">Dieta</span>
-        </a>
-        <a href="treino.html" class="nav-link">
-            <i data-lucide="dumbbell" class="nav-icon"></i>
-            <span class="nav-text">Treinos</span>
-        </a>
-        <a href="perfil.html" class="nav-link">
-            <i data-lucide="user" class="nav-icon"></i>
-            <span class="nav-text">Perfil</span>
-        </a>
-    </nav>
-</div>
 
-<div class="main-content" id="mainContent">
-    <h1>Bem-vindo ao FitLink!</h1>
-    <p>Escolha uma opção no menu lateral para começar.</p>
+    <div class="main-content" id="mainContent">
+        <header class="welcome-header">
+            <div class="welcome-message">
+                <h1>Bem-vindo de volta, João!</h1>
+                <p>Hoje é dia de treino de pernas. Vamos começar?</p>
+            </div>
+            <div class="current-date">
+                <span id="currentDay">Segunda-feira</span>
+                <span id="currentDate">7 de junho de 2025</span>
+            </div>
+        </header>
+
+        <div class="quick-stats">
+            <div class="stat-card">
+                <div class="stat-icon calorie">
+                    <i data-lucide="zap"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-value">1,250</span>
+                    <span class="stat-label">kcal consumidas</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon workout">
+                    <i data-lucide="dumbbell"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-value">45 min</span>
+                    <span class="stat-label">tempo de treino</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon water">
+                    <i data-lucide="droplet"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-value">2.1L</span>
+                    <span class="stat-label">água ingerida</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon sleep">
+                    <i data-lucide="moon"></i>
+                </div>
+                <div class="stat-info">
+                    <span class="stat-value">7.5h</span>
+                    <span class="stat-label">sono (ontem)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="today-workout">
+                <div class="section-header">
+                    <h2><i data-lucide="dumbbell"></i> Treino de Hoje</h2>
+                    <a href="treino.html" class="see-all">Ver tudo <i data-lucide="chevron-right"></i></a>
+                </div>
+                <div class="workout-card">
+                    <div class="workout-info">
+                        <h3>Treino de Pernas</h3>
+                        <p>08:00 - 09:30</p>
+                        <div class="workout-meta">
+                            <span><i data-lucide="zap"></i> 320 kcal</span>
+                            <span><i data-lucide="list"></i> 5 exercícios</span>
+                        </div>
+                    </div>
+                    <button class="start-button">
+                        <i data-lucide="play"></i> Começar
+                    </button>
+                </div>
+            </div>
+
+            <div class="today-meals">
+                <div class="section-header">
+                    <h2><i data-lucide="apple"></i> Refeições de Hoje</h2>
+                    <a href="dieta.html" class="see-all">Ver tudo <i data-lucide="chevron-right"></i></a>
+                </div>
+                <div class="meal-card">
+                    <div class="meal-time">08:00</div>
+                    <div class="meal-info">
+                        <h3>Café da Manhã</h3>
+                        <p>Ovos mexidos, pão integral e suco de laranja</p>
+                    </div>
+                    <div class="meal-calories">
+                        <span>450 kcal</span>
+                    </div>
+                </div>
+                <div class="meal-card">
+                    <div class="meal-time">12:30</div>
+                    <div class="meal-info">
+                        <h3>Almoço</h3>
+                        <p>Frango grelhado, arroz integral e salada</p>
+                    </div>
+                    <div class="meal-calories">
+                        <span>620 kcal</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <div class="section-header">
+                    <h2><i data-lucide="trending-up"></i> Seu Progresso</h2>
+                    <a href="dash.html" class="see-all">Ver tudo <i data-lucide="chevron-right"></i></a>
+                </div>
+                <div class="progress-card">
+                    <div class="progress-metric">
+                        <div class="progress-info">
+                            <span class="progress-value">-3.2kg</span>
+                            <span class="progress-label">Peso (últimos 30 dias)</span>
+                        </div>
+                        <i data-lucide="weight" class="progress-icon"></i>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 64%"></div>
+                    </div>
+                </div>
+                <div class="progress-card">
+                    <div class="progress-metric">
+                        <div class="progress-info">
+                            <span class="progress-value">+15%</span>
+                            <span class="progress-label">Força (últimos 30 dias)</span>
+                        </div>
+                        <i data-lucide="armchair" class="progress-icon"></i>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 15%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <div class="section-header">
+                    <h2><i data-lucide="zap"></i> Ações Rápidas</h2>
+                </div>
+                <div class="actions-grid">
+                    <a href="treino.html" class="action-card">
+                        <i data-lucide="dumbbell"></i>
+                        <span>Adicionar Treino</span>
+                    </a>
+                    <a href="dieta.html" class="action-card">
+                        <i data-lucide="utensils"></i>
+                        <span>Registrar Refeição</span>
+                    </a>
+                    <a href="dash.html" class="action-card">
+                        <i data-lucide="weight"></i>
+                        <span>Registrar Peso</span>
+                    </a>
+                    <a href="perfil.html" class="action-card">
+                        <i data-lucide="target"></i>
+                        <span>Ver Metas</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
-        const mainContent = document.getElementById('mainContent');
 
-        // Inicializar ícones Lucide
-        lucide.createIcons();
-
-        // Verificar se é mobile
-        const isMobile = window.matchMedia('(max-width: 768px)').matches;
-
-        // Estado do menu
-        let menuOpen = false;
-
-        // Função para alternar menu
-        function toggleMenu() {
-            menuOpen = !menuOpen;
-            sidebar.classList.toggle('expanded', menuOpen);
-            mainContent.classList.toggle('menu-open', menuOpen);
-
-            // Mudar ícone do botão
-            const icon = menuToggle.querySelector('i');
-            icon.className = menuOpen ? 'fas fa-times' : 'fas fa-bars';
-        }
-
-        // Evento de clique no botão do menu
-        menuToggle.addEventListener('click', toggleMenu);
-
-        // Comportamento hover para desktop
-        if (!isMobile) {
-            sidebar.addEventListener('mouseenter', () => {
-                if (!menuOpen) {
-                    sidebar.classList.add('hover-expanded');
-                }
-            });
-
-            sidebar.addEventListener('mouseleave', () => {
-                if (!menuOpen) {
-                    sidebar.classList.remove('hover-expanded');
-                }
-            });
-        }
-
-        // Fechar menu ao clicar no conteúdo principal (para mobile)
-        mainContent.addEventListener('click', () => {
-            if (isMobile && menuOpen) {
-                toggleMenu();
-            }
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('expanded');
+            document.body.classList.toggle('sidebar-expanded');
         });
+
+        // Set current date
+        const currentDate = new Date();
+        const days = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+        const months = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+
+        document.getElementById('currentDay').textContent = days[currentDate.getDay()];
+        document.getElementById('currentDate').textContent = `${currentDate.getDate()} de ${months[currentDate.getMonth()]} de ${currentDate.getFullYear()}`;
+
+        // Initialize Lucide icons
+        lucide.createIcons();
     });
 </script>
 </body>

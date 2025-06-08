@@ -1,90 +1,176 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FitLink - Conectando alunos ao treino ideal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="/styles/initial_pagest.css"/>
-  </head>
-  <body>
-    <header>
-      <div class="logo">
-        <img src="/images/FitLink logo sn.png" alt="FitLink Logo"/>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FitLink - Conectando alunos ao treino ideal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/styles/initial_pagest.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<!-- Header -->
+<header>
+  <div class="container">
+    <div class="header-content">
+      <a href="#" class="logo">
+        <img src="images/FitLink%20logo%20sn.png" alt="FitLink Logo">
+        <strong>FitLink</strong>
+      </a>
+      <div class="nav-buttons">
+        <a href="pages/login.html">Login</a>
+        <a href="pages/cad.html">Cadastre-se</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <h1>Conectando alunos ao treino ideal</h1>
+    <p>O FitLink ajuda estudantes universitários a encontrar o equilíbrio perfeito entre vida acadêmica e saúde física com treinos personalizados e flexíveis.</p>
+    <div class="hero-buttons">
+      <a href="pages/cad.html" class="primary-btn">Comece agora</a>
+      <a href="#benefits" class="secondary-btn">Saiba mais</a>
+    </div>
+  </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="section" id="benefits">
+  <div class="container">
+    <div class="section-title">
+      <i data-lucide="sparkles"></i>
+      <h2>Por que escolher o FitLink?</h2>
+    </div>
+    <div class="benefits">
+      <div class="benefit">
+        <i data-lucide="dumbbell"></i>
+        <h3>Treinos personalizados</h3>
+        <p>Planos adaptados ao seu ritmo acadêmico e objetivos físicos, com exercícios que cabem na sua rotina de estudante.</p>
+      </div>
+      <div class="benefit">
+        <i data-lucide="smartphone"></i>
+        <h3>Plataforma intuitiva</h3>
+        <p>Interface simples e eficiente desenvolvida especialmente para estudantes, sem complicações.</p>
+      </div>
+      <div class="benefit">
+        <i data-lucide="users"></i>
+        <h3>Suporte profissional</h3>
+        <p>Acesso a personal trainers certificados que entendem os desafios da vida universitária.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Screenshots Section -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="section-title">
+      <i data-lucide="smartphone"></i>
+      <h2>Veja o FitLink em ação</h2>
+    </div>
+    <div class="screenshots">
+      <div class="screenshot">
+        <img src="https://via.placeholder.com/250x500/3AB96F/FFFFFF?text=App+Screen+1" alt="Tela do app FitLink">
+      </div>
+      <div class="screenshot">
+        <img src="https://via.placeholder.com/250x500/3AB96F/FFFFFF?text=App+Screen+2" alt="Tela do app FitLink">
+      </div>
+      <div class="screenshot">
+        <img src="https://via.placeholder.com/250x500/3AB96F/FFFFFF?text=App+Screen+3" alt="Tela do app FitLink">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <i data-lucide="message-square-heart"></i>
+      <h2>Depoimentos de usuários</h2>
+    </div>
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>"Com o FitLink, finalmente achei um treino que cabe no meu ritmo de estudo. Consigo me exercitar mesmo durante a semana de provas!"</p>
+        <strong>— Mariana, UFSC</strong>
+      </div>
+      <div class="testimonial">
+        <p>"Achei meu personal ideal com três cliques. Ele montou um treino que faço no próprio campus. Intuitivo e prático. Recomendo!"</p>
+        <strong>— João, UFRJ</strong>
+      </div>
+      <div class="testimonial">
+        <p>"Como estudante de medicina, nunca tinha tempo para academia. O FitLink me mostrou que 30 minutos por dia fazem toda diferença."</p>
+        <strong>— Carlos, USP</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<div class="container">
+  <section class="cta">
+    <h2>Pronto para transformar sua rotina?</h2>
+    <p>Cadastre-se agora gratuitamente e dê o primeiro passo rumo ao seu melhor desempenho físico e acadêmico.</p>
+    <a href="pages/cad.html">Comece agora <i data-lucide="arrow-right"></i></a>
+  </section>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="images/FitLink%20logo%20sn.png" alt="FitLink Logo">
         <strong>FitLink</strong>
       </div>
-      <div class="nav-buttons">
-        <a href="/pages/login.html">Login</a>
-        <a href="/pages/cad.html">Cadastro</a>
+      <div class="footer-links">
+        <a href="#">Início</a>
+        <a href="#benefits">Benefícios</a>
+        <a href="pages/login.html">Login</a>
+        <a href="pages/cad.html">Cadastro</a>
+        <a href="#">Termos de Uso</a>
+        <a href="#">Política de Privacidade</a>
       </div>
-    </header>
-
-    <section class="hero">
-      <h1>Conectando alunos ao treino ideal</h1>
-    </section>
-
-    <section class="section">
-      <h2>Por que escolher o FitLink?</h2>
-      <div class="benefits">
-        <div class="benefit">
-          <i>💪</i>
-          <h3>Treinos personalizados</h3>
-          <p>Encontre o treino ideal com base no seu perfil estudantil.</p>
-        </div>
-        <div class="benefit">
-          <i>💻</i>
-          <h3>Plataforma intuitiva</h3>
-          <p>Navegação simples, eficiente e sem complicações.</p>
-        </div>
-        <div class="benefit">
-          <i>💬</i>
-          <h3>Suporte profissional</h3>
-          <p>Acesso a personal trainers certificados.</p>
-        </div>
+      <div class="social-links">
+        <a href="#"><i data-lucide="instagram"></i></a>
+        <a href="#"><i data-lucide="facebook"></i></a>
+        <a href="#"><i data-lucide="twitter"></i></a>
+        <a href="#"><i data-lucide="youtube"></i></a>
       </div>
-    </section>
-
-    <section class="section">
-      <h2>Veja o FitLink em ação</h2>
-      <div class="screenshots">
-        <div class="screenshot">
-          <img src="https://via.placeholder.com/250x500" alt="Tela do app" />
-        </div>
-        <div class="screenshot">
-          <img src="https://via.placeholder.com/250x500" alt="Tela do app" />
-        </div>
+      <div class="copyright">
+        &copy; 2025 FitLink. Todos os direitos reservados.
       </div>
-    </section>
+    </div>
+  </div>
+</footer>
 
-    <section class="section">
-      <h2>Depoimentos de usuários</h2>
-      <div class="testimonials">
-        <div class="testimonial">
-          <p>
-            "Com o FitLink, finalmente achei um treino que cabe no meu ritmo de
-            estudo. Top demais!"
-          </p>
-          <strong>— Mariana, UFSC</strong>
-        </div>
-        <div class="testimonial">
-          <p>
-            "Achei meu personal ideal com três cliques. Intuitivo e prático.
-            Recomendo!"
-          </p>
-          <strong>— João, UFRJ</strong>
-        </div>
-      </div>
-    </section>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Lucide icons
+    lucide.createIcons();
 
-    <section class="cta">
-      <h2>Pronto pra começar?</h2>
-      <p>
-        Cadastre-se agora gratuitamente e dê o primeiro passo rumo ao seu melhor
-        desempenho físico e acadêmico.
-      </p>
-      <a href="pages/cad.html">Cadastre-se agora</a>
-    </section>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
 
-    <footer>&copy; 2025 FitLink. Todos os direitos reservados.</footer>
-  </body>
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  });
+</script>
+</body>
 </html>

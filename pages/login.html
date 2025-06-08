@@ -1,29 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - FitLink</title>
-    <link rel="stylesheet" href="/styles/login.css" />
-  </head>
-  <body>
-    <div class="login-container">
-      <h1>Entrar no FitLink</h1>
-      <form action="home.html" method="GET">
-        <input type="email" placeholder="E-mail" required />
-        <input type="password" placeholder="Senha" required />
-        <button type="submit">Entrar</button>
-      </form>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - FitLink</title>
+  <link rel="stylesheet" href="/styles/login.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="login-wrapper">
+  <!-- Seção da Imagem (visível apenas em desktop) -->
+  <div class="login-hero">
+    <div class="hero-content">
+      <img src="/images/FitLink%20logo%20sn.png" alt="FitLink Logo" class="hero-logo">
+      <h2>Transforme sua jornada fitness</h2>
+      <p>Conecte-se com profissionais e alcance seus objetivos</p>
+    </div>
+  </div>
 
-      <div class="social-login">
-        <p>Ou entre com:</p>
-        <div class="social-buttons">
-          <a class="google"><img src="/icons/google.png" alt="googleicon">
-            Google</a>
-          <a class="outlook"> <img src="/icons/ooutlook.png" alt="ooutlookicon">
-            Outlook</a>
+  <!-- Seção do Formulário -->
+  <div class="login-container">
+    <div class="login-header">
+      <img src="/images/fitlink-logo-green.png" alt="FitLink Logo" class="logo-mobile">
+      <h1>Bem-vindo de volta</h1>
+      <p>Entre na sua conta para continuar</p>
+    </div>
+
+    <form action="home.html" method="GET" class="login-form">
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <div class="input-with-icon">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="email" placeholder="seu@email.com" required>
         </div>
       </div>
+
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <div class="input-with-icon">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="password" placeholder="Sua senha" required>
+          <button type="button" class="toggle-password">
+            <i class="far fa-eye"></i>
+          </button>
+        </div>
+        <a href="#" class="forgot-password">Esqueceu sua senha?</a>
+      </div>
+
+      <button type="submit" class="login-btn">
+        <i class="fas fa-sign-in-alt"></i> Entrar
+      </button>
+    </form>
+
+    <div class="social-login">
+      <div class="divider">
+        <span>ou entre com</span>
+      </div>
+
+      <div class="social-buttons">
+        <a href="#" class="social-btn google">
+          <img src="/icons/google_blacklogo.png" alt="Google">
+          Google
+        </a>
+        <a href="#" class="social-btn outlook">
+          <img src="/icons/ootlook_blakicon.png" alt="Outlook">
+          Outlook
+        </a>
+      </div>
     </div>
-  </body>
+
+    <div class="register-link">
+      Não tem uma conta? <a href="cad.html">Cadastre-se</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Mostrar/esconder senha
+  document.querySelector('.toggle-password').addEventListener('click', function() {
+    const passwordInput = document.getElementById('password');
+    const icon = this.querySelector('i');
+
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      icon.classList.replace('fa-eye', 'fa-eye-slash');
+    } else {
+      passwordInput.type = 'password';
+      icon.classList.replace('fa-eye-slash', 'fa-eye');
+    }
+  });
+</script>
+</body>
 </html>

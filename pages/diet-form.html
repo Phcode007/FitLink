@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Plano Alimentar</title>
+    <link rel="stylesheet" href="/styles/diet-form.css">
+</head>
+<body>
+<div class="form-container">
+    <h1>Criar Plano Alimentar</h1>
+    <form id="diet-form">
+        <div class="form-group">
+            <label for="diet-client">Cliente:</label>
+            <select id="diet-client" required>
+                <option value="">Selecione um cliente</option>
+                <!-- Opções serão preenchidas via JavaScript -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="diet-name">Nome do Plano:</label>
+            <input type="text" id="diet-name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="diet-duration">Duração (semanas):</label>
+            <input type="number" id="diet-duration" min="1" value="4">
+        </div>
+
+        <div class="form-group">
+            <label for="diet-objective">Objetivo:</label>
+            <select id="diet-objective" required>
+                <option value="weight-loss">Perda de Peso</option>
+                <option value="muscle-gain">Ganho de Massa Muscular</option>
+                <option value="maintenance">Manutenção</option>
+                <option value="health">Saúde</option>
+                <option value="other">Outro</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="caloric-goal">Meta Calórica Diária (kcal):</label>
+            <input type="number" id="caloric-goal" min="0" step="50">
+        </div>
+
+        <h3>Refeições</h3>
+        <div id="meals-container">
+            <!-- Refeições serão adicionadas dinamicamente -->
+        </div>
+
+        <button type="button" class="add-meal" id="add-meal-btn">+ Adicionar Refeição</button>
+
+        <div class="form-group">
+            <label for="diet-notes">Observações Gerais:</label>
+            <textarea id="diet-notes"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Salvar Plano Alimentar</button>
+    </form>
+</div>
+
+<script src="diet-form.js"></script>
+</body>
+</html>

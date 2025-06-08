@@ -1,28 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Menu de Cadastro - FitLink</title>
-    <link rel="stylesheet" href="/styles/menu_cad.css" />
-  </head>
-  <body>
-    <div class="menu-container">
-      <h1>Você é:</h1>
-      <div class="options">
-        <a href="cadastro_cliente.html" class="option">
-          <img src="/icons/Clienteicon.png" alt="Cliente" />
-          <span>Cliente</span>
-        </a>
-        <a href="cadastro_nutricionista.html" class="option">
-          <img src="/icons/Nutriicon.png" alt="Nutricionista" />
-          <span>Nutricionista</span>
-        </a>
-        <a href="cadastro_personal.html" class="option">
-          <img src="/icons/Personalicon.png" alt="Personal" />
-          <span>Personal</span>
-        </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu de Cadastro - FitLink</title>
+  <link rel="stylesheet" href="/styles/menu_cad.css" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<div class="register-container">
+  <div class="register-header">
+    <h1>Crie sua conta FitLink</h1>
+    <p>Selecione seu perfil para começar</p>
+  </div>
+
+  <div class="options-grid">
+    <a href="cadastro_cliente.html" class="option-card">
+      <div class="option-icon client">
+        <i data-lucide="user-plus"></i>
       </div>
-    </div>
-  </body>
+      <h3>Cliente</h3>
+      <p>Quero me exercitar e ter acompanhamento profissional</p>
+      <div class="select-arrow">
+        <i data-lucide="chevron-right"></i>
+      </div>
+    </a>
+
+    <a href="cadastro_nutricionista.html" class="option-card">
+      <div class="option-icon nutritionist">
+        <i data-lucide="apple"></i>
+      </div>
+      <h3>Nutricionista</h3>
+      <p>Quero acompanhar clientes e criar planos alimentares</p>
+      <div class="select-arrow">
+        <i data-lucide="chevron-right"></i>
+      </div>
+    </a>
+
+    <a href="cadastro_personal.html" class="option-card">
+      <div class="option-icon trainer">
+        <i data-lucide="dumbbell"></i>
+      </div>
+      <h3>Personal Trainer</h3>
+      <p>Quero criar treinos e acompanhar alunos</p>
+      <div class="select-arrow">
+        <i data-lucide="chevron-right"></i>
+      </div>
+    </a>
+  </div>
+
+  <div class="login-redirect">
+    Já tem uma conta? <a href="login.html">Faça login</a>
+  </div>
+</div>
+
+<script>
+  // Inicializa os ícones do Lucide
+  lucide.createIcons();
+
+  // Adiciona efeito hover nos cards
+  document.querySelectorAll('.option-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      const arrow = card.querySelector('.select-arrow i');
+      arrow.setAttribute('data-lucide', 'arrow-right');
+      lucide.createIcons();
+    });
+
+    card.addEventListener('mouseleave', () => {
+      const arrow = card.querySelector('.select-arrow i');
+      arrow.setAttribute('data-lucide', 'chevron-right');
+      lucide.createIcons();
+    });
+  });
+</script>
+</body>
 </html>

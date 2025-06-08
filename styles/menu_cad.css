@@ -1,58 +1,188 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f0fdf4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+:root {
+  --primary-color: #3ab96f;
+  --primary-dark: #2e9d5d;
+  --primary-light: #e8f7ee;
+  --white: #ffffff;
+  --gray-light: #f5f5f5;
+  --gray-medium: #e0e0e0;
+  --gray-dark: #757575;
+  --text-dark: #333333;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
 }
 
-.menu-container {
-  background: white;
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--gray-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.register-container {
+  width: 100%;
+  max-width: 800px;
+  background-color: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 2.5rem;
   text-align: center;
 }
 
-.menu-container h1 {
-  color: #065f46;
-  font-size: 28px;
-  margin-bottom: 30px;
+.register-header {
+  margin-bottom: 2.5rem;
 }
 
-.options {
+.register-header h1 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.register-header p {
+  color: var(--gray-dark);
+  font-size: 1rem;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.option-card {
   display: flex;
-  justify-content: space-around;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.option {
-  background: #ecfdf5;
-  border-radius: 16px;
-  padding: 40px 50px;
-  width: 1 40px;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: var(--white);
+  border: 1px solid var(--gray-medium);
   text-decoration: none;
-  color: #065f46;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
+  color: var(--text-dark);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 
-.option:hover {
-  transform: scale(1.05);
+.option-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-color);
 }
 
-.option img {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 10px;
+.option-card h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.25rem;
+  color: var(--text-dark);
 }
 
-.option span {
-  display: block;
-  font-size: 16px;
-  font-weight: 600;
+.option-card p {
+  color: var(--gray-dark);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.option-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.option-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke-width: 1.5;
+}
+
+.option-icon.client {
+  background-color: rgba(58, 185, 111, 0.1);
+  color: var(--primary-color);
+}
+
+.option-icon.nutritionist {
+  background-color: rgba(255, 126, 51, 0.1);
+  color: #ff7e33;
+}
+
+.option-icon.trainer {
+  background-color: rgba(0, 114, 206, 0.1);
+  color: #0072ce;
+}
+
+.select-arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  transition: var(--transition);
+}
+
+.option-card:hover .select-arrow {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.select-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+.login-redirect {
+  font-size: 0.95rem;
+  color: var(--gray-dark);
+}
+
+.login-redirect a {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.login-redirect a:hover {
+  text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .register-container {
+    padding: 1.5rem;
+  }
+
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-container {
+    padding: 1.25rem;
+    box-shadow: none;
+    background-color: transparent;
+  }
+
+  .option-card {
+    padding: 1.25rem;
+  }
 }

@@ -6,58 +6,271 @@
     <title>FitLink | Treinos</title>
     <link rel="stylesheet" href="/styles/treino.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="sidebar" id="sidebar">
-    <div class="logo">
-        <button class="menu-toggle" id="menuToggle">☰</button>
-        <span class="logo-text" id="logoText">FitLink</span>
+<div class="app-container">
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i data-lucide="menu"></i>
+            </button>
+            <span class="logo-text" id="logoText">FitLink</span>
+        </div>
+        <nav class="nav">
+            <a href="home.html" class="nav-link">
+                <i data-lucide="home" class="nav-icon"></i>
+                <span class="nav-text">Início</span>
+            </a>
+            <a href="treino.html" class="nav-link active">
+                <i data-lucide="dumbbell" class="nav-icon"></i>
+                <span class="nav-text">Treinos</span>
+            </a>
+            <a href="dieta.html" class="nav-link">
+                <i data-lucide="apple" class="nav-icon"></i>
+                <span class="nav-text">Dieta</span>
+            </a>
+            <a href="dash.html" class="nav-link">
+                <i data-lucide="bar-chart-3" class="nav-icon"></i>
+                <span class="nav-text">Desempenho</span>
+            </a>
+            <a href="perfil.html" class="nav-link">
+                <i data-lucide="user" class="nav-icon"></i>
+                <span class="nav-text">Perfil</span>
+            </a>
+        </nav>
     </div>
-    <nav class="nav">
-        <a href="home.html"><i data-lucide="home"></i> Início</a>
-        <a href="treino.html"><i data-lucide="dumbbell"></i> Treinos</a>
-        <a href="dieta.html"><i data-lucide="apple"></i> Dieta</a>
-        <a href="dash.html"><i data-lucide="bar-chart-3"></i> Desempenho</a>
-        <a href="perfil.html"><i data-lucide="user"></i> Perfil</a>
-    </nav>
-</div>
 
-<div class="main-content">
-    <h1>Treinos de Hoje</h1>
-    <p>Olá, João! Aqui estão seus exercícios do dia:</p>
+    <div class="main-content" id="mainContent">
+        <header class="content-header">
+            <div class="header-title">
+                <i data-lucide="dumbbell" class="header-icon"></i>
+                <h1>Plano de Treino</h1>
+            </div>
+            <div class="date-selector">
+                <button class="date-btn" id="prevDay">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+                <span id="currentDate">sábado, 7 de jun. de 2025</span>
+                <button class="date-btn" id="nextDay">
+                    <i data-lucide="chevron-right"></i>
+                </button>
+            </div>
+        </header>
 
-    <div class="treino-lista">
-        <div class="treino-card">
-            <h2>Agachamento</h2>
-            <p>3 séries de 12 repetições</p>
+        <div class="greeting">
+            <p>Olá, João! Aqui está seu treino recomendado:</p>
         </div>
-        <div class="treino-card">
-            <h2>Supino reto</h2>
-            <p>3 séries de 10 repetições</p>
+
+        <div class="workout-container">
+            <div class="workout-card">
+                <div class="workout-header">
+                    <h2>Agachamento Livre</h2>
+                    <span class="time-badge"><i data-lucide="clock"></i> 08:00 - 08:30</span>
+                </div>
+
+                <div class="workout-body">
+                    <div class="workout-details">
+                        <div class="series-info">
+                            <i data-lucide="repeat-2"></i>
+                            <span>3 séries de 12 repetições</span>
+                        </div>
+                        <div class="workout-stats">
+                            <div class="stat-badge calorie">
+                                <i data-lucide="zap"></i>
+                                <span>150 kcal</span>
+                            </div>
+                            <div class="stat-badge muscle">
+                                <i data-lucide="armchair"></i>
+                                <span>Pernas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="workout-notes">
+                        <h3><i data-lucide="clipboard-list"></i> Notas:</h3>
+                        <p>Manter as costas retas e descer até os quadris ficarem paralelos ao chão.</p>
+                    </div>
+                </div>
+
+                <div class="workout-actions">
+                    <button class="action-btn outline">
+                        <i data-lucide="info"></i>
+                        <span>Detalhes</span>
+                    </button>
+                    <button class="action-btn primary">
+                        <i data-lucide="check"></i>
+                        <span>Marcar como completo</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="workout-card">
+                <div class="workout-header">
+                    <h2>Supino Reto</h2>
+                    <span class="time-badge"><i data-lucide="clock"></i> 10:00 - 10:30</span>
+                </div>
+
+                <div class="workout-body">
+                    <div class="workout-details">
+                        <div class="series-info">
+                            <i data-lucide="repeat-2"></i>
+                            <span>4 séries de 10 repetições</span>
+                        </div>
+                        <div class="workout-stats">
+                            <div class="stat-badge calorie">
+                                <i data-lucide="zap"></i>
+                                <span>120 kcal</span>
+                            </div>
+                            <div class="stat-badge muscle">
+                                <i data-lucide="armchair"></i>
+                                <span>Peito</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="workout-notes">
+                        <h3><i data-lucide="clipboard-list"></i> Notas:</h3>
+                        <p>Manter os pés no chão e as costas firmes no banco durante todo o movimento.</p>
+                    </div>
+                </div>
+
+                <div class="workout-actions">
+                    <button class="action-btn outline">
+                        <i data-lucide="info"></i>
+                        <span>Detalhes</span>
+                    </button>
+                    <button class="action-btn primary">
+                        <i data-lucide="check"></i>
+                        <span>Marcar como completo</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="workout-card">
+                <div class="workout-header">
+                    <h2>Barra Fixa</h2>
+                    <span class="time-badge"><i data-lucide="clock"></i> 11:00 - 11:20</span>
+                </div>
+
+                <div class="workout-body">
+                    <div class="workout-details">
+                        <div class="series-info">
+                            <i data-lucide="repeat-2"></i>
+                            <span>3 séries até a falha</span>
+                        </div>
+                        <div class="workout-stats">
+                            <div class="stat-badge calorie">
+                                <i data-lucide="zap"></i>
+                                <span>90 kcal</span>
+                            </div>
+                            <div class="stat-badge muscle">
+                                <i data-lucide="armchair"></i>
+                                <span>Costas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="workout-notes">
+                        <h3><i data-lucide="clipboard-list"></i> Notas:</h3>
+                        <p>Focar em levantar o corpo usando as costas, não apenas os braços.</p>
+                    </div>
+                </div>
+
+                <div class="workout-actions">
+                    <button class="action-btn outline">
+                        <i data-lucide="info"></i>
+                        <span>Detalhes</span>
+                    </button>
+                    <button class="action-btn primary">
+                        <i data-lucide="check"></i>
+                        <span>Marcar como completo</span>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="treino-card">
-            <h2>Abdominal</h2>
-            <p>4 séries de 15 repetições</p>
+
+        <div class="workout-summary">
+            <div class="summary-card">
+                <h3>Resumo do Treino</h3>
+                <div class="summary-stats">
+                    <div class="summary-stat">
+                        <i data-lucide="zap" class="stat-icon calorie"></i>
+                        <div class="stat-info">
+                            <span class="stat-value">360 kcal</span>
+                            <span class="stat-label">Calorias totais</span>
+                        </div>
+                    </div>
+                    <div class="summary-stat">
+                        <i data-lucide="clock" class="stat-icon time"></i>
+                        <div class="stat-info">
+                            <span class="stat-value">80 min</span>
+                            <span class="stat-label">Tempo total</span>
+                        </div>
+                    </div>
+                    <div class="summary-stat">
+                        <i data-lucide="dumbbell" class="stat-icon exercise"></i>
+                        <div class="stat-info">
+                            <span class="stat-value">3</span>
+                            <span class="stat-label">Exercícios</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const sidebar = document.getElementById('sidebar');
+    document.addEventListener('DOMContentLoaded', function() {
+        // Menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
 
-    menuToggle.addEventListener('click', () => {
-        const isExpanded = sidebar.classList.toggle('expanded');
-        if (isExpanded) {
-            menuToggle.style.opacity = 0;
-            setTimeout(() => menuToggle.style.display = 'none', 300);
-        } else {
-            menuToggle.style.display = 'inline';
-            setTimeout(() => menuToggle.style.opacity = 1, 10);
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('expanded');
+            document.body.classList.toggle('sidebar-expanded');
+        });
+
+        // Date navigation
+        const prevDayBtn = document.getElementById('prevDay');
+        const nextDayBtn = document.getElementById('nextDay');
+        const currentDateEl = document.getElementById('currentDate');
+
+        let currentDate = new Date(2025, 5, 7); // 7 de junho de 2025
+
+        function updateDateDisplay() {
+            const options = { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' };
+            currentDateEl.textContent = currentDate.toLocaleDateString('pt-BR', options);
         }
-    });
 
-    lucide.createIcons();
+        prevDayBtn.addEventListener('click', function() {
+            currentDate.setDate(currentDate.getDate() - 1);
+            updateDateDisplay();
+        });
+
+        nextDayBtn.addEventListener('click', function() {
+            currentDate.setDate(currentDate.getDate() + 1);
+            updateDateDisplay();
+        });
+
+        updateDateDisplay();
+
+        // Mark as complete buttons
+        const completeButtons = document.querySelectorAll('.action-btn.primary');
+        completeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.workout-card');
+                card.classList.add('completed');
+                this.innerHTML = '<i data-lucide="check-circle"></i><span>Concluído</span>';
+                this.classList.add('completed');
+                lucide.createIcons();
+            });
+        });
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+    });
 </script>
 </body>
 </html>
