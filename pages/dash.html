@@ -2,133 +2,197 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - FitLink</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>FitLink | Desempenho</title>
     <link rel="stylesheet" href="/styles/dash.css" />
-    <!-- Adicionando Font Awesome para ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Adicionando Chart.js para gráficos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<div class="dashboard">
-    <header class="dashboard-header">
-        <h1>Bem-vindo, <span id="client-name">João</span>!</h1>
-        <div class="user-actions">
-            <button id="notifications-btn"><i class="fas fa-bell"></i></button>
-            <button id="settings-btn"><i class="fas fa-cog"></i></button>
+<div class="app-container">
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i data-lucide="menu"></i>
+            </button>
+            <span class="logo-text" id="logoText">FitLink</span>
         </div>
-    </header>
-
-    <div class="top-section">
-        <div class="card performance-card">
-            <div class="card-header">
-                <h2><i class="fas fa-chart-line"></i> Desempenho</h2>
-                <select id="time-period">
-                    <option value="week">Semanal</option>
-                    <option value="month">Mensal</option>
-                    <option value="year">Anual</option>
-                </select>
-            </div>
-            <div class="chart-container">
-                <canvas id="performance-chart"></canvas>
-            </div>
-            <div class="stats-summary">
-                <div class="stat-item">
-                    <span class="stat-value" id="workouts-completed">12</span>
-                    <span class="stat-label">Treinos completos</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-value" id="progress-percentage">75%</span>
-                    <span class="stat-label">Progresso</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="card client-card">
-            <div class="card-header">
-                <h2><i class="fas fa-user"></i> Informações do Cliente</h2>
-                <button id="edit-profile"><i class="fas fa-edit"></i></button>
-            </div>
-            <div class="client-info">
-                <div class="info-item">
-                    <span class="info-label">Nome:</span>
-                    <span id="client-fullname">João Silva</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Idade:</span>
-                    <span id="client-age">24 anos</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Altura/Peso:</span>
-                    <span id="client-physical">1.75m / 68kg</span>
-                </div>
-                <div class="info-item">
-                    <span class="info-label">Meta:</span>
-                    <span id="client-goal">Ganhar massa muscular</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 75%;"></div>
-                </div>
-            </div>
-        </div>
+        <nav class="nav">
+            <a href="home.html" class="nav-link">
+                <i data-lucide="home" class="nav-icon"></i>
+                <span class="nav-text">Início</span>
+            </a>
+            <a href="treino.html" class="nav-link">
+                <i data-lucide="dumbbell" class="nav-icon"></i>
+                <span class="nav-text">Treinos</span>
+            </a>
+            <a href="dieta.html" class="nav-link">
+                <i data-lucide="apple" class="nav-icon"></i>
+                <span class="nav-text">Dieta</span>
+            </a>
+            <a href="dash.html" class="nav-link active">
+                <i data-lucide="bar-chart-3" class="nav-icon"></i>
+                <span class="nav-text">Desempenho</span>
+            </a>
+            <a href="perfil.html" class="nav-link">
+                <i data-lucide="user" class="nav-icon"></i>
+                <span class="nav-text">Perfil</span>
+            </a>
+        </nav>
     </div>
 
-    <div class="bottom-section">
-        <div class="columns">
-            <div class="column workout-column">
-                <div class="column-header">
-                    <h3><i class="fas fa-dumbbell"></i> Treino do Dia</h3>
-                    <button id="view-full-workout">Ver completo</button>
+    <div class="main-content" id="mainContent">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1><i data-lucide="bar-chart-3"></i> Meu Desempenho</h1>
+                <p>Olá, João! Aqui está seu progresso e estatísticas.</p>
+            </div>
+            <div class="header-actions">
+                <button class="action-btn notification-btn">
+                    <i data-lucide="bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                <button class="action-btn">
+                    <i data-lucide="settings"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="dashboard-content">
+            <div class="top-cards">
+                <div class="stats-card performance">
+                    <div class="card-header">
+                        <h2><i data-lucide="trending-up"></i> Progresso</h2>
+                        <select id="time-period" class="period-select">
+                            <option value="week">Semanal</option>
+                            <option value="month" selected>Mensal</option>
+                            <option value="year">Anual</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="performance-chart"></canvas>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stat-item">
+                            <span class="stat-value">75%</span>
+                            <span class="stat-label">Meta mensal</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">12</span>
+                            <span class="stat-label">Treinos</span>
+                        </div>
+                    </div>
                 </div>
-                <ul class="workout-list">
-                    <li class="workout-item">
-                        <span class="workout-time">08:00</span>
-                        <span class="workout-activity">Corrida leve (30min)</span>
-                        <button class="check-btn"><i class="far fa-check-circle"></i></button>
-                    </li>
-                    <li class="workout-item">
-                        <span class="workout-time">10:00</span>
-                        <span class="workout-activity">Treino de pernas (45min)</span>
-                        <button class="check-btn"><i class="far fa-check-circle"></i></button>
-                    </li>
-                    <li class="workout-item">
-                        <span class="workout-time">17:00</span>
-                        <span class="workout-activity">Yoga (60min)</span>
-                        <button class="check-btn"><i class="far fa-check-circle"></i></button>
-                    </li>
-                </ul>
-                <div class="workout-summary">
-                    <span>Total: 2h15min</span>
-                    <span>Calorias: ~650kcal</span>
+
+                <div class="stats-card profile">
+                    <div class="card-header">
+                        <h2><i data-lucide="user"></i> Meu Perfil</h2>
+                        <a href="perfil.html" class="edit-link">
+                            <i data-lucide="edit"></i>
+                        </a>
+                    </div>
+                    <div class="profile-info">
+                        <div class="info-item">
+                            <span class="info-label">Idade</span>
+                            <span class="info-value">24 anos</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Altura</span>
+                            <span class="info-value">1.75 m</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Peso</span>
+                            <span class="info-value">68 kg</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Meta</span>
+                            <span class="info-value">Ganhar massa</span>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                        <span>75% da meta</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="column diet-column">
-                <div class="column-header">
-                    <h3><i class="fas fa-utensils"></i> Dieta Recomendada</h3>
-                    <button id="view-full-diet">Ver cardápio</button>
+            <div class="bottom-cards">
+                <div class="activity-card workout">
+                    <div class="card-header">
+                        <h2><i data-lucide="dumbbell"></i> Treino de Hoje</h2>
+                        <a href="treino.html" class="view-all">
+                            Ver completo <i data-lucide="chevron-right"></i>
+                        </a>
+                    </div>
+                    <ul class="activity-list">
+                        <li class="activity-item completed">
+                            <i data-lucide="check-circle" class="status-icon"></i>
+                            <div class="activity-details">
+                                <span class="activity-time">08:00 - 08:30</span>
+                                <span class="activity-name">Corrida leve</span>
+                            </div>
+                            <span class="activity-meta">30 min</span>
+                        </li>
+                        <li class="activity-item">
+                            <i data-lucide="circle" class="status-icon"></i>
+                            <div class="activity-details">
+                                <span class="activity-time">10:00 - 10:45</span>
+                                <span class="activity-name">Treino de pernas</span>
+                            </div>
+                            <span class="activity-meta">45 min</span>
+                        </li>
+                        <li class="activity-item">
+                            <i data-lucide="circle" class="status-icon"></i>
+                            <div class="activity-details">
+                                <span class="activity-time">17:00 - 18:00</span>
+                                <span class="activity-name">Yoga</span>
+                            </div>
+                            <span class="activity-meta">60 min</span>
+                        </li>
+                    </ul>
+                    <div class="activity-summary">
+                        <span><i data-lucide="clock"></i> Total: 2h15min</span>
+                        <span><i data-lucide="zap"></i> Calorias: ~650kcal</span>
+                    </div>
                 </div>
-                <ul class="diet-list">
-                    <li class="meal-item">
-                        <span class="meal-time">Café da manhã</span>
-                        <span class="meal-description">Omelete (2 ovos) + Aveia com banana</span>
-                        <span class="meal-calories">~450kcal</span>
-                    </li>
-                    <li class="meal-item">
-                        <span class="meal-time">Almoço</span>
-                        <span class="meal-description">Arroz integral, frango grelhado e legumes</span>
-                        <span class="meal-calories">~600kcal</span>
-                    </li>
-                    <li class="meal-item">
-                        <span class="meal-time">Jantar</span>
-                        <span class="meal-description">Sopa de legumes + 1 fruta</span>
-                        <span class="meal-calories">~350kcal</span>
-                    </li>
-                </ul>
-                <div class="diet-summary">
-                    <span>Total: ~1400kcal</span>
-                    <span>Proteína: ~120g</span>
+
+                <div class="activity-card diet">
+                    <div class="card-header">
+                        <h2><i data-lucide="utensils"></i> Dieta de Hoje</h2>
+                        <a href="dieta.html" class="view-all">
+                            Ver cardápio <i data-lucide="chevron-right"></i>
+                        </a>
+                    </div>
+                    <ul class="activity-list">
+                        <li class="meal-item">
+                            <div class="meal-time">Café da manhã</div>
+                            <div class="meal-details">
+                                <span class="meal-name">Omelete + Aveia com banana</span>
+                                <span class="meal-meta">450 kcal</span>
+                            </div>
+                        </li>
+                        <li class="meal-item">
+                            <div class="meal-time">Almoço</div>
+                            <div class="meal-details">
+                                <span class="meal-name">Arroz integral, frango e legumes</span>
+                                <span class="meal-meta">600 kcal</span>
+                            </div>
+                        </li>
+                        <li class="meal-item">
+                            <div class="meal-time">Jantar</div>
+                            <div class="meal-details">
+                                <span class="meal-name">Sopa de legumes + 1 fruta</span>
+                                <span class="meal-meta">350 kcal</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="activity-summary">
+                        <span><i data-lucide="zap"></i> Total: ~1400kcal</span>
+                        <span><i data-lucide="egg"></i> Proteína: ~120g</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -136,45 +200,73 @@
 </div>
 
 <script>
-    // Inicialização do gráfico de desempenho
     document.addEventListener('DOMContentLoaded', function() {
+        // Menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('expanded');
+            document.body.classList.toggle('sidebar-expanded');
+        });
+
+        // Initialize performance chart
         const ctx = document.getElementById('performance-chart').getContext('2d');
         const performanceChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+                labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4'],
                 datasets: [{
-                    label: 'Progresso Físico',
-                    data: [65, 59, 80, 81, 76, 85],
+                    label: 'Progresso',
+                    data: [30, 50, 65, 75],
                     fill: true,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    tension: 0.4
+                    backgroundColor: 'rgba(58, 185, 111, 0.1)',
+                    borderColor: '#3AB96F',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    pointBackgroundColor: '#3AB96F',
+                    pointRadius: 5,
+                    pointHoverRadius: 7
                 }]
             },
             options: {
                 responsive: true,
                 plugins: {
                     legend: {
-                        position: 'top',
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
                     }
                 }
             }
         });
 
-        // Adicionando interatividade aos botões de check
-        document.querySelectorAll('.check-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                this.innerHTML = '<i class="fas fa-check-circle"></i>';
-                this.parentElement.classList.add('completed');
+        // Toggle activity completion
+        document.querySelectorAll('.activity-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const icon = this.querySelector('.status-icon');
+                if (icon.getAttribute('data-lucide') === 'circle') {
+                    icon.setAttribute('data-lucide', 'check-circle');
+                    this.classList.add('completed');
+                } else {
+                    icon.setAttribute('data-lucide', 'circle');
+                    this.classList.remove('completed');
+                }
+                lucide.createIcons();
             });
         });
 
-        // Simulando mudança de período
-        document.getElementById('time-period').addEventListener('change', function() {
-            // Aqui você faria uma requisição para atualizar os dados do gráfico
-            console.log('Período alterado para:', this.value);
-        });
+        // Initialize Lucide icons
+        lucide.createIcons();
     });
 </script>
 </body>
