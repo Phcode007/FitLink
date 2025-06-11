@@ -8,6 +8,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
 <div class="app-container">
@@ -46,15 +47,15 @@
         <header class="dashboard-header">
             <div class="header-content">
                 <h1><i data-lucide="bar-chart-3"></i> Meu Desempenho</h1>
-                <p>Olá, João! Aqui está seu progresso e estatísticas.</p>
+                <p id="welcomeMessage">Olá! Aqui está seu progresso e estatísticas.</p>
             </div>
             <div class="header-actions">
                 <button class="action-btn notification-btn">
                     <i data-lucide="bell"></i>
                     <span class="notification-badge">3</span>
                 </button>
-                <button class="action-btn">
-                    <i data-lucide="settings"></i>
+                <button class="action-btn" id="logoutBtn">
+                    <i data-lucide="log-out"></i>
                 </button>
             </div>
         </header>
@@ -75,11 +76,11 @@
                     </div>
                     <div class="card-footer">
                         <div class="stat-item">
-                            <span class="stat-value">75%</span>
-                            <span class="stat-label">Meta mensal</span>
+                            <span class="stat-value" id="progress-percent">0%</span>
+                            <span class="stat-label">Meta diária</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-value">12</span>
+                            <span class="stat-value" id="workout-count">0</span>
                             <span class="stat-label">Treinos</span>
                         </div>
                     </div>
@@ -92,29 +93,14 @@
                             <i data-lucide="edit"></i>
                         </a>
                     </div>
-                    <div class="profile-info">
-                        <div class="info-item">
-                            <span class="info-label">Idade</span>
-                            <span class="info-value">24 anos</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label">Altura</span>
-                            <span class="info-value">1.75 m</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label">Peso</span>
-                            <span class="info-value">68 kg</span>
-                        </div>
-                        <div class="info-item">
-                            <span class="info-label">Meta</span>
-                            <span class="info-value">Ganhar massa</span>
-                        </div>
+                    <div class="profile-info" id="profile-info">
+                        <div class="loading"></div>
                     </div>
                     <div class="progress-container">
                         <div class="progress-bar">
-                            <div class="progress-fill" style="width: 75%"></div>
+                            <div class="progress-fill" id="goal-progress" style="width: 0%"></div>
                         </div>
-                        <span>75% da meta</span>
+                        <span id="goal-percent">0% da meta</span>
                     </div>
                 </div>
             </div>
@@ -127,35 +113,12 @@
                             Ver completo <i data-lucide="chevron-right"></i>
                         </a>
                     </div>
-                    <ul class="activity-list">
-                        <li class="activity-item completed">
-                            <i data-lucide="check-circle" class="status-icon"></i>
-                            <div class="activity-details">
-                                <span class="activity-time">08:00 - 08:30</span>
-                                <span class="activity-name">Corrida leve</span>
-                            </div>
-                            <span class="activity-meta">30 min</span>
-                        </li>
-                        <li class="activity-item">
-                            <i data-lucide="circle" class="status-icon"></i>
-                            <div class="activity-details">
-                                <span class="activity-time">10:00 - 10:45</span>
-                                <span class="activity-name">Treino de pernas</span>
-                            </div>
-                            <span class="activity-meta">45 min</span>
-                        </li>
-                        <li class="activity-item">
-                            <i data-lucide="circle" class="status-icon"></i>
-                            <div class="activity-details">
-                                <span class="activity-time">17:00 - 18:00</span>
-                                <span class="activity-name">Yoga</span>
-                            </div>
-                            <span class="activity-meta">60 min</span>
-                        </li>
+                    <ul class="activity-list" id="workout-list">
+                        <div class="loading"></div>
                     </ul>
                     <div class="activity-summary">
-                        <span><i data-lucide="clock"></i> Total: 2h15min</span>
-                        <span><i data-lucide="zap"></i> Calorias: ~650kcal</span>
+                        <span><i data-lucide="clock"></i> Total: <span id="workout-total-time">--</span></span>
+                        <span><i data-lucide="zap"></i> Calorias: <span id="workout-calories">--</span></span>
                     </div>
                 </div>
 
@@ -166,32 +129,12 @@
                             Ver cardápio <i data-lucide="chevron-right"></i>
                         </a>
                     </div>
-                    <ul class="activity-list">
-                        <li class="meal-item">
-                            <div class="meal-time">Café da manhã</div>
-                            <div class="meal-details">
-                                <span class="meal-name">Omelete + Aveia com banana</span>
-                                <span class="meal-meta">450 kcal</span>
-                            </div>
-                        </li>
-                        <li class="meal-item">
-                            <div class="meal-time">Almoço</div>
-                            <div class="meal-details">
-                                <span class="meal-name">Arroz integral, frango e legumes</span>
-                                <span class="meal-meta">600 kcal</span>
-                            </div>
-                        </li>
-                        <li class="meal-item">
-                            <div class="meal-time">Jantar</div>
-                            <div class="meal-details">
-                                <span class="meal-name">Sopa de legumes + 1 fruta</span>
-                                <span class="meal-meta">350 kcal</span>
-                            </div>
-                        </li>
+                    <ul class="activity-list" id="diet-list">
+                        <div class="loading"></div>
                     </ul>
                     <div class="activity-summary">
-                        <span><i data-lucide="zap"></i> Total: ~1400kcal</span>
-                        <span><i data-lucide="egg"></i> Proteína: ~120g</span>
+                        <span><i data-lucide="zap"></i> Total: <span id="diet-total-calories">--</span></span>
+                        <span><i data-lucide="egg"></i> Proteína: <span id="diet-protein">--</span></span>
                     </div>
                 </div>
             </div>
@@ -201,72 +144,305 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Menu toggle
+        // Elementos DOM
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
+        const welcomeMessage = document.getElementById('welcomeMessage');
+        const profileInfo = document.getElementById('profile-info');
+        const workoutList = document.getElementById('workout-list');
+        const dietList = document.getElementById('diet-list');
+        const progressPercent = document.getElementById('progress-percent');
+        const workoutCount = document.getElementById('workout-count');
+        const goalProgress = document.getElementById('goal-progress');
+        const goalPercent = document.getElementById('goal-percent');
+        const logoutBtn = document.getElementById('logoutBtn');
 
+        // Variáveis globais
+        let userId = null;
+        let userName = null;
+        let performanceChart = null;
+
+        // Verificar autenticação
+        function checkAuth() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = 'login.html';
+            } else {
+                const userData = JSON.parse(localStorage.getItem('userData'));
+                userId = userData.id;
+                userName = userData.nome;
+                welcomeMessage.textContent = `Olá, ${userName}! Aqui está seu progresso e estatísticas.`;
+            }
+        }
+
+        // Logout
+        logoutBtn.addEventListener('click', function() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('userData');
+            window.location.href = 'login.html';
+        });
+
+        // Menu toggle
         menuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('expanded');
             document.body.classList.toggle('sidebar-expanded');
         });
 
-        // Initialize performance chart
-        const ctx = document.getElementById('performance-chart').getContext('2d');
-        const performanceChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4'],
-                datasets: [{
-                    label: 'Progresso',
-                    data: [30, 50, 65, 75],
-                    fill: true,
-                    backgroundColor: 'rgba(58, 185, 111, 0.1)',
-                    borderColor: '#3AB96F',
-                    borderWidth: 2,
-                    tension: 0.4,
-                    pointBackgroundColor: '#3AB96F',
-                    pointRadius: 5,
-                    pointHoverRadius: 7
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+        // Buscar dados do dashboard
+        async function fetchDashboardData() {
+            try {
+                const token = localStorage.getItem('token');
+
+                // Mostrar estados de carregamento
+                profileInfo.innerHTML = '<div class="loading"></div>';
+                workoutList.innerHTML = '<div class="loading"></div>';
+                dietList.innerHTML = '<div class="loading"></div>';
+
+                // Buscar dados do dashboard
+                const dashboardResponse = await axios.get('/api/dashboard', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                const dashboardData = dashboardResponse.data;
+
+                // Atualizar informações do perfil
+                if (dashboardData.perfil) {
+                    const idade = calculateAge(dashboardData.perfil.Data_Nascimento);
+                    profileInfo.innerHTML = `
+                    <div class="info-item">
+                        <span class="info-label">Idade</span>
+                        <span class="info-value">${idade} anos</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Altura</span>
+                        <span class="info-value">${dashboardData.perfil.Altura || '--'} m</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Peso</span>
+                        <span class="info-value">${dashboardData.perfil.Peso || '--'} kg</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Meta</span>
+                        <span class="info-value">${dashboardData.perfil.Meta || '--'}</span>
+                    </div>
+                `;
+                }
+
+                // Atualizar gráfico de desempenho
+                if (dashboardData.desempenho && dashboardData.desempenho.length > 0) {
+                    updatePerformanceChart(dashboardData.desempenho);
+                }
+
+                // Atualizar lista de treinos
+                if (dashboardData.treinos && dashboardData.treinos.length > 0) {
+                    renderWorkouts(dashboardData.treinos);
+                } else {
+                    workoutList.innerHTML = '<li class="empty">Nenhum treino para hoje</li>';
+                }
+
+                // Atualizar progresso
+                progressPercent.textContent = `${dashboardData.progresso}%`;
+                workoutCount.textContent = dashboardData.treinos ? dashboardData.treinos.length : '0';
+                goalProgress.style.width = `${dashboardData.progresso}%`;
+                goalPercent.textContent = `${dashboardData.progresso}% da meta`;
+
+                // Buscar dados de nutrição
+                const nutritionResponse = await axios.get('/api/nutricao', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                // Atualizar lista de dieta
+                if (nutritionResponse.data && nutritionResponse.data.length > 0) {
+                    renderDiet(nutritionResponse.data);
+                } else {
+                    dietList.innerHTML = '<li class="empty">Nenhum registro de dieta para hoje</li>';
+                }
+
+            } catch (error) {
+                console.error('Erro ao buscar dados do dashboard:', error);
+
+                if (error.response && error.response.status === 401) {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('userData');
+                    window.location.href = 'login.html';
+                } else {
+                    profileInfo.innerHTML = '<p class="error">Erro ao carregar perfil</p>';
+                    workoutList.innerHTML = '<li class="error">Erro ao carregar treinos</li>';
+                    dietList.innerHTML = '<li class="error">Erro ao carregar dieta</li>';
+                }
+            }
+        }
+
+        // Função para calcular idade
+        function calculateAge(birthDate) {
+            if (!birthDate) return '--';
+            const birth = new Date(birthDate);
+            const today = new Date();
+            let age = today.getFullYear() - birth.getFullYear();
+            const monthDiff = today.getMonth() - birth.getMonth();
+
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+                age--;
+            }
+
+            return age;
+        }
+
+        // Atualizar gráfico de desempenho
+        function updatePerformanceChart(desempenhoData) {
+            const ctx = document.getElementById('performance-chart').getContext('2d');
+
+            // Destruir gráfico existente se houver
+            if (performanceChart) {
+                performanceChart.destroy();
+            }
+
+            const labels = desempenhoData.map(item =>
+                new Date(item.Data_consulta).toLocaleDateString('pt-BR', {
+                    day: '2-digit',
+                    month: 'short'
+                })
+            );
+
+            performanceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'IMC',
+                        data: desempenhoData.map(item => item.IMC),
+                        fill: true,
+                        backgroundColor: 'rgba(58, 185, 111, 0.1)',
+                        borderColor: '#3AB96F',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        pointBackgroundColor: '#3AB96F',
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 100,
-                        ticks: {
-                            callback: function(value) {
-                                return value + '%';
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            ticks: {
+                                callback: function(value) {
+                                    return value.toFixed(1);
+                                }
                             }
                         }
                     }
                 }
-            }
-        });
-
-        // Toggle activity completion
-        document.querySelectorAll('.activity-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const icon = this.querySelector('.status-icon');
-                if (icon.getAttribute('data-lucide') === 'circle') {
-                    icon.setAttribute('data-lucide', 'check-circle');
-                    this.classList.add('completed');
-                } else {
-                    icon.setAttribute('data-lucide', 'circle');
-                    this.classList.remove('completed');
-                }
-                lucide.createIcons();
             });
-        });
+        }
 
-        // Initialize Lucide icons
-        lucide.createIcons();
+        // Renderizar treinos
+        function renderWorkouts(treinos) {
+            workoutList.innerHTML = '';
+
+            treinos.forEach(treino => {
+                const item = document.createElement('li');
+                item.className = `activity-item ${treino.Completo ? 'completed' : ''}`;
+                item.dataset.treinoId = treino.ID;
+
+                // Formatar hora
+                const dataTreino = new Date(treino.Data_Treino);
+                const hora = dataTreino.toLocaleTimeString('pt-BR', {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+                item.innerHTML = `
+                <i data-lucide="${treino.Completo ? 'check-circle' : 'circle'}" class="status-icon"></i>
+                <div class="activity-details">
+                    <span class="activity-name">${treino.Exercicios}</span>
+                    <span class="activity-time">${hora}</span>
+                </div>
+                <span class="activity-meta">60 min</span>
+            `;
+
+                item.addEventListener('click', function() {
+                    toggleTreinoStatus(this);
+                });
+
+                workoutList.appendChild(item);
+            });
+
+            // Atualizar ícones
+            lucide.createIcons();
+        }
+
+        // Renderizar dieta
+        function renderDiet(dietData) {
+            dietList.innerHTML = '';
+
+            dietData.forEach(refeicao => {
+                const item = document.createElement('li');
+                item.className = 'meal-item';
+
+                item.innerHTML = `
+                <div class="meal-time">${refeicao.Refeicao}</div>
+                <div class="meal-details">
+                    <span class="meal-name">${refeicao.Alimentos}</span>
+                    <span class="meal-meta">${refeicao.Calorias} kcal</span>
+                </div>
+            `;
+
+                dietList.appendChild(item);
+            });
+        }
+
+        // Alternar status do treino
+        async function toggleTreinoStatus(item) {
+            const treinoId = item.dataset.treinoId;
+            const icon = item.querySelector('.status-icon');
+            const isCompleted = item.classList.contains('completed');
+            const newStatus = !isCompleted;
+
+            try {
+                const token = localStorage.getItem('token');
+
+                await axios.post('/api/treino/status', {
+                    treinoId: treinoId,
+                    status: newStatus
+                }, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                // Atualizar UI
+                item.classList.toggle('completed');
+                icon.setAttribute('data-lucide', newStatus ? 'check-circle' : 'circle');
+                lucide.createIcons();
+
+                // Recalcular progresso
+                const completedItems = document.querySelectorAll('.activity-item.completed').length;
+                const totalItems = document.querySelectorAll('.activity-item').length;
+                const progress = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
+
+                progressPercent.textContent = `${progress}%`;
+                goalProgress.style.width = `${progress}%`;
+                goalPercent.textContent = `${progress}% da meta`;
+
+            } catch (error) {
+                console.error('Erro ao atualizar status do treino:', error);
+                alert('Erro ao atualizar status do treino');
+            }
+        }
+
+        // Inicializar aplicação
+        function init() {
+            checkAuth();
+            fetchDashboardData();
+            lucide.createIcons();
+        }
+
+        init();
     });
 </script>
 </body>
