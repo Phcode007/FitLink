@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - FitLink</title>
+    <link rel="stylesheet" href="/styles/cadastro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="logo">
+            <i class="fas fa-dumbbell"></i>
+            <h1>FitLink</h1>
+        </div>
+        <p>Complete seu cadastro para começar sua jornada fitness</p>
+
+        <div class="form-navigation">
+            <button class="nav-btn active" data-form="cliente">
+                <i class="fas fa-user"></i> Cliente
+            </button>
+            <button class="nav-btn" data-form="nutricionista">
+                <i class="fas fa-apple-alt"></i> Nutricionista
+            </button>
+            <button class="nav-btn" data-form="personal">
+                <i class="fas fa-running"></i> Personal Trainer
+            </button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!-- Formulário de Cliente -->
+        <div class="form-container form-active" id="cliente-form">
+            <form id="formCadastroCliente">
+                <fieldset class="form-section">
+                    <h2><i class="fas fa-user"></i> Dados Pessoais</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo:</label>
+                            <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sexo">Sexo:</label>
+                            <select id="sexo" name="sexo" required>
+                                <option value="">Selecione</option>
+                                <option value="masculino">Masculino</option>
+                                <option value="feminino">Feminino</option>
+                                <option value="outro">Outro</option>
+                                <option value="nao_informar">Prefiro não informar</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="data_nascimento">Data de Nascimento:</label>
+                            <input type="date" id="data_nascimento" name="data_nascimento" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cpf">CPF:</label>
+                            <input type="text" id="cpf" name="cpf" required placeholder="000.000.000-00" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-section">
+                    <h2><i class="fas fa-address-book"></i> Contato</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required placeholder="seu@email.com" />
+                            <small class="form-text">Será usado para login</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmar_email">Confirmar Email:</label>
+                            <input type="email" id="confirmar_email" name="confirmar_email" required placeholder="Confirme seu email" />
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telefone">Telefone:</label>
+                            <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="turno">Melhor horário para contato:</label>
+                            <select id="turno" name="turno" required>
+                                <option value="">Selecione</option>
+                                <option value="manha">Manhã (8h-12h)</option>
+                                <option value="tarde">Tarde (13h-18h)</option>
+                                <option value="noite">Noite (18h-22h)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endereco">Endereço:</label>
+                        <input type="text" id="endereco" name="endereco" required placeholder="Rua, número, complemento" />
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-section">
+                    <h2><i class="fas fa-lock"></i> Segurança</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="senha">Senha:</label>
+                            <input type="password" id="senha" name="senha" required placeholder="Mínimo 8 caracteres" minlength="8" />
+                            <div class="password-strength"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmar_senha">Confirmar Senha:</label>
+                            <input type="password" id="confirmar_senha" name="confirmar_senha" required placeholder="Digite a senha novamente" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-section">
+                    <h2><i class="fas fa-camera"></i> Foto de Perfil</h2>
+
+                    <div class="form-group photo-upload">
+                        <div class="photo-preview">
+                            <i class="fas fa-user" style="font-size: 3rem; color: #A0AEC0;"></i>
+                        </div>
+                        <label for="foto" class="upload-btn">
+                            <i class="fas fa-upload"></i> Escolher Foto
+                            <input type="file" id="foto" name="foto" accept="image/*" capture="user" />
+                        </label>
+                        <small class="form-text">Formatos aceitos: JPG, PNG (Máx. 2MB)</small>
+                    </div>
+                </fieldset>
+
+                <div class="terms">
+                    <input type="checkbox" id="termos" name="termos" required />
+                    <label for="termos">Li e aceito os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a> do FitLink</label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-user-plus"></i> Criar Conta
+                    </button>
+                    <p class="login-link">
+                        Já tem uma conta? <a href="#">Faça login</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+
+        <!-- Formulário de Nutricionista -->
+        <div class="form-container" id="nutricionista-form" style="display: none;">
+            <form id="formCadastroNutricionista">
+                <fieldset class="form-section">
+                    <h2><i class="fas fa-user-md"></i> Dados Profissionais</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome_nutri">Nome Completo:</label>
+                            <input type="text" id="nome_nutri" name="nome_nutri" required placeholder="Digite seu nome completo" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="crn">CRN:</label>
+                            <input type="text" id="crn" name="crn" required placeholder="Número de registro" />
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="especialidade">Especialidade:</label>
+                            <select id="especialidade" name="especialidade" required>
+                                <option value="">Selecione</option>
+                                <option value="nutricao_clinica">Nutrição Clínica</option>
+                                <option value="nutricao_esportiva">Nutrição Esportiva</option>
+                                <option value="nutricao_infantil">Nutrição Infantil</option>
+                                <option value="nutricao_coletiva">Nutrição Coletiva</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="anos_experiencia">Anos de Experiência:</label>
+                            <input type="number" id="anos_experiencia" name="anos_experiencia" min="0" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="formacao">Formação Acadêmica:</label>
+                        <textarea id="formacao" name="formacao" rows="3" required placeholder="Graduação, pós-graduação, etc."></textarea>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-section">
+                    <h2><i class="fas fa-address-book"></i> Contato</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email_nutri">Email:</label>
+                            <input type="email" id="email_nutri" name="email_nutri" required placeholder="seu@email.com" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefone_nutri">Telefone:</label>
+                            <input type="tel" id="telefone_nutri" name="telefone_nutri" required placeholder="(00) 00000-0000" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endereco_nutri">Endereço:</label>
+                        <input type="text" id="endereco_nutri" name="endereco_nutri" required placeholder="Rua, número, complemento" />
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-section">
+                    <h2><i class="fas fa-lock"></i> Segurança</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="senha_nutri">Senha:</label>
+                            <input type="password" id="senha_nutri" name="senha_nutri" required placeholder="Mínimo 8 caracteres" minlength="8" />
+                            <div class="password-strength"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmar_senha_nutri">Confirmar Senha:</label>
+                            <input type="password" id="confirmar_senha_nutri" name="confirmar_senha_nutri" required placeholder="Digite a senha novamente" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="terms">
+                    <input type="checkbox" id="termos_nutri" name="termos_nutri" required />
+                    <label for="termos_nutri">Li e aceito os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a> do FitLink</label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-user-plus"></i> Criar Conta
+                    </button>
+                    <p class="login-link">
+                        Já tem uma conta? <a href="#">Faça login</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+
+        <!-- Formulário de Personal Trainer -->
+        <div class="form-container" id="personal-form" style="display: none;">
+            <form id="formCadastroPersonal">
+                <fieldset class="form-section">
+                    <h2><i class="fas fa-dumbbell"></i> Dados Profissionais</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome_personal">Nome Completo:</label>
+                            <input type="text" id="nome_personal" name="nome_personal" required placeholder="Digite seu nome completo" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cref">CREF:</label>
+                            <input type="text" id="cref" name="cref" required placeholder="Número de registro" />
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="especialidade_personal">Especialidade:</label>
+                            <select id="especialidade_personal" name="especialidade_personal" required>
+                                <option value="">Selecione</option>
+                                <option value="musculacao">Musculação</option>
+                                <option value="crossfit">CrossFit</option>
+                                <option value="funcional">Treino Funcional</option>
+                                <option value="emagrecimento">Emagrecimento</option>
+                                <option value="reabilitacao">Reabilitação Física</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="valor_hora">Valor por Hora (R$):</label>
+                            <input type="number" id="valor_hora" name="valor_hora" min="50" step="10" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="metodologia">Metodologia de Trabalho:</label>
+                        <textarea id="metodologia" name="metodologia" rows="3" placeholder="Descreva sua abordagem de treino"></textarea>
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-section">
+                    <h2><i class="fas fa-address-book"></i> Contato</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email_personal">Email:</label>
+                            <input type="email" id="email_personal" name="email_personal" required placeholder="seu@email.com" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefone_personal">Telefone:</label>
+                            <input type="tel" id="telefone_personal" name="telefone_personal" required placeholder="(00) 00000-0000" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endereco_personal">Endereço:</label>
+                        <input type="text" id="endereco_personal" name="endereco_personal" required placeholder="Rua, número, complemento" />
+                    </div>
+                </fieldset>
+
+                <fieldset class="form-section">
+                    <h2><i class="fas fa-lock"></i> Segurança</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="senha_personal">Senha:</label>
+                            <input type="password" id="senha_personal" name="senha_personal" required placeholder="Mínimo 8 caracteres" minlength="8" />
+                            <div class="password-strength"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmar_senha_personal">Confirmar Senha:</label>
+                            <input type="password" id="confirmar_senha_personal" name="confirmar_senha_personal" required placeholder="Digite a senha novamente" />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="terms">
+                    <input type="checkbox" id="termos_personal" name="termos_personal" required />
+                    <label for="termos_personal">Li e aceito os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a> do FitLink</label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-user-plus"></i> Criar Conta
+                    </button>
+                    <p class="login-link">
+                        Já tem uma conta? <a href="/pages/login.html">Faça login</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Navegação entre formulários
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const formContainers = document.querySelectorAll('.form-container');
+
+        navButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const formId = this.getAttribute('data-form');
+
+                // Atualiza botões de navegação
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                // Mostra o formulário correspondente
+                formContainers.forEach(form => {
+                    if (form.id === `${formId}-form`) {
+                        form.style.display = 'block';
+                        form.classList.add('form-active');
+                    } else {
+                        form.style.display = 'none';
+                        form.classList.remove('form-active');
+                    }
+                });
+            });
+        });
+
+        // Validação de formulário
+        const forms = document.querySelectorAll('form');
+
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Validação básica
+                let isValid = true;
+                const requiredFields = this.querySelectorAll('[required]');
+
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.style.borderColor = '#E53E3E';
+                    } else {
+                        field.style.borderColor = '#E2E8F0';
+                    }
+                });
+
+                // Verificar se as senhas coincidem
+                const senha = this.querySelector('[name="senha"]') || this.querySelector('[name="senha_nutri"]') || this.querySelector('[name="senha_personal"]');
+                const confirmarSenha = this.querySelector('[name="confirmar_senha"]') || this.querySelector('[name="confirmar_senha_nutri"]') || this.querySelector('[name="confirmar_senha_personal"]');
+
+                if (senha && confirmarSenha && senha.value !== confirmarSenha.value) {
+                    isValid = false;
+                    alert('As senhas não coincidem!');
+                    senha.style.borderColor = '#E53E3E';
+                    confirmarSenha.style.borderColor = '#E53E3E';
+                }
+
+                if (isValid) {
+                    // Simular envio do formulário
+                    alert('Cadastro realizado com sucesso! Redirecionando...');
+                    // Aqui você adicionaria o código para enviar os dados ao servidor
+                    // window.location.href = 'login.html';
+                } else {
+                    alert('Por favor, preencha todos os campos obrigatórios corretamente.');
+                }
+            });
+        });
+
+        // Visualização de foto de perfil
+        const fileInputs = document.querySelectorAll('input[type="file"]');
+
+        fileInputs.forEach(input => {
+            input.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    // Verificar tamanho do arquivo (max 2MB)
+                    if (file.size > 2 * 1024 * 1024) {
+                        alert('O arquivo é muito grande. Por favor, selecione uma imagem de até 2MB.');
+                        this.value = '';
+                        return;
+                    }
+
+                    const reader = new FileReader();
+                    const preview = this.closest('.photo-upload').querySelector('.photo-preview');
+
+                    reader.onload = function(e) {
+                        preview.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
+                    }
+
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        // Abrir formulário baseado na URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const tipo = urlParams.get('tipo');
+
+        if (tipo) {
+            const btn = document.querySelector(`.nav-btn[data-form="${tipo}"]`);
+            if (btn) btn.click();
+        }
+    });
+</script>
+</body>
+</html>
