@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>FitLink | Home</title>
-    <link rel="stylesheet" href="/styles/home.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - FitLink</title>
+    <link rel="stylesheet" href="/styles/home.css">
+    <!-- Adicionando Lucide via CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+
 <div class="app-container">
-    <div class="sidebar" id="sidebar">
+    <nav class="sidebar" role="navigation" aria-label="Menu principal">
         <div class="logo">
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <button class="menu-toggle" id="menuToggle" aria-label="Alternar menu">
                 <i data-lucide="menu"></i>
             </button>
-            <span class="logo-text" id="logoText">FitLink</span>
+            <span class="logo-text">FitLink</span>
         </div>
-        <nav class="nav">
-            <a href="home.html" class="nav-link active">
-                <i data-lucide="home" class="nav-icon"></i>
-                <span class="nav-text">Início</span>
+        <div class="nav">
+            <a href="home.html" class="nav-link active" aria-current="page">
+                <i data-lucide="home"></i>
+                <span>Início</span>
             </a>
             <a href="dash.html" class="nav-link">
-                <i data-lucide="bar-chart-3" class="nav-icon"></i>
-                <span class="nav-text">Desempenho</span>
+                <i data-lucide="bar-chart-2"></i>
+                <span>Desempenho</span>
             </a>
             <a href="dieta.html" class="nav-link">
-                <i data-lucide="apple" class="nav-icon"></i>
-                <span class="nav-text">Dieta</span>
+                <i data-lucide="apple"></i>
+                <span>Dieta</span>
             </a>
             <a href="treino.html" class="nav-link">
-                <i data-lucide="dumbbell" class="nav-icon"></i>
-                <span class="nav-text">Treinos</span>
+                <i data-lucide="dumbbell"></i>
+                <span>Treinos</span>
             </a>
             <a href="perfil.html" class="nav-link">
-                <i data-lucide="user" class="nav-icon"></i>
-                <span class="nav-text">Perfil</span>
+                <i data-lucide="user"></i>
+                <span>Perfil</span>
             </a>
-        </nav>
-    </div>
+        </div>
+    </nav>
 
-    <div class="main-content" id="mainContent">
+    <main class="main-content" id="main-content">
         <header class="welcome-header">
             <div class="welcome-message">
                 <h1>Bem-vindo de volta, João!</h1>
@@ -124,9 +126,7 @@
                         <h3>Café da Manhã</h3>
                         <p>Ovos mexidos, pão integral e suco de laranja</p>
                     </div>
-                    <div class="meal-calories">
-                        <span>450 kcal</span>
-                    </div>
+                    <div class="meal-calories">450 kcal</div>
                 </div>
                 <div class="meal-card">
                     <div class="meal-time">12:30</div>
@@ -134,9 +134,7 @@
                         <h3>Almoço</h3>
                         <p>Frango grelhado, arroz integral e salada</p>
                     </div>
-                    <div class="meal-calories">
-                        <span>620 kcal</span>
-                    </div>
+                    <div class="meal-calories">620 kcal</div>
                 </div>
             </div>
 
@@ -151,7 +149,7 @@
                             <span class="progress-value">-3.2kg</span>
                             <span class="progress-label">Peso (últimos 30 dias)</span>
                         </div>
-                        <i data-lucide="weight" class="progress-icon"></i>
+                        <i data-lucide="weight"></i>
                     </div>
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: 64%"></div>
@@ -163,7 +161,7 @@
                             <span class="progress-value">+15%</span>
                             <span class="progress-label">Força (últimos 30 dias)</span>
                         </div>
-                        <i data-lucide="armchair" class="progress-icon"></i>
+                        <i data-lucide="armchair"></i>
                     </div>
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: 15%"></div>
@@ -176,37 +174,40 @@
                     <h2><i data-lucide="zap"></i> Ações Rápidas</h2>
                 </div>
                 <div class="actions-grid">
-                    <a href="treino.html" class="action-card">
+                    <a href="treino.html" class="action-card" aria-label="Adicionar treino">
                         <i data-lucide="dumbbell"></i>
                         <span>Adicionar Treino</span>
                     </a>
-                    <a href="dieta.html" class="action-card">
+                    <a href="dieta.html" class="action-card" aria-label="Registrar refeição">
                         <i data-lucide="utensils"></i>
                         <span>Registrar Refeição</span>
                     </a>
-                    <a href="dash.html" class="action-card">
+                    <a href="dash.html" class="action-card" aria-label="Registrar peso">
                         <i data-lucide="weight"></i>
                         <span>Registrar Peso</span>
                     </a>
-                    <a href="perfil.html" class="action-card">
+                    <a href="perfil.html" class="action-card" aria-label="Ver metas">
                         <i data-lucide="target"></i>
                         <span>Ver Metas</span>
                     </a>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 </div>
 
 <script>
+    // Inicializa os ícones do Lucide
+    lucide.createIcons();
+
     document.addEventListener('DOMContentLoaded', function() {
         // Menu toggle
         const menuToggle = document.getElementById('menuToggle');
-        const sidebar = document.getElementById('sidebar');
+        const sidebar = document.querySelector('.sidebar');
 
         menuToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('expanded');
-            document.body.classList.toggle('sidebar-expanded');
+            sidebar.classList.toggle('collapsed');
+            document.body.classList.toggle('sidebar-collapsed');
         });
 
         // Set current date
@@ -216,9 +217,6 @@
 
         document.getElementById('currentDay').textContent = days[currentDate.getDay()];
         document.getElementById('currentDate').textContent = `${currentDate.getDate()} de ${months[currentDate.getMonth()]} de ${currentDate.getFullYear()}`;
-
-        // Initialize Lucide icons
-        lucide.createIcons();
     });
 </script>
 </body>

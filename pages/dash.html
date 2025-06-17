@@ -1,449 +1,104 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>FitLink | Desempenho</title>
-    <link rel="stylesheet" href="/styles/dash.css" />
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - FitLink</title>
+    <link rel="stylesheet" href="/styles/dash.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-<div class="app-container">
-    <div class="sidebar" id="sidebar">
-        <div class="logo">
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-                <i data-lucide="menu"></i>
-            </button>
-            <span class="logo-text" id="logoText">FitLink</span>
-        </div>
-        <nav class="nav">
-            <a href="home.html" class="nav-link">
-                <i data-lucide="home" class="nav-icon"></i>
-                <span class="nav-text">Início</span>
-            </a>
-            <a href="treino.html" class="nav-link">
-                <i data-lucide="dumbbell" class="nav-icon"></i>
-                <span class="nav-text">Treinos</span>
-            </a>
-            <a href="dieta.html" class="nav-link">
-                <i data-lucide="apple" class="nav-icon"></i>
-                <span class="nav-text">Dieta</span>
-            </a>
-            <a href="dash.html" class="nav-link active">
-                <i data-lucide="bar-chart-3" class="nav-icon"></i>
-                <span class="nav-text">Desempenho</span>
-            </a>
-            <a href="perfil.html" class="nav-link">
-                <i data-lucide="user" class="nav-icon"></i>
-                <span class="nav-text">Perfil</span>
-            </a>
-        </nav>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <div class="logo">
+        <img src="/images/FitLink%20logo%20sn.png" alt="Logo FitLink">
+        <span>FitLink</span>
     </div>
+    <nav>
+        <a href="/pages/home.html" class="active"><i data-lucide="home"></i>Home</a>
+        <a href="/pages/treino.html"><i data-lucide="dumbbell"></i> Treino</a>
+        <a href="/pages/dieta.html"><i data-lucide="apple"></i> Dieta</a>
+        <a href="/pages/dash.html"><i data-lucide="bar-chart-2"></i> Progresso</a>
+        <a href="/pages/perfil.html"><i data-lucide="user"></i> Perfil</a>
+        <a href="/pages/login.html"><i data-lucide="log-out"></i> Sair</a>
+    </nav>
+</aside>
 
-    <div class="main-content" id="mainContent">
-        <header class="dashboard-header">
-            <div class="header-content">
-                <h1><i data-lucide="bar-chart-3"></i> Meu Desempenho</h1>
-                <p id="welcomeMessage">Olá! Aqui está seu progresso e estatísticas.</p>
-            </div>
-            <div class="header-actions">
-                <button class="action-btn notification-btn">
-                    <i data-lucide="bell"></i>
-                    <span class="notification-badge">3</span>
-                </button>
-                <button class="action-btn" id="logoutBtn">
-                    <i data-lucide="log-out"></i>
-                </button>
-            </div>
-        </header>
+<!-- Main -->
+<div class="main-content">
+    <header class="header">
+        <button class="menu-toggle"><i data-lucide="menu"></i></button>
+        <div class="header-info">
+            <span>Bem-vindo, <strong>Mr. X</strong></span>
+            <img src="images/profile.png" alt="Foto de Perfil" class="profile-img">
+        </div>
+    </header>
 
-        <div class="dashboard-content">
-            <div class="top-cards">
-                <div class="stats-card performance">
-                    <div class="card-header">
-                        <h2><i data-lucide="trending-up"></i> Progresso</h2>
-                        <select id="time-period" class="period-select">
-                            <option value="week">Semanal</option>
-                            <option value="month" selected>Mensal</option>
-                            <option value="year">Anual</option>
-                        </select>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="performance-chart"></canvas>
-                    </div>
-                    <div class="card-footer">
-                        <div class="stat-item">
-                            <span class="stat-value" id="progress-percent">0%</span>
-                            <span class="stat-label">Meta diária</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-value" id="workout-count">0</span>
-                            <span class="stat-label">Treinos</span>
-                        </div>
-                    </div>
-                </div>
+    <main class="dashboard">
+        <h1>Dashboard</h1>
 
-                <div class="stats-card profile">
-                    <div class="card-header">
-                        <h2><i data-lucide="user"></i> Meu Perfil</h2>
-                        <a href="perfil.html" class="edit-link">
-                            <i data-lucide="edit"></i>
-                        </a>
-                    </div>
-                    <div class="profile-info" id="profile-info">
-                        <div class="loading"></div>
-                    </div>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="goal-progress" style="width: 0%"></div>
-                        </div>
-                        <span id="goal-percent">0% da meta</span>
-                    </div>
-                </div>
+        <div class="cards">
+            <div class="card">
+                <h2>Treino</h2>
+                <p>O seu treino de hoje: <strong>Peito e Tríceps</strong></p>
+                <a href="/pages/treino.html">Ver treino</a>
             </div>
 
-            <div class="bottom-cards">
-                <div class="activity-card workout">
-                    <div class="card-header">
-                        <h2><i data-lucide="dumbbell"></i> Treino de Hoje</h2>
-                        <a href="treino.html" class="view-all">
-                            Ver completo <i data-lucide="chevron-right"></i>
-                        </a>
-                    </div>
-                    <ul class="activity-list" id="workout-list">
-                        <div class="loading"></div>
-                    </ul>
-                    <div class="activity-summary">
-                        <span><i data-lucide="clock"></i> Total: <span id="workout-total-time">--</span></span>
-                        <span><i data-lucide="zap"></i> Calorias: <span id="workout-calories">--</span></span>
-                    </div>
-                </div>
+            <div class="card">
+                <h2>Dieta</h2>
+                <p>Calorias restantes: <strong>1.200 kcal</strong></p>
+                <a href="/pages/dieta.html">Ver dieta</a>
+            </div>
 
-                <div class="activity-card diet">
-                    <div class="card-header">
-                        <h2><i data-lucide="utensils"></i> Dieta de Hoje</h2>
-                        <a href="dieta.html" class="view-all">
-                            Ver cardápio <i data-lucide="chevron-right"></i>
-                        </a>
-                    </div>
-                    <ul class="activity-list" id="diet-list">
-                        <div class="loading"></div>
-                    </ul>
-                    <div class="activity-summary">
-                        <span><i data-lucide="zap"></i> Total: <span id="diet-total-calories">--</span></span>
-                        <span><i data-lucide="egg"></i> Proteína: <span id="diet-protein">--</span></span>
-                    </div>
-                </div>
+            <div class="card">
+                <h2>Progresso</h2>
+                <canvas id="progressoChart"></canvas>
+            </div>
+
+            <div class="card">
+                <h2>Perfil</h2>
+                <p>Seu plano: <strong>Premium</strong></p>
+                <a href="#">Gerenciar conta</a>
             </div>
         </div>
-    </div>
+    </main>
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Elementos DOM
-        const menuToggle = document.getElementById('menuToggle');
-        const sidebar = document.getElementById('sidebar');
-        const welcomeMessage = document.getElementById('welcomeMessage');
-        const profileInfo = document.getElementById('profile-info');
-        const workoutList = document.getElementById('workout-list');
-        const dietList = document.getElementById('diet-list');
-        const progressPercent = document.getElementById('progress-percent');
-        const workoutCount = document.getElementById('workout-count');
-        const goalProgress = document.getElementById('goal-progress');
-        const goalPercent = document.getElementById('goal-percent');
-        const logoutBtn = document.getElementById('logoutBtn');
+    lucide.createIcons();
 
-        // Variáveis globais
-        let userId = null;
-        let userName = null;
-        let performanceChart = null;
+    const menuToggle = document.querySelector('.menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
 
-        // Verificar autenticação
-        function checkAuth() {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                window.location.href = 'login.html';
-            } else {
-                const userData = JSON.parse(localStorage.getItem('userData'));
-                userId = userData.id;
-                userName = userData.nome;
-                welcomeMessage.textContent = `Olá, ${userName}! Aqui está seu progresso e estatísticas.`;
+    menuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('sidebar-open');
+    });
+
+    // Gráfico
+    const ctx = document.getElementById('progressoChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Perdido', 'Restante'],
+            datasets: [{
+                label: 'Peso',
+                data: [7, 3],
+                backgroundColor: ['#3AB96F', '#e9ecef'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            cutout: '70%',
+            plugins: {
+                legend: { display: false }
             }
         }
-
-        // Logout
-        logoutBtn.addEventListener('click', function() {
-            localStorage.removeItem('token');
-            localStorage.removeItem('userData');
-            window.location.href = 'login.html';
-        });
-
-        // Menu toggle
-        menuToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('expanded');
-            document.body.classList.toggle('sidebar-expanded');
-        });
-
-        // Buscar dados do dashboard
-        async function fetchDashboardData() {
-            try {
-                const token = localStorage.getItem('token');
-
-                // Mostrar estados de carregamento
-                profileInfo.innerHTML = '<div class="loading"></div>';
-                workoutList.innerHTML = '<div class="loading"></div>';
-                dietList.innerHTML = '<div class="loading"></div>';
-
-                // Buscar dados do dashboard
-                const dashboardResponse = await axios.get('/api/dashboard', {
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-
-                const dashboardData = dashboardResponse.data;
-
-                // Atualizar informações do perfil
-                if (dashboardData.perfil) {
-                    const idade = calculateAge(dashboardData.perfil.Data_Nascimento);
-                    profileInfo.innerHTML = `
-                    <div class="info-item">
-                        <span class="info-label">Idade</span>
-                        <span class="info-value">${idade} anos</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Altura</span>
-                        <span class="info-value">${dashboardData.perfil.Altura || '--'} m</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Peso</span>
-                        <span class="info-value">${dashboardData.perfil.Peso || '--'} kg</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Meta</span>
-                        <span class="info-value">${dashboardData.perfil.Meta || '--'}</span>
-                    </div>
-                `;
-                }
-
-                // Atualizar gráfico de desempenho
-                if (dashboardData.desempenho && dashboardData.desempenho.length > 0) {
-                    updatePerformanceChart(dashboardData.desempenho);
-                }
-
-                // Atualizar lista de treinos
-                if (dashboardData.treinos && dashboardData.treinos.length > 0) {
-                    renderWorkouts(dashboardData.treinos);
-                } else {
-                    workoutList.innerHTML = '<li class="empty">Nenhum treino para hoje</li>';
-                }
-
-                // Atualizar progresso
-                progressPercent.textContent = `${dashboardData.progresso}%`;
-                workoutCount.textContent = dashboardData.treinos ? dashboardData.treinos.length : '0';
-                goalProgress.style.width = `${dashboardData.progresso}%`;
-                goalPercent.textContent = `${dashboardData.progresso}% da meta`;
-
-                // Buscar dados de nutrição
-                const nutritionResponse = await axios.get('/api/nutricao', {
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-
-                // Atualizar lista de dieta
-                if (nutritionResponse.data && nutritionResponse.data.length > 0) {
-                    renderDiet(nutritionResponse.data);
-                } else {
-                    dietList.innerHTML = '<li class="empty">Nenhum registro de dieta para hoje</li>';
-                }
-
-            } catch (error) {
-                console.error('Erro ao buscar dados do dashboard:', error);
-
-                if (error.response && error.response.status === 401) {
-                    localStorage.removeItem('token');
-                    localStorage.removeItem('userData');
-                    window.location.href = 'login.html';
-                } else {
-                    profileInfo.innerHTML = '<p class="error">Erro ao carregar perfil</p>';
-                    workoutList.innerHTML = '<li class="error">Erro ao carregar treinos</li>';
-                    dietList.innerHTML = '<li class="error">Erro ao carregar dieta</li>';
-                }
-            }
-        }
-
-        // Função para calcular idade
-        function calculateAge(birthDate) {
-            if (!birthDate) return '--';
-            const birth = new Date(birthDate);
-            const today = new Date();
-            let age = today.getFullYear() - birth.getFullYear();
-            const monthDiff = today.getMonth() - birth.getMonth();
-
-            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
-                age--;
-            }
-
-            return age;
-        }
-
-        // Atualizar gráfico de desempenho
-        function updatePerformanceChart(desempenhoData) {
-            const ctx = document.getElementById('performance-chart').getContext('2d');
-
-            // Destruir gráfico existente se houver
-            if (performanceChart) {
-                performanceChart.destroy();
-            }
-
-            const labels = desempenhoData.map(item =>
-                new Date(item.Data_consulta).toLocaleDateString('pt-BR', {
-                    day: '2-digit',
-                    month: 'short'
-                })
-            );
-
-            performanceChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'IMC',
-                        data: desempenhoData.map(item => item.IMC),
-                        fill: true,
-                        backgroundColor: 'rgba(58, 185, 111, 0.1)',
-                        borderColor: '#3AB96F',
-                        borderWidth: 2,
-                        tension: 0.4,
-                        pointBackgroundColor: '#3AB96F',
-                        pointRadius: 5,
-                        pointHoverRadius: 7
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: false,
-                            ticks: {
-                                callback: function(value) {
-                                    return value.toFixed(1);
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Renderizar treinos
-        function renderWorkouts(treinos) {
-            workoutList.innerHTML = '';
-
-            treinos.forEach(treino => {
-                const item = document.createElement('li');
-                item.className = `activity-item ${treino.Completo ? 'completed' : ''}`;
-                item.dataset.treinoId = treino.ID;
-
-                // Formatar hora
-                const dataTreino = new Date(treino.Data_Treino);
-                const hora = dataTreino.toLocaleTimeString('pt-BR', {
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
-
-                item.innerHTML = `
-                <i data-lucide="${treino.Completo ? 'check-circle' : 'circle'}" class="status-icon"></i>
-                <div class="activity-details">
-                    <span class="activity-name">${treino.Exercicios}</span>
-                    <span class="activity-time">${hora}</span>
-                </div>
-                <span class="activity-meta">60 min</span>
-            `;
-
-                item.addEventListener('click', function() {
-                    toggleTreinoStatus(this);
-                });
-
-                workoutList.appendChild(item);
-            });
-
-            // Atualizar ícones
-            lucide.createIcons();
-        }
-
-        // Renderizar dieta
-        function renderDiet(dietData) {
-            dietList.innerHTML = '';
-
-            dietData.forEach(refeicao => {
-                const item = document.createElement('li');
-                item.className = 'meal-item';
-
-                item.innerHTML = `
-                <div class="meal-time">${refeicao.Refeicao}</div>
-                <div class="meal-details">
-                    <span class="meal-name">${refeicao.Alimentos}</span>
-                    <span class="meal-meta">${refeicao.Calorias} kcal</span>
-                </div>
-            `;
-
-                dietList.appendChild(item);
-            });
-        }
-
-        // Alternar status do treino
-        async function toggleTreinoStatus(item) {
-            const treinoId = item.dataset.treinoId;
-            const icon = item.querySelector('.status-icon');
-            const isCompleted = item.classList.contains('completed');
-            const newStatus = !isCompleted;
-
-            try {
-                const token = localStorage.getItem('token');
-
-                await axios.post('/api/treino/status', {
-                    treinoId: treinoId,
-                    status: newStatus
-                }, {
-                    headers: { 'Authorization': `Bearer ${token}` }
-                });
-
-                // Atualizar UI
-                item.classList.toggle('completed');
-                icon.setAttribute('data-lucide', newStatus ? 'check-circle' : 'circle');
-                lucide.createIcons();
-
-                // Recalcular progresso
-                const completedItems = document.querySelectorAll('.activity-item.completed').length;
-                const totalItems = document.querySelectorAll('.activity-item').length;
-                const progress = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
-
-                progressPercent.textContent = `${progress}%`;
-                goalProgress.style.width = `${progress}%`;
-                goalPercent.textContent = `${progress}% da meta`;
-
-            } catch (error) {
-                console.error('Erro ao atualizar status do treino:', error);
-                alert('Erro ao atualizar status do treino');
-            }
-        }
-
-        // Inicializar aplicação
-        function init() {
-            checkAuth();
-            fetchDashboardData();
-            lucide.createIcons();
-        }
-
-        init();
     });
 </script>
+
 </body>
 </html>

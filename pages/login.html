@@ -1,81 +1,87 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - FitLink</title>
-  <link rel="stylesheet" href="/styles/login.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/styles/login.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+
 <div class="login-wrapper">
-  <!-- Seção da Imagem (visível apenas em desktop) -->
-  <div class="login-hero">
+  <!-- Área Visual -->
+  <div class="login-hero" role="region" aria-label="Apresentação FitLink">
     <div class="hero-content">
-      <img src="/images/FitLink%20logo%20sn.png" alt="FitLink Logo" class="hero-logo">
+      <img src="/images/FitLink%20logo%20sn.png" alt="Logo FitLink" class="hero-logo">
       <h2>Transforme sua jornada fitness</h2>
-      <p>Conecte-se com profissionais e alcance seus objetivos</p>
+      <p>Conecte-se com profissionais e alcance os seus objetivos</p>
     </div>
   </div>
 
-  <!-- Seção do Formulário -->
-  <div class="login-container">
-    <div class="login-header">
-      <img src="/images/FitLink%20logo%20sn.png" alt="FitLink Logo" class="logo-mobile">
-      <h1>Bem-vindo de volta</h1>
-      <p>Entre na sua conta para continuar</p>
-    </div>
+  <!-- Formulário -->
+  <div class="login-container" role="main" id="main-content">
+    <div class="login-box">
+      <div class="login-header">
+        <img src="images/FitLink logo sn.png" alt="Logo FitLink" class="logo-mobile">
+        <h1>Bem-vindo de volta</h1>
+        <p>Entre na sua conta para continuar</p>
+      </div>
 
-    <form action="home.html" method="GET" class="login-form">
-      <div class="form-group">
-        <label for="email">E-mail</label>
-        <div class="input-with-icon">
-          <i class="fas fa-envelope"></i>
-          <input type="email" id="email" placeholder="seu@email.com" required>
+      <form action="home.html" method="POST" class="login-form">
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <div class="input-with-icon">
+            <i data-lucide="mail"></i>
+            <input type="email" id="email" placeholder="seu@email.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <div class="input-with-icon">
+            <i data-lucide="lock"></i>
+            <input type="password" id="password" placeholder="Sua senha" required>
+            <button type="button" class="toggle-password" aria-label="Mostrar senha">
+              <i data-lucide="eye"></i>
+            </button>
+          </div>
+          <a href="#" class="forgot-password">Esqueceu sua senha?</a>
+        </div>
+
+        <button type="submit" class="login-btn">
+          <i data-lucide="log-in"></i> Entrar
+        </button>
+      </form>
+
+      <div class="social-login">
+        <div class="divider">
+          <span>ou entre com</span>
+        </div>
+
+        <div class="social-buttons">
+          <a href="#" class="social-btn google" aria-label="Entrar com Google">
+            <img src="/icons/google_blacklogo.png" alt="Logo Google"> Google
+          </a>
+          <a href="#" class="social-btn outlook" aria-label="Entrar com Outlook">
+            <img src="/icons/ootlook_blakicon.png" alt="Logo Outlook"> Outlook
+          </a>
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="password">Senha</label>
-        <div class="input-with-icon">
-          <i class="fas fa-lock"></i>
-          <input type="password" id="password" placeholder="Sua senha" required>
-          <button type="button" class="toggle-password">
-            <i class="far fa-eye"></i>
-          </button>
-        </div>
-        <a href="#" class="forgot-password">Esqueceu sua senha?</a>
+      <div class="register-link">
+        Não tem uma conta? <a href="cadastro.html">Cadastre-se</a>
       </div>
-
-      <button type="submit" class="login-btn">
-        <i class="fas fa-sign-in-alt"></i> Entrar
-      </button>
-    </form>
-
-    <div class="social-login">
-      <div class="divider">
-        <span>ou entre com</span>
-      </div>
-
-      <div class="social-buttons">
-        <a href="#" class="social-btn google">
-          <img src="/icons/google_blacklogo.png" alt="Google">
-          Google
-        </a>
-        <a href="#" class="social-btn outlook">
-          <img src="/icons/ootlook_blakicon.png" alt="Outlook">
-          Outlook
-        </a>
-      </div>
-    </div>
-
-    <div class="register-link">
-      Não tem uma conta? <a href="cadastro.html">Cadastre-se</a>
     </div>
   </div>
 </div>
 
 <script>
+  lucide.createIcons();
+
   // Mostrar/esconder senha
   document.querySelector('.toggle-password').addEventListener('click', function() {
     const passwordInput = document.getElementById('password');
@@ -83,11 +89,12 @@
 
     if (passwordInput.type === 'password') {
       passwordInput.type = 'text';
-      icon.classList.replace('fa-eye', 'fa-eye-slash');
+      icon.setAttribute('data-lucide', 'eye-off');
     } else {
       passwordInput.type = 'password';
-      icon.classList.replace('fa-eye-slash', 'fa-eye');
+      icon.setAttribute('data-lucide', 'eye');
     }
+    lucide.createIcons();
   });
 </script>
 </body>
