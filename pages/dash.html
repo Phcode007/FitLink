@@ -18,19 +18,19 @@
         <span>FitLink</span>
     </div>
     <nav>
-        <a href="/pages/home.html" class="active"><i data-lucide="home"></i>Home</a>
-        <a href="/pages/treino.html"><i data-lucide="dumbbell"></i> Treino</a>
-        <a href="/pages/dieta.html"><i data-lucide="apple"></i> Dieta</a>
-        <a href="/pages/dash.html"><i data-lucide="bar-chart-2"></i> Progresso</a>
-        <a href="/pages/perfil.html"><i data-lucide="user"></i> Perfil</a>
-        <a href="/pages/login.html"><i data-lucide="log-out"></i> Sair</a>
+        <a href="/pages/home.html" class="active"><i data-lucide="home" aria-hidden="true"></i>Home</a>
+        <a href="/pages/treino.html"><i data-lucide="dumbbell" aria-hidden="true"></i> Treino</a>
+        <a href="/pages/dieta.html"><i data-lucide="apple" aria-hidden="true"></i> Dieta</a>
+        <a href="/pages/dash.html"><i data-lucide="bar-chart-2" aria-hidden="true"></i> Progresso</a>
+        <a href="/pages/perfil.html"><i data-lucide="user" aria-hidden="true"></i> Perfil</a>
+        <a href="/pages/login.html"><i data-lucide="log-out" aria-hidden="true"></i> Sair</a>
     </nav>
 </aside>
 
 <!-- Main -->
 <div class="main-content">
     <header class="header">
-        <button class="menu-toggle"><i data-lucide="menu"></i></button>
+        <button class="menu-toggle" aria-label="Abrir menu"><i data-lucide="menu"></i></button>
         <div class="header-info">
             <span>Bem-vindo, <strong>Mr. X</strong></span>
             <img src="images/profile.png" alt="Foto de Perfil" class="profile-img">
@@ -39,29 +39,50 @@
 
     <main class="dashboard">
         <h1>Dashboard</h1>
+        <p class="current-date"><i data-lucide="calendar"></i> 18 de junho de 2025</p>
 
         <div class="cards">
             <div class="card">
-                <h2>Treino</h2>
+                <h2><i data-lucide="dumbbell"></i> Treino</h2>
                 <p>O seu treino de hoje: <strong>Peito e Tríceps</strong></p>
-                <a href="/pages/treino.html">Ver treino</a>
+                <a href="/pages/treino.html">Ver treino completo →</a>
             </div>
 
             <div class="card">
-                <h2>Dieta</h2>
+                <h2><i data-lucide="apple"></i> Dieta</h2>
                 <p>Calorias restantes: <strong>1.200 kcal</strong></p>
-                <a href="/pages/dieta.html">Ver dieta</a>
+                <div class="diet-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 70%;"></div>
+                    </div>
+                    <div class="progress-info">1200/1800 kcal</div>
+                </div>
+                <a href="/pages/dieta.html">Ver plano alimentar →</a>
             </div>
 
             <div class="card">
-                <h2>Progresso</h2>
-                <canvas id="progressoChart"></canvas>
+                <h2><i data-lucide="bar-chart-2"></i> Progresso</h2>
+                <div class="chart-container">
+                    <canvas id="progressoChart"></canvas>
+                    <div class="chart-loading">Carregando dados...</div>
+                </div>
+                <div class="progress-info">
+                    <div class="progress-label">
+                        <span class="progress-badge" style="background: #3AB96F"></span>
+                        <span>Perdido: 7kg</span>
+                    </div>
+                    <div class="progress-label">
+                        <span class="progress-badge" style="background: #e9ecef"></span>
+                        <span>Restante: 3kg</span>
+                    </div>
+                </div>
             </div>
 
             <div class="card">
-                <h2>Perfil</h2>
+                <h2><i data-lucide="user"></i> Perfil</h2>
                 <p>Seu plano: <strong>Premium</strong></p>
-                <a href="#">Gerenciar conta</a>
+                <p>Membro desde: Janeiro/2025</p>
+                <a href="/pages/perfil.html">Gerenciar conta →</a>
             </div>
         </div>
     </main>
@@ -77,27 +98,33 @@
         sidebar.classList.toggle('sidebar-open');
     });
 
-    // Gráfico
-    const ctx = document.getElementById('progressoChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Perdido', 'Restante'],
-            datasets: [{
-                label: 'Peso',
-                data: [7, 3],
-                backgroundColor: ['#3AB96F', '#e9ecef'],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            cutout: '70%',
-            plugins: {
-                legend: { display: false }
+    // Simular carregamento do gráfico
+    setTimeout(() => {
+        // Gráfico
+        const ctx = document.getElementById('progressoChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Perdido', 'Restante'],
+                datasets: [{
+                    label: 'Peso',
+                    data: [7, 3],
+                    backgroundColor: ['#3AB96F', '#e9ecef'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                cutout: '70%',
+                plugins: {
+                    legend: { display: false }
+                }
             }
-        }
-    });
+        });
+
+        // Esconder loading
+        document.querySelector('.chart-loading').style.display = 'none';
+    }, 1500);
 </script>
 
 </body>
