@@ -3,63 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Plano Alimentar</title>
+    <title>Criar Plano Alimentar | FitLink</title>
     <link rel="stylesheet" href="/styles/diet-form.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-<div class="form-container">
-    <h1>Criar Plano Alimentar</h1>
-    <form id="diet-form">
-        <div class="form-group">
-            <label for="diet-client">Cliente:</label>
-            <select id="diet-client" required>
-                <option value="">Selecione um cliente</option>
-                <!-- Opções serão preenchidas via JavaScript -->
-            </select>
-        </div>
+<div class="app-container">
+    <div class="form-container">
+        <h1>Criar Plano Alimentar</h1>
+        <form id="diet-form">
+            <div class="form-group">
+                <label for="diet-client">Cliente:</label>
+                <select id="diet-client" required>
+                    <option value="">Selecione um cliente</option>
+                    <option value="1">João Silva</option>
+                    <option value="2">Maria Oliveira</option>
+                    <option value="3">Carlos Souza</option>
+                    <option value="4">Ana Costa</option>
+                </select>
+            </div>
 
-        <div class="form-group">
-            <label for="diet-name">Nome do Plano:</label>
-            <input type="text" id="diet-name" required>
-        </div>
+            <div class="form-group">
+                <label for="diet-name">Nome do Plano:</label>
+                <input type="text" id="diet-name" required placeholder="Ex: Plano para ganho de massa">
+            </div>
 
-        <div class="form-group">
-            <label for="diet-duration">Duração (semanas):</label>
-            <input type="number" id="diet-duration" min="1" value="4">
-        </div>
+            <div class="form-group">
+                <label for="diet-duration">Duração (semanas):</label>
+                <input type="number" id="diet-duration" min="1" value="4">
+            </div>
 
-        <div class="form-group">
-            <label for="diet-objective">Objetivo:</label>
-            <select id="diet-objective" required>
-                <option value="weight-loss">Perda de Peso</option>
-                <option value="muscle-gain">Ganho de Massa Muscular</option>
-                <option value="maintenance">Manutenção</option>
-                <option value="health">Saúde</option>
-                <option value="other">Outro</option>
-            </select>
-        </div>
+            <div class="form-group">
+                <label for="diet-objective">Objetivo:</label>
+                <select id="diet-objective" required>
+                    <option value="weight-loss">Perda de Peso</option>
+                    <option value="muscle-gain">Ganho de Massa Muscular</option>
+                    <option value="maintenance">Manutenção</option>
+                    <option value="health">Saúde</option>
+                    <option value="other">Outro</option>
+                </select>
+            </div>
 
-        <div class="form-group">
-            <label for="caloric-goal">Meta Calórica Diária (kcal):</label>
-            <input type="number" id="caloric-goal" min="0" step="50">
-        </div>
+            <div class="form-group">
+                <label for="caloric-goal">Meta Calórica Diária (kcal):</label>
+                <input type="number" id="caloric-goal" min="0" step="50" placeholder="Ex: 2000">
+            </div>
 
-        <h3>Refeições</h3>
-        <div id="meals-container">
-            <!-- Refeições serão adicionadas dinamicamente -->
-        </div>
+            <h3>Refeições</h3>
+            <div id="meals-container">
+                <!-- Refeições serão adicionadas dinamicamente -->
+            </div>
 
-        <button type="button" class="add-meal" id="add-meal-btn">+ Adicionar Refeição</button>
+            <button type="button" class="add-meal" id="add-meal-btn">
+                <i data-lucide="plus-circle"></i> Adicionar Refeição
+            </button>
 
-        <div class="form-group">
-            <label for="diet-notes">Observações Gerais:</label>
-            <textarea id="diet-notes"></textarea>
-        </div>
+            <div class="form-group">
+                <label for="diet-notes">Observações Gerais:</label>
+                <textarea id="diet-notes" placeholder="Instruções especiais, substituições, etc."></textarea>
+            </div>
 
-        <button type="submit" class="submit-btn">Salvar Plano Alimentar</button>
-    </form>
+            <button type="submit" class="submit-btn">
+                <i data-lucide="save"></i> Salvar Plano Alimentar
+            </button>
+        </form>
+    </div>
 </div>
 
-<script src="diet-form.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicializa os ícones
+        lucide.createIcons();
+
+        const mealsContainer = document.getElementById('meals-container');
+        const addMealBtn = document.getElementById('add-meal-btn');
+        let mealCount = 0;
+        let foodItemCount = 0;
+
+        // Adicionar uma nova refeição
+        function addNewMeal() {
+            mealCount++;
+            const mealId = `meal-${mealCount}`;
+
+            const mealDiv = document.createElement('div');
+            mealDiv.className = 'meal';
+            mealDiv.id = mealId;
+
+            mealDiv.innerHTML = `
+                <div class="form-group">
+                    <label for="${mealId}-name">Nome da Refeição:</label>
+                    <input type="text" id="${mealId}-name" required placeholder="Ex: Café da Manhã">
+                </div>
+
+                <div class="form-group">
+                    <label for="${mealId}-time">Horário:</label>
+                    <input type="text" id="${mealId}-time" placeholder="Ex: 08:00 - 09:00">
+                </div>
+
+                <div class="foods-container">
+                    <div class="food-item">
+                        <div class="food-input-group">
+                            <div>
+                                <label>Alimento</label>
+                                <input type="text" placeholder="Nome do alimento" required>
+                            </div>
+                            <div>
+                                <label>Quantidade</label>
+                                <input type="text" placeholder="Ex: 100g, 1 un">
+                            </div>
+                            <div>
+                                <label>Calorias (opcional)</label>
+                                <input type="number" placeholder="kcal">
+                            </div>
+                        </div>
+                        <button type="button" class="remove-btn">
+                            <i data-lucide="trash-2"></i> Remover
+                        </button>
+                    </div>
+                </div>
+
+                <button type="button" class="add-food">
+                    <i data-lucide="plus"></i> Adicionar Alimento
+                </button>
+
+                <button type="button" class="remove-meal">
+                    <i data-lucide="trash-2"></i> Remover Refeição
+                </button>
+            `;
+
+            mealsContainer.appendChild(mealDiv);
+
+            // Adicionar evento para o botão de adicionar alimento nesta refeição
+            const addFoodBtn = mealDiv.querySelector('.add-food');
+            const foodsContainer = mealDiv.querySelector('.foods-container');
+
+            addFoodBtn.addEventListener('click', function() {
+                foodItemCount++;
+                const foodItem = document.createElement('div');
+                foodItem.className = 'food-item';
+                foodItem.innerHTML = `
+                    <div class="food-input-group">
+                        <div>
+                            <label>Alimento</label>
+                            <input type="text" placeholder="Nome do alimento" required>
+                        </div>
+                        <div>
+                            <label>Quantidade</label>
+                            <input type="text" placeholder="Ex: 100g, 1 un">
+                        </div>
+                        <div>
+                            <label>Calorias (opcional)</label>
+                            <input type="number" placeholder="kcal">
+                        </div>
+                    </div>
+                    <button type="button" class="remove-btn">
+                        <i data-lucide="trash-2"></i> Remover
+                    </button>
+                `;
+
+                foodsContainer.appendChild(foodItem);
+
+                // Adicionar evento para remover o alimento
+                const removeBtn = foodItem.querySelector('.remove-btn');
+                removeBtn.addEventListener('click', function() {
+                    foodItem.remove();
+                });
+
+                // Atualizar ícones
+                lucide.createIcons();
+            });
+
+            // Adicionar evento para remover a refeição
+            const removeMealBtn = mealDiv.querySelector('.remove-meal');
+            removeMealBtn.addEventListener('click', function() {
+                mealDiv.remove();
+            });
+
+            // Atualizar ícones
+            lucide.createIcons();
+        }
+
+        // Adicionar primeira refeição por padrão
+        addNewMeal();
+
+        // Adicionar evento para o botão de adicionar refeição
+        addMealBtn.addEventListener('click', addNewMeal);
+
+        // Envio do formulário
+        const dietForm = document.getElementById('diet-form');
+        dietForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Validação básica
+            const client = document.getElementById('diet-client').value;
+            const planName = document.getElementById('diet-name').value;
+
+            if (!client || !planName) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            // Aqui você pode adicionar a lógica para enviar os dados
+            alert('Plano alimentar salvo com sucesso!');
+
+            // Redirecionar ou limpar o formulário
+            // dietForm.reset();
+        });
+    });
+</script>
 </body>
 </html>

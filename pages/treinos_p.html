@@ -22,11 +22,11 @@
                 <i data-lucide="home" class="nav-icon"></i>
                 <span class="nav-text">Início</span>
             </a>
-            <a href="treino.html" class="nav-link active">
+            <a href="treinos_p.html" class="nav-link active">
                 <i data-lucide="dumbbell" class="nav-icon"></i>
                 <span class="nav-text">Treinos</span>
             </a>
-            <a href="dieta.html" class="nav-link">
+            <a href="/pages/dieta.html" class="nav-link">
                 <i data-lucide="apple" class="nav-icon"></i>
                 <span class="nav-text">Dieta</span>
             </a>
@@ -48,11 +48,11 @@
                 <h1>Plano de Treino</h1>
             </div>
             <div class="date-selector">
-                <button class="date-btn" id="prevDay">
+                <button class="date-btn" id="prevDay" aria-label="Dia anterior">
                     <i data-lucide="chevron-left"></i>
                 </button>
                 <span id="currentDate">sábado, 7 de jun. de 2025</span>
-                <button class="date-btn" id="nextDay">
+                <button class="date-btn" id="nextDay" aria-label="Próximo dia">
                     <i data-lucide="chevron-right"></i>
                 </button>
             </div>
@@ -60,6 +60,12 @@
 
         <div class="greeting">
             <p>Olá, João! Aqui está seu treino recomendado:</p>
+        </div>
+
+        <!-- Estado de carregamento -->
+        <div class="loading-state" style="display: none;">
+            <i data-lucide="loader" class="animate-spin"></i>
+            <span>Processando...</span>
         </div>
 
         <div class="workout-container">
@@ -94,11 +100,11 @@
                 </div>
 
                 <div class="workout-actions">
-                    <button class="action-btn outline">
+                    <button class="action-btn outline" aria-label="Ver detalhes do exercício">
                         <i data-lucide="info"></i>
                         <span>Detalhes</span>
                     </button>
-                    <button class="action-btn primary">
+                    <button class="action-btn primary" aria-label="Marcar exercício como completo">
                         <i data-lucide="check"></i>
                         <span>Marcar como completo</span>
                     </button>
@@ -136,11 +142,11 @@
                 </div>
 
                 <div class="workout-actions">
-                    <button class="action-btn outline">
+                    <button class="action-btn outline" aria-label="Ver detalhes do exercício">
                         <i data-lucide="info"></i>
                         <span>Detalhes</span>
                     </button>
-                    <button class="action-btn primary">
+                    <button class="action-btn primary" aria-label="Marcar exercício como completo">
                         <i data-lucide="check"></i>
                         <span>Marcar como completo</span>
                     </button>
@@ -178,11 +184,11 @@
                 </div>
 
                 <div class="workout-actions">
-                    <button class="action-btn outline">
+                    <button class="action-btn outline" aria-label="Ver detalhes do exercício">
                         <i data-lucide="info"></i>
                         <span>Detalhes</span>
                     </button>
-                    <button class="action-btn primary">
+                    <button class="action-btn primary" aria-label="Marcar exercício como completo">
                         <i data-lucide="check"></i>
                         <span>Marcar como completo</span>
                     </button>
@@ -223,6 +229,9 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Inicializa os ícones
+        lucide.createIcons();
+
         // Menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
@@ -261,15 +270,29 @@
         completeButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const card = this.closest('.workout-card');
-                card.classList.add('completed');
-                this.innerHTML = '<i data-lucide="check-circle"></i><span>Concluído</span>';
-                this.classList.add('completed');
-                lucide.createIcons();
+                const loadingState = document.querySelector('.loading-state');
+
+                // Mostra estado de carregamento
+                loadingState.style.display = 'flex';
+
+                // Simula processamento
+                setTimeout(() => {
+                    card.classList.add('completed');
+
+                    // Atualiza o botão
+                    this.innerHTML = '<i data-lucide="check-circle"></i><span>Concluído</span>';
+                    this.classList.add('completed');
+                    this.disabled = true;
+
+                    // Atualiza ícones apenas para este botão
+                    const newIcon = this.querySelector('i');
+                    lucide.createIcons({ icons: { 'check-circle': newIcon } });
+
+                    // Esconde estado de carregamento
+                    loadingState.style.display = 'none';
+                }, 500);
             });
         });
-
-        // Initialize Lucide icons
-        lucide.createIcons();
     });
 </script>
 </body>

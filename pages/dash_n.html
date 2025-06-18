@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Nutricionista - FitLink</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #3AB96F;
+            --primary-dark: #2FA360;
+            --primary-light: #E8F7EE;
+            --nutritionist: #FF6B35;
+            --dark: #212529;
+            --gray: #6c757d;
+            --gray-light: #e9ecef;
+            --white: #ffffff;
+            --radius: 12px;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --hover-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f9fa;
+            color: var(--dark);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: var(--primary);
+            color: white;
+            padding: 25px 20px;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .logo img {
+            height: 42px;
+        }
+
+        .logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-grow: 1;
+        }
+
+        nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        nav a:hover, nav a.active {
+            background: rgba(255,255,255,0.15);
+        }
+
+        nav a i {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: var(--white);
+            padding: 18px 30px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-info .profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-light);
+        }
+
+        .user-tag {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: rgba(255, 107, 53, 0.15);
+            color: var(--nutritionist);
+        }
+
+        .dashboard {
+            padding: 30px;
+            flex: 1;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .dashboard-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .dashboard-title h1 {
+            font-size: 1.8rem;
+        }
+
+        .role-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background: rgba(255, 107, 53, 0.15);
+            color: var(--nutritionist);
+        }
+
+        .date-filter {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .date-display {
+            font-weight: 500;
+            color: var(--gray);
+        }
+
+        .filter-btn {
+            background: var(--white);
+            border: 1px solid var(--gray-light);
+            padding: 8px 16px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover {
+            background: var(--primary-light);
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--nutritionist);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--gray-light);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: var(--nutritionist);
+        }
+
+        /* Tables */
+        .table-section {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .view-all {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 15px;
+            color: var(--gray);
+            font-weight: 500;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .scheduled {
+            background: rgba(255, 193, 7, 0.15);
+            color: #FF9800;
+        }
+
+        .completed {
+            background: rgba(76, 175, 80, 0.15);
+            color: #4CAF50;
+        }
+
+        .cancelled {
+            background: rgba(244, 67, 54, 0.15);
+            color: #F44336;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .cards-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                padding: 15px;
+            }
+
+            .logo {
+                margin-bottom: 20px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Sidebar -->
+<aside class="sidebar">
+    <div class="logo">
+        <img src="/images/FitLink%20logo%20sn.png" alt="Logo FitLink">
+        <span>FitLink</span>
+    </div>
+
+    <nav>
+        <a href="#" class="active"><i data-lucide="home"></i> Dashboard</a>
+        <a href="#"><i data-lucide="calendar"></i> Agendamentos</a>
+        <a href="#"><i data-lucide="users"></i> Pacientes</a>
+        <a href="#"><i data-lucide="apple"></i> Planos Alimentares</a>
+        <a href="#"><i data-lucide="clipboard-check"></i> Acompanhamento</a>
+        <a href="#"><i data-lucide="bar-chart-2"></i> Desempenho</a>
+        <a href="#"><i data-lucide="settings"></i> Configurações</a>
+    </nav>
+</aside>
+
+<!-- Main Content -->
+<div class="main-content">
+    <header class="header">
+        <div class="user-info">
+            <div class="profile">
+                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Foto do usuário" class="profile-img">
+                <div>
+                    <div class="name">Juliana Costa</div>
+                    <div class="user-tag">Nutricionista</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="filter-btn">
+                <i data-lucide="calendar"></i>
+                <span>7 de Junho, 2025</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="dashboard">
+        <div class="dashboard-header">
+            <div class="dashboard-title">
+                <div class="role-icon">
+                    <i data-lucide="apple"></i>
+                </div>
+                <h1>Dashboard do Nutricionista</h1>
+            </div>
+
+            <div class="date-filter">
+                <span class="date-display">Últimos 7 dias</span>
+                <button class="filter-btn">
+                    <i data-lucide="filter"></i>
+                    <span>Filtros</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-icon">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <span>Pacientes Ativos</span>
+                    </div>
+                    <i data-lucide="trending-up" class="text-success"></i>
+                </div>
+                <div class="stat-value">18</div>
+                <div class="stat-label">+2 em relação ao mês passado</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-icon">
+                            <i data-lucide="calendar-check"></i>
+                        </div>
+                        <span>Consultas Hoje</span>
+                    </div>
+                    <i data-lucide="check-circle" class="text-success"></i>
+                </div>
+                <div class="stat-value">5/5</div>
+                <div class="stat-label">Todas confirmadas</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%"></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-icon">
+                            <i data-lucide="clipboard-check"></i>
+                        </div>
+                        <span>Planos Entregues</span>
+                    </div>
+                    <i data-lucide="alert-circle" class="text-warning"></i>
+                </div>
+                <div class="stat-value">3/5</div>
+                <div class="stat-label">2 pendentes para esta semana</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%"></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-icon">
+                            <i data-lucide="dollar-sign"></i>
+                        </div>
+                        <span>Faturamento</span>
+                    </div>
+                    <i data-lucide="trending-up" class="text-success"></i>
+                </div>
+                <div class="stat-value">R$ 6,850</div>
+                <div class="stat-label">+8% em relação ao mês passado</div>
+            </div>
+        </div>
+
+        <div class="table-section">
+            <div class="section-header">
+                <h3 class="section-title">Consultas Pendentes</h3>
+                <a href="#" class="view-all">Ver todas <i data-lucide="chevron-right"></i></a>
+            </div>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Paciente</th>
+                    <th>Horário</th>
+                    <th>Objetivo</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="client-info">
+                            <strong>Ricardo Mendes</strong>
+                            <div>Dieta: Low Carb</div>
+                        </div>
+                    </td>
+                    <td>09:00 - 10:00</td>
+                    <td>Perda de Peso</td>
+                    <td><span class="status-badge scheduled">Confirmado</span></td>
+                    <td>
+                        <button class="action-icon">
+                            <i data-lucide="file-text"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="client-info">
+                            <strong>Juliana Fernandes</strong>
+                            <div>Dieta: Vegetariana</div>
+                        </div>
+                    </td>
+                    <td>11:00 - 12:00</td>
+                    <td>Manutenção</td>
+                    <td><span class="status-badge scheduled">Confirmado</span></td>
+                    <td>
+                        <button class="action-icon">
+                            <i data-lucide="file-text"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="client-info">
+                            <strong>Fernando Costa</strong>
+                            <div>Dieta: Hipercalórica</div>
+                        </div>
+                    </td>
+                    <td>14:00 - 15:00</td>
+                    <td>Ganho de Massa</td>
+                    <td><span class="status-badge scheduled">Confirmado</span></td>
+                    <td>
+                        <button class="action-icon">
+                            <i data-lucide="file-text"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-section">
+            <div class="section-header">
+                <h3 class="section-title">Planos Alimentares em Andamento</h3>
+                <a href="#" class="view-all">Ver todos <i data-lucide="chevron-right"></i></a>
+            </div>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Paciente</th>
+                    <th>Dieta</th>
+                    <th>Progresso</th>
+                    <th>Meta</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Marcos Silva</td>
+                    <td>Low Carb</td>
+                    <td>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                    </td>
+                    <td>-4kg/8kg</td>
+                    <td>
+                        <button class="action-icon">
+                            <i data-lucide="edit"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Patrícia Oliveira</td>
+                    <td>Cetogênica</td>
+                    <td>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 35%"></div>
+                        </div>
+                    </td>
+                    <td>-3kg/10kg</td>
+                    <td>
+                        <button class="action-icon">
+                            <i data-lucide="edit"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Inicializar ícones
+    lucide.createIcons();
+
+    // Simular gráficos
+    setTimeout(() => {
+        const ctx = document.createElement('canvas');
+        document.querySelector('.card:nth-child(3)').appendChild(ctx);
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Entregues', 'Pendentes'],
+                datasets: [{
+                    data: [12, 5],
+                    backgroundColor: ['rgba(255, 107, 53, 0.7)', 'rgba(255, 107, 53, 0.2)'],
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+    }, 500);
+</script>
+</body>
+</html>

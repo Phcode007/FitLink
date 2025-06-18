@@ -22,7 +22,7 @@
                 <i data-lucide="home" class="nav-icon"></i>
                 <span class="nav-text">Início</span>
             </a>
-            <a href="treino.html" class="nav-link">
+            <a href="treinos_p.html" class="nav-link">
                 <i data-lucide="dumbbell" class="nav-icon"></i>
                 <span class="nav-text">Treinos</span>
             </a>
@@ -48,15 +48,21 @@
                 <p class="welcome-message">Olá, João! Aqui está sua dieta recomendada:</p>
             </div>
             <div class="date-picker">
-                <button class="date-nav" id="prevDay">
+                <button class="date-nav" id="prevDay" aria-label="Dia anterior">
                     <i data-lucide="chevron-left"></i>
                 </button>
                 <span class="current-date" id="currentDate">7 de jun. de 2025</span>
-                <button class="date-nav" id="nextDay">
+                <button class="date-nav" id="nextDay" aria-label="Próximo dia">
                     <i data-lucide="chevron-right"></i>
                 </button>
             </div>
         </header>
+
+        <!-- Estado de carregamento -->
+        <div class="loading-state" id="loadingState">
+            <i data-lucide="loader" class="animate-spin"></i>
+            <span>Processando...</span>
+        </div>
 
         <div class="dieta-content">
             <div class="refeicao-card">
@@ -84,11 +90,11 @@
                     </div>
                 </div>
                 <div class="refeicao-actions">
-                    <button class="action-button info">
+                    <button class="action-button info" aria-label="Ver detalhes da refeição">
                         <i data-lucide="info"></i>
                         <span>Detalhes</span>
                     </button>
-                    <button class="action-button confirm">
+                    <button class="action-button confirm" aria-label="Marcar refeição como consumida">
                         <i data-lucide="check"></i>
                         <span>Marcar como consumido</span>
                     </button>
@@ -120,11 +126,11 @@
                     </div>
                 </div>
                 <div class="refeicao-actions">
-                    <button class="action-button info">
+                    <button class="action-button info" aria-label="Ver detalhes da refeição">
                         <i data-lucide="info"></i>
                         <span>Detalhes</span>
                     </button>
-                    <button class="action-button confirm">
+                    <button class="action-button confirm" aria-label="Marcar refeição como consumida">
                         <i data-lucide="check"></i>
                         <span>Marcar como consumido</span>
                     </button>
@@ -156,11 +162,11 @@
                     </div>
                 </div>
                 <div class="refeicao-actions">
-                    <button class="action-button info">
+                    <button class="action-button info" aria-label="Ver detalhes da refeição">
                         <i data-lucide="info"></i>
                         <span>Detalhes</span>
                     </button>
-                    <button class="action-button confirm">
+                    <button class="action-button confirm" aria-label="Marcar refeição como consumida">
                         <i data-lucide="check"></i>
                         <span>Marcar como consumido</span>
                     </button>
@@ -176,7 +182,7 @@
                         <div class="progress-circle protein" data-value="80">
                             <svg viewBox="0 0 36 36" class="circular-chart">
                                 <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                                <path class="circle-fill" stroke-dasharray="75, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                <path class="circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
                                 <text x="18" y="20.5" class="percentage">80g</text>
                             </svg>
                             <span>Proteína</span>
@@ -186,7 +192,7 @@
                         <div class="progress-circle carbo" data-value="135">
                             <svg viewBox="0 0 36 36" class="circular-chart">
                                 <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                                <path class="circle-fill" stroke-dasharray="68, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                <path class="circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
                                 <text x="18" y="20.5" class="percentage">135g</text>
                             </svg>
                             <span>Carboidratos</span>
@@ -196,7 +202,7 @@
                         <div class="progress-circle fat" data-value="38">
                             <svg viewBox="0 0 36 36" class="circular-chart">
                                 <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                                <path class="circle-fill" stroke-dasharray="38, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                <path class="circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
                                 <text x="18" y="20.5" class="percentage">38g</text>
                             </svg>
                             <span>Gorduras</span>
@@ -214,6 +220,9 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Inicializa os ícones
+        lucide.createIcons();
+
         // Menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
@@ -224,21 +233,81 @@
         });
 
         // Date navigation
-        const prevDay = document.getElementById('prevDay');
-        const nextDay = document.getElementById('nextDay');
-        const currentDate = document.getElementById('currentDate');
+        const prevDayBtn = document.getElementById('prevDay');
+        const nextDayBtn = document.getElementById('nextDay');
+        const currentDateEl = document.getElementById('currentDate');
+        const loadingState = document.getElementById('loadingState');
 
-        // Initialize Lucide icons
-        lucide.createIcons();
+        let currentDate = new Date(2025, 5, 7); // 7 de junho de 2025
+
+        function updateDateDisplay() {
+            const options = { day: 'numeric', month: 'short', year: 'numeric' };
+            currentDateEl.textContent = currentDate.toLocaleDateString('pt-BR', options);
+        }
+
+        prevDayBtn.addEventListener('click', function() {
+            currentDate.setDate(currentDate.getDate() - 1);
+            updateDateDisplay();
+        });
+
+        nextDayBtn.addEventListener('click', function() {
+            currentDate.setDate(currentDate.getDate() + 1);
+            updateDateDisplay();
+        });
+
+        updateDateDisplay();
 
         // Mark as consumed buttons
         const confirmButtons = document.querySelectorAll('.action-button.confirm');
+
+        // Valores nutricionais totais
+        let totalProtein = 80;
+        let totalCarbs = 135;
+        let totalFat = 38;
+        let totalCalories = 1250;
+
         confirmButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const card = this.closest('.refeicao-card');
-                card.classList.add('consumed');
-                this.innerHTML = '<i data-lucide="check-circle"></i><span>Consumido</span>';
-                lucide.createIcons();
+                if (card.classList.contains('consumed')) return;
+
+                loadingState.style.display = 'flex';
+
+                setTimeout(() => {
+                    card.classList.add('consumed');
+                    this.innerHTML = '<i data-lucide="check-circle"></i><span>Consumido</span>';
+                    this.classList.add('consumed');
+
+                    // Atualiza os ícones apenas para este botão
+                    const newIcon = this.querySelector('i');
+                    lucide.createIcons({ icons: { 'check-circle': newIcon } });
+
+                    // Simula a adição dos nutrientes
+                    if (card.querySelector('h2').textContent === 'Café da Manhã') {
+                        totalProtein += 25;
+                        totalCarbs += 45;
+                        totalFat += 12;
+                        totalCalories += 350;
+                    } else if (card.querySelector('h2').textContent === 'Almoço') {
+                        totalProtein += 40;
+                        totalCarbs += 55;
+                        totalFat += 18;
+                        totalCalories += 550;
+                    } else if (card.querySelector('h2').textContent === 'Lanche da Tarde') {
+                        totalProtein += 15;
+                        totalCarbs += 35;
+                        totalFat += 8;
+                        totalCalories += 250;
+                    }
+
+                    // Atualiza o resumo
+                    document.querySelector('.protein .percentage').textContent = totalProtein + 'g';
+                    document.querySelector('.carbo .percentage').textContent = totalCarbs + 'g';
+                    document.querySelector('.fat .percentage').textContent = totalFat + 'g';
+                    document.querySelector('.calories-total').textContent = totalCalories.toLocaleString('pt-BR') + ' kcal';
+
+                    loadingState.style.display = 'none';
+                }, 500);
             });
         });
     });
