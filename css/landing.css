@@ -1,7 +1,7 @@
 /* Landing Page */
 header {
     background-color: white;
-    padding: 20px 0;
+    padding: 15px 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     position: sticky;
     top: 0;
@@ -20,6 +20,7 @@ header .container {
     color: var(--primary);
     display: flex;
     align-items: center;
+    text-decoration: none;
 }
 
 .logo::before {
@@ -30,7 +31,7 @@ header .container {
 header nav {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 30px;
 }
 
 header nav a {
@@ -38,10 +39,61 @@ header nav a {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
+    position: relative;
+    padding: 5px 0;
 }
 
 header nav a:hover {
     color: var(--primary);
+}
+
+header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s;
+}
+
+header nav a:hover::after {
+    width: 100%;
+}
+
+header .btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 8px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+header .btn-outline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(50, 142, 110, 0.1);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+header .btn-outline:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header .btn-outline:hover::before {
+    width: 100%;
 }
 
 .hero {
@@ -300,5 +352,15 @@ footer {
     .footer-content {
         flex-direction: column;
         gap: 30px;
+    }
+
+    header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    header nav {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }

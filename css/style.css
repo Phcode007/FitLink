@@ -74,30 +74,34 @@ body {
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    position: relative;
 }
 
-label {
+.form-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     font-weight: 600;
     color: var(--dark);
+    padding-left: 5px;
 }
 
 input, select {
     width: 100%;
-    padding: 12px;
+    padding: 14px 15px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 16px;
-    transition: border 0.3s;
+    transition: all 0.3s;
     background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 input:focus, select:focus {
     border-color: var(--primary);
     outline: none;
-    box-shadow: 0 0 0 2px rgba(50, 142, 110, 0.2);
+    box-shadow: 0 0 0 3px rgba(50, 142, 110, 0.2);
+    transform: translateY(-1px);
 }
 
 .message {

@@ -43,20 +43,80 @@
     margin-bottom: 10px;
 }
 
-/* Botão de cadastro no login */
+/* Botão Entrar no formulário */
+#loginForm .btn-primary {
+    width: 100%;
+    padding: 14px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 10px;
+    border: none;
+    background: var(--primary);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#loginForm .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+#loginForm .btn-primary:hover {
+    background: var(--primary-light);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+#loginForm .btn-primary:hover::before {
+    width: 100%;
+}
+
+/* Botão Cadastre-se */
 .btn-cadastro {
+    display: inline-block;
+    background: transparent;
+    border: 2px solid var(--primary);
     color: var(--primary);
+    padding: 12px 30px;
+    border-radius: 30px;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s;
-    padding: 5px 10px;
-    border-radius: 4px;
-    display: inline-block;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-top: 5px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-cadastro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(50, 142, 110, 0.1);
+    transition: width 0.3s ease;
+    z-index: -1;
 }
 
 .btn-cadastro:hover {
-    background: rgba(50, 142, 110, 0.1);
-    text-decoration: underline;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-cadastro:hover::before {
+    width: 100%;
 }
 
 /* Opções de cadastro */

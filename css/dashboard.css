@@ -125,3 +125,19 @@
     font-size: 0.9rem;
     opacity: 0.8;
 }
+
+@media (max-width: 768px) {
+    .dashboard-header .container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .dashboard-header nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .user-menu {
+        margin-top: 10px;
+    }
+}
