@@ -1,0 +1,127 @@
+/* Dashboard */
+.dashboard-header {
+    background: linear-gradient(45deg, var(--primary), var(--primary-light));
+    padding: 15px 0;
+    color: white;
+}
+
+.dashboard-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-header .logo {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.dashboard-header nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.dashboard-header nav a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+}
+
+.dashboard-header nav a:hover {
+    color: white;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-menu span {
+    font-weight: 500;
+}
+
+.dashboard-main {
+    padding: 40px 0;
+    background-color: #f5f7fa;
+    min-height: calc(100vh - 120px);
+}
+
+.welcome-section {
+    margin-bottom: 40px;
+}
+
+.welcome-section h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.welcome-section p {
+    color: var(--dark);
+    opacity: 0.8;
+}
+
+.user-info {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    border-left: 4px solid var(--secondary);
+}
+
+.user-info p {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+}
+
+.user-info p strong {
+    width: 180px;
+    display: inline-block;
+    color: var(--primary);
+}
+
+.user-info p:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    border-radius: 10px;
+    padding: 25px;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+}
+
+.stat-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.stat-card p {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.dashboard-footer {
+    background: var(--dark);
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}

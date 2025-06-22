@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLink - Cadastro Nutricionista</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>Cadastro de Nutricionista</h1>
+            <p>Faça parte da nossa rede de profissionais de nutrição</p>
+        </div>
+        <form id="cadastroNutriForm">
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmarSenha">Confirmar Senha</label>
+                <input type="password" id="confirmarSenha" required>
+            </div>
+            <div class="form-group">
+                <label for="crn">CRN</label>
+                <input type="text" id="crn" required>
+            </div>
+            <div class="form-group">
+                <label for="especializacao">Especialização</label>
+                <input type="text" id="especializacao" required>
+            </div>
+            <button type="submit" class="btn-primary">Cadastrar</button>
+        </form>
+        <div class="auth-footer">
+            <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+        </div>
+        <div id="message" class="message"></div>
+    </div>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>

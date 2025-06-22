@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLink - Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+<header class="dashboard-header">
+    <div class="container">
+        <div class="logo">FitLink</div>
+        <nav>
+            <a href="#">Dashboard</a>
+            <a href="#">Progresso</a>
+            <a href="#">Profissionais</a>
+            <div class="user-menu">
+                <span id="userName"></span>
+                <button id="logoutBtn" class="btn-secondary">Sair</button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="dashboard-main">
+    <div class="container">
+        <div class="welcome-section">
+            <h1>Bem-vindo, <span id="userNameTitle"></span>!</h1>
+            <p>Acompanhe seu progresso e conecte-se com profissionais</p>
+        </div>
+
+        <div id="userInfo" class="user-info">
+            <!-- Dados serão preenchidos via JavaScript -->
+        </div>
+
+        <div class="stats-cards">
+            <div class="stat-card">
+                <h3>Treinos Concluídos</h3>
+                <p>12/20</p>
+            </div>
+            <div class="stat-card">
+                <h3>Meta de Peso</h3>
+                <p>75kg → 70kg</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="dashboard-footer">
+    <div class="container">
+        <p>© 2023 FitLink. Todos os direitos reservados.</p>
+    </div>
+</footer>
+<script src="/js/main.js"></script>
+</body>
+</html>

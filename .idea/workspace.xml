@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d1a1434f-444b-4546-a6a6-727951671d88" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/css/auth.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/dashboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/landing.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/cadastro-aluno.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/cadastro-nutricionista.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/cadastro-personal.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/dashboard.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vite-project/src/pages/CadastroAluno.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vite-project/src/pages/CadastroNutri.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vite-project/src/pages/CadastroPersonal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vite-project/src/pages/Login.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vite-project/src/pages/SelecaoCadastro.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vite-project/styles/Login.module.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JSX File" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Phcode007&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Phcode007/FitLink.git&quot;,
+    &quot;accountId&quot;: &quot;aa184c34-b61b-4cd7-bbab-cb51e82b50c7&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2yph7PPukuCjVRKfoqT8j0zd5iW" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Node.js.App.jsx.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "C:/Users/phbs1/FitLink",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "settings.vite",
+    "ts.external.directory.path": "C:\\Users\\phbs1\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-WS-251.26094.131" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d1a1434f-444b-4546-a6a6-727951671d88" name="Changes" comment="" />
+      <created>1750537254387</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1750537254387</updated>
+      <workItem from="1750537256787" duration="170000" />
+      <workItem from="1750537460958" duration="6626000" />
+      <workItem from="1750551310964" duration="3991000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
