@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1a1434f-444b-4546-a6a6-727951671d88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/js/api/api_clientes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/perfil_aluno.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/process.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/cadastro-aluno.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/cadastro-aluno.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/eslint.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/vite-project/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite-project/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/vite-project/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +100,7 @@
       <workItem from="1750537256787" duration="170000" />
       <workItem from="1750537460958" duration="6626000" />
       <workItem from="1750551310964" duration="10239000" />
-      <workItem from="1750598841767" duration="7967000" />
+      <workItem from="1750598841767" duration="8608000" />
     </task>
     <servers />
   </component>
