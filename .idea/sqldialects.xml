@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/js/api/api_clientes.js" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/js/index.js" dialect="PostgreSQL" />
+  </component>
+  <component name="SqlResolveMappings">
+    <file url="file://$PROJECT_DIR$/js/api/api_clientes.js" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;root&quot;,   &quot;node&quot;:{    &quot;name&quot;:{     &quot;@qname&quot;:&quot;95fa5366-daf0-49ad-a6c0-91a9965a9286&quot;    }   }  } }}" />
+  </component>
+</project>

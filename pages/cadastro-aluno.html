@@ -6,6 +6,47 @@
     <title>FitLink - Cadastro Aluno</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/auth.css">
+    <style>
+        /* Estilos adicionais específicos para esta página */
+        .auth-card {
+            max-width: 700px;
+        }
+
+        .form-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .form-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+            background-color: #fff;
+        }
+
+        input:focus, select:focus {
+            border-color: #328E6E;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(50, 142, 110, 0.2);
+        }
+    </style>
 </head>
 <body>
 <div class="auth-container">
@@ -15,31 +56,89 @@
             <p>Crie a sua conta e comece a sua jornada fitness</p>
         </div>
         <form id="cadastroAlunoForm">
-            <div class="form-group">
-                <label for="nome">Nome Completo</label>
-                <input type="text" id="nome" required placeholder="Seu nome completo">
+            <div class="form-columns">
+                <div>
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sexo">Sexo *</label>
+                        <select id="sexo" name="sexo" required>
+                            <option value="">Selecione...</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Feminino">Feminino</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="data_nascimento">Data de Nascimento *</label>
+                        <input type="date" id="data_nascimento" name="data_nascimento" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="altura">Altura (cm) *</label>
+                        <input type="number" id="altura" name="altura" min="100" max="250" required placeholder="Ex: 175">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meta">Meta *</label>
+                        <select id="meta" name="meta" required>
+                            <option value="">Selecione...</option>
+                            <option value="Perda de peso">Perda de peso</option>
+                            <option value="Ganho de massa muscular">Ganho de massa muscular</option>
+                            <option value="Melhora de condicionamento">Melhora de condicionamento</option>
+                            <option value="Reabilitação">Reabilitação</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required placeholder="seu.email@exemplo.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefone">Telefone *</label>
+                        <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endereco">Endereço *</label>
+                        <input type="text" id="endereco" name="endereco" required placeholder="Rua, número, bairro">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="turno">Turno Preferido *</label>
+                        <select id="turno" name="turno" required>
+                            <option value="">Selecione...</option>
+                            <option value="Manhã">Manhã</option>
+                            <option value="Tarde">Tarde</option>
+                            <option value="Noite">Noite</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="senha">Senha *</label>
+                        <input type="password" id="senha" name="senha" required placeholder="••••••••">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmarSenha">Confirmar Senha *</label>
+                        <input type="password" id="confirmarSenha" name="confirmarSenha" required placeholder="••••••••">
+                    </div>
+                </div>
             </div>
+
             <div class="form-group">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" required placeholder="seu.email@exemplo.com">
+                <label for="observacao">Observações</label>
+                <textarea id="observacao" name="observacao" rows="3" placeholder="Alguma informação adicional?"></textarea>
             </div>
-            <div class="form-group">
-                <label for="senha">Senha</label>
-                <input type="password" id="senha" required placeholder="••••••••">
-            </div>
-            <div class="form-group">
-                <label for="confirmarSenha">Confirmar Senha</label>
-                <input type="password" id="confirmarSenha" required placeholder="••••••••">
-            </div>
-            <div class="form-group">
-                <label for="objetivo">Objetivo Principal</label>
-                <select id="objetivo" required>
-                    <option value="">Selecione...</option>
-                    <option value="emagrecer">Emagrecer</option>
-                    <option value="hipertrofia">Hipertrofia</option>
-                    <option value="condicionamento">Condicionamento Físico</option>
-                </select>
-            </div>
+
             <button type="submit" class="btn-primary">Cadastrar</button>
         </form>
         <div class="auth-footer">

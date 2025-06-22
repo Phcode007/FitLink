@@ -1,11 +1,7 @@
-// Armazenamento de usuários (simulado)
-let users = JSON.parse(localStorage.getItem('fitlink_users')) || [];
-
-// Elementos globais
-const messageEl = document.getElementById('message');
-
+// frontend/js/main.js
 // Funções de validação
 function showMessage(text, type) {
+    const messageEl = document.getElementById('message');
     if (messageEl) {
         messageEl.textContent = text;
         messageEl.className = `message ${type}`;
@@ -32,50 +28,60 @@ function validateConfirmPassword(password, confirmPassword) {
 // Formulário de Login
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
+    loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const email = document.getElementById('email').value;
         const senha = document.getElementById('senha').value;
 
-        if (!validateEmail(email)) {
-            showMessage('Por favor, insira um e-mail válido', 'error');
-            return;
-        }
-
-        const user = users.find(u => u.email === email && u.senha === senha);
-
-        if (user) {
-            // Simular requisição fetch
-            fetch('https://jsonplaceholder.typicode.com/posts', {
+        try {
+            const response = await fetch('http://localhost:3000/api/auth/login', {
                 method: 'POST',
-                body: JSON.stringify(user),
-                headers: {
-                    'Content-type': 'application/json'
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, senha })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Armazenar token e informações do usuário
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('userType', data.tipo);
+                localStorage.setItem('userId', data.id);
+                localStorage.setItem('userName', data.nome);
+
+                // Redirecionar baseado no tipo de usuário
+                switch (data.tipo) {
+                    case 'cliente':
+                        window.location.href = '/Cliente/perfil.html';
+                        break;
+                    case 'nutricionista':
+                        window.location.href = '/Nutricionista/perfil.html';
+                        break;
+                    case 'personal':
+                        window.location.href = '/Personal/perfil.html';
+                        break;
+                    default:
+                        showMessage('Tipo de usuário desconhecido', 'error');
                 }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                    window.location.href = 'dashboard.html';
-                })
-                .catch(error => {
-                    showMessage('Erro na conexão. Tente novamente mais tarde.', 'error');
-                });
-        } else {
-            showMessage('E-mail ou senha incorretos', 'error');
+            } else {
+                showMessage(data.error || 'Credenciais inválidas', 'error');
+            }
+        } catch (error) {
+            showMessage('Erro na conexão. Tente novamente mais tarde.', 'error');
         }
     });
 }
 
 // Função para cadastro genérico
-function handleCadastro(formId, userType, extraFields = []) {
+async function handleCadastro(formId, userType, extraFields = []) {
     const form = document.getElementById(formId);
 
     if (form) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            // Coletar dados básicos
             const nome = document.getElementById('nome').value;
             const email = document.getElementById('email').value;
             const senha = document.getElementById('senha').value;
@@ -108,114 +114,158 @@ function handleCadastro(formId, userType, extraFields = []) {
                 extraData[field] = document.getElementById(field).value;
             });
 
-            // Verificar se usuário já existe
-            if (users.some(u => u.email === email)) {
-                showMessage('Este e-mail já está cadastrado', 'error');
-                return;
-            }
+            try {
+                // Montar objeto de usuário
+                let userData = {
+                    Nome: nome,
+                    Email: email,
+                    Senha: senha,
+                    ...extraData
+                };
 
-            // Criar novo usuário
-            const newUser = {
-                id: Date.now().toString(),
-                nome,
-                email,
-                senha,
-                tipo: userType,
-                ...extraData
-            };
-
-            // Simular requisição fetch
-            fetch('https://jsonplaceholder.typicode.com/posts', {
-                method: 'POST',
-                body: JSON.stringify(newUser),
-                headers: {
-                    'Content-type': 'application/json'
+                // Para clientes, adicionar estrutura específica
+                if (userType === 'cliente') {
+                    userData = {
+                        Nome: nome,
+                        Email: email,
+                        Senha: senha,
+                        Sexo: extraData.sexo,
+                        Data_Nascimento: extraData.data_nascimento,
+                        Endereço: extraData.endereco,
+                        Telefone: extraData.telefone,
+                        Turno: extraData.turno,
+                        Altura: extraData.altura,
+                        Meta: extraData.meta,
+                        Observacao: extraData.observacao || null
+                    };
                 }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    users.push(newUser);
-                    localStorage.setItem('fitlink_users', JSON.stringify(users));
-                    showMessage('Cadastro realizado com sucesso!', 'success');
 
-                    // Limpar formulário
+                // Determinar endpoint correto
+                let endpoint;
+                switch (userType) {
+                    case 'cliente': endpoint = '/api/clientes'; break;
+                    case 'nutricionista': endpoint = '/api/nutricionistas'; break;
+                    case 'personal': endpoint = '/api/personals'; break;
+                }
+
+                // Enviar para o backend
+                const response = await fetch(`http://localhost:3000${endpoint}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(userData)
+                });
+
+                if (response.ok) {
+                    showMessage('Cadastro realizado com sucesso!', 'success');
                     form.reset();
 
-                    // Redirecionar após 2 segundos
                     setTimeout(() => {
                         window.location.href = 'login.html';
                     }, 2000);
-                })
-                .catch(error => {
-                    showMessage('Erro no cadastro. Tente novamente.', 'error');
-                });
+                } else {
+                    const errorData = await response.json();
+                    showMessage(errorData.error || 'Erro no cadastro', 'error');
+                }
+            } catch (error) {
+                showMessage('Erro no cadastro. Tente novamente.', 'error');
+            }
         });
     }
 }
 
-// Inicializar formulários de cadastro
-document.addEventListener('DOMContentLoaded', () => {
-    // Cadastro de Aluno
-    handleCadastro('cadastroAlunoForm', 'aluno', ['objetivo']);
+// Inicialização do dashboard e perfil
+document.addEventListener('DOMContentLoaded', async () => {
+    // Verificar se está em uma página que requer autenticação
+    if (window.location.pathname.includes('dashboard.html') ||
+        window.location.pathname.includes('perfil.html')) {
 
-    // Cadastro de Personal
-    handleCadastro('cadastroPersonalForm', 'personal', ['cref', 'area']);
+        const token = localStorage.getItem('token');
+        const userType = localStorage.getItem('userType');
+        const userId = localStorage.getItem('userId');
 
-    // Cadastro de Nutricionista
-    handleCadastro('cadastroNutriForm', 'nutricionista', ['crn', 'especializacao']);
-
-    // Dashboard
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const userNameEl = document.getElementById('userName');
-    const userNameTitle = document.getElementById('userNameTitle');
-    const userInfoEl = document.getElementById('userInfo');
-
-    if (currentUser && userNameEl) {
-        userNameEl.textContent = currentUser.nome;
-
-        if (userNameTitle) {
-            userNameTitle.textContent = currentUser.nome;
+        if (!token || !userType || !userId) {
+            window.location.href = 'login.html';
+            return;
         }
 
-        if (userInfoEl) {
-            let infoHTML = `
-                <p><strong>Tipo de Conta:</strong> ${currentUser.tipo === 'aluno' ? 'Aluno' :
-                currentUser.tipo === 'personal' ? 'Personal Trainer' : 'Nutricionista'}</p>
-                <p><strong>E-mail:</strong> ${currentUser.email}</p>
-            `;
+        try {
+            // Obter dados do usuário
+            const response = await fetch('http://localhost:3000/api/user/me', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
 
-            if (currentUser.objetivo) {
-                infoHTML += `<p><strong>Objetivo:</strong> ${currentUser.objetivo}</p>`;
+            if (!response.ok) {
+                throw new Error('Falha ao carregar dados do usuário');
             }
 
-            if (currentUser.cref) {
-                infoHTML += `<p><strong>CREF:</strong> ${currentUser.cref}</p>`;
+            const userData = await response.json();
+
+            // Preencher os dados na página
+            if (document.getElementById('userName')) {
+                document.getElementById('userName').textContent = userData.Nome;
             }
 
-            if (currentUser.crn) {
-                infoHTML += `<p><strong>CRN:</strong> ${currentUser.crn}</p>`;
+            if (document.getElementById('userNameTitle')) {
+                document.getElementById('userNameTitle').textContent = userData.Nome;
             }
 
-            if (currentUser.area) {
-                infoHTML += `<p><strong>Área de Atuação:</strong> ${currentUser.area}</p>`;
+            // Preencher campos comuns
+            const commonFields = [
+                'Email', 'Telefone', 'Endereço', 'Data_Nascimento',
+                'CRN', 'CREF', 'Altura', 'Meta', 'Sexo', 'Turno'
+            ];
+
+            commonFields.forEach(field => {
+                const element = document.getElementById(`user${field}`);
+                if (element && userData[field]) {
+                    element.textContent = userData[field];
+                }
+            });
+
+            // Preencher campos específicos por tipo
+            if (userType === 'cliente') {
+                // Campos específicos de cliente
+                if (document.getElementById('userObservacao') && userData.Observacao) {
+                    document.getElementById('userObservacao').textContent = userData.Observacao;
+                }
+            }
+            else if (userType === 'nutricionista') {
+                // Campos específicos de nutricionista
+            }
+            else if (userType === 'personal') {
+                // Campos específicos de personal
             }
 
-            if (currentUser.especializacao) {
-                infoHTML += `<p><strong>Especialização:</strong> ${currentUser.especializacao}</p>`;
-            }
-
-            userInfoEl.innerHTML = infoHTML;
+        } catch (error) {
+            console.error('Erro:', error);
+            alert('Sessão expirada. Faça login novamente.');
+            localStorage.clear();
+            window.location.href = 'login.html';
         }
-    } else if (window.location.pathname.includes('dashboard.html')) {
-        // Se não estiver logado e estiver no dashboard, redireciona
-        window.location.href = 'login.html';
     }
+
+    // Inicializar formulários de cadastro
+    handleCadastro('cadastroAlunoForm', 'cliente', [
+        'sexo', 'data_nascimento', 'endereco', 'telefone', 'turno',
+        'altura', 'meta', 'observacao'
+    ]);
+
+    handleCadastro('cadastroPersonalForm', 'personal', [
+        'idade', 'endereco', 'telefone', 'cref'
+    ]);
+
+    handleCadastro('cadastroNutriForm', 'nutricionista', [
+        'idade', 'endereco', 'telefone', 'crn'
+    ]);
 
     // Logout
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {
-            localStorage.removeItem('currentUser');
+            localStorage.removeItem('token');
+            localStorage.removeItem('userType');
+            localStorage.removeItem('userId');
+            localStorage.removeItem('userName');
             window.location.href = 'index.html';
         });
     }
