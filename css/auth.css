@@ -81,6 +81,52 @@
     width: 100%;
 }
 
+/* Botão Cadastrar em formulários */
+#cadastroAlunoForm .btn-primary,
+#cadastroPersonalForm .btn-primary,
+#cadastroNutriForm .btn-primary {
+    width: 100%;
+    padding: 14px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 20px;
+    border: none;
+    background: var(--primary);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#cadastroAlunoForm .btn-primary::before,
+#cadastroPersonalForm .btn-primary::before,
+#cadastroNutriForm .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+#cadastroAlunoForm .btn-primary:hover,
+#cadastroPersonalForm .btn-primary:hover,
+#cadastroNutriForm .btn-primary:hover {
+    background: var(--primary-light);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+#cadastroAlunoForm .btn-primary:hover::before,
+#cadastroPersonalForm .btn-primary:hover::before,
+#cadastroNutriForm .btn-primary:hover::before {
+    width: 100%;
+}
+
 /* Botão Cadastre-se */
 .btn-cadastro {
     display: inline-block;
@@ -116,6 +162,44 @@
 }
 
 .btn-cadastro:hover::before {
+    width: 100%;
+}
+
+/* Link "Faça login" */
+.auth-footer a {
+    display: inline-block;
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.auth-footer a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(50, 142, 110, 0.1);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.auth-footer a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.auth-footer a:hover::before {
     width: 100%;
 }
 
@@ -205,5 +289,14 @@
 
     .auth-option {
         padding: 20px 15px;
+    }
+
+    .btn-cadastro,
+    .auth-footer a {
+        padding: 10px 20px;
+    }
+
+    .auth-footer a {
+        margin-top: 5px;
     }
 }
