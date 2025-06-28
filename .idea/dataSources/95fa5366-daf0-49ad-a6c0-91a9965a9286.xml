@@ -3,9 +3,17 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>dmy</DateStyle>
-      <IntrospectionStateNumber>760</IntrospectionStateNumber>
+      <Grants>1||-9223372036854775808|c|G
+1||10|c|G
+1||10|C|G
+1||10|T|G
+4||-9223372036854775808|c|G
+4||10|c|G
+4||10|C|G
+4||10|T|G</Grants>
+      <IntrospectionStateNumber>764</IntrospectionStateNumber>
       <ServerVersion>16.9</ServerVersion>
-      <StartupTime>1749936316</StartupTime>
+      <StartupTime>1751113751</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -801,7 +809,7 @@ false Zulu
 14744||10|C|G
 14744||-9223372036854775808|U|G
 14744||10|U|G</Grants>
-      <IntrospectionStateNumber>760</IntrospectionStateNumber>
+      <IntrospectionStateNumber>764</IntrospectionStateNumber>
       <ObjectId>16529</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4225,8 +4233,8 @@ false Zulu
     <schema id="264" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>760</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2025-06-22.20:22:07</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>764</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2025-06-28.12:45:14</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -4239,7 +4247,15 @@ false Zulu
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="266" parent="264" name="Consultas_ID_seq">
+    <sequence id="266" parent="264" name="Conexoes_ID_seq">
+      <ObjectId>24809</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>761</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="267" parent="264" name="Consultas_ID_seq">
       <ObjectId>16568</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
@@ -4247,7 +4263,7 @@ false Zulu
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="267" parent="264" name="Nutricionistas_ID_seq">
+    <sequence id="268" parent="264" name="Nutricionistas_ID_seq">
       <ObjectId>16544</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
@@ -4255,7 +4271,7 @@ false Zulu
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="268" parent="264" name="Personal_ID_seq">
+    <sequence id="269" parent="264" name="Personal_ID_seq">
       <ObjectId>16552</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
@@ -4263,7 +4279,15 @@ false Zulu
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="269" parent="264" name="Treinos_ID_seq">
+    <sequence id="270" parent="264" name="Planos_Alimentares_ID_seq">
+      <ObjectId>33001</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>763</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="271" parent="264" name="Treinos_ID_seq">
       <ObjectId>16530</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
@@ -4271,37 +4295,49 @@ false Zulu
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <table id="270" parent="264" name="Clientes">
+    <table id="272" parent="264" name="Clientes">
       <ObjectId>16561</ObjectId>
       <StateNumber>752</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="271" parent="264" name="Consultas">
+    <table id="273" parent="264" name="Conexoes">
+      <ObjectId>24810</ObjectId>
+      <StateNumber>761</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="274" parent="264" name="Consultas">
       <ObjectId>16569</ObjectId>
       <StateNumber>751</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="272" parent="264" name="Nutricionistas">
+    <table id="275" parent="264" name="Nutricionistas">
       <ObjectId>16545</ObjectId>
       <StateNumber>751</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="273" parent="264" name="Personal">
+    <table id="276" parent="264" name="Personal">
       <ObjectId>16553</ObjectId>
       <StateNumber>751</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="274" parent="264" name="Treinos">
+    <table id="277" parent="264" name="Planos_Alimentares">
+      <ObjectId>33002</ObjectId>
+      <StateNumber>763</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="278" parent="264" name="Treinos">
       <ObjectId>16531</ObjectId>
       <StateNumber>752</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <column id="275" parent="270" name="ID">
+    <column id="279" parent="272" name="ID">
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4310,100 +4346,100 @@ false Zulu
       <SequenceId>16560</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="276" parent="270" name="Nome">
+    <column id="280" parent="272" name="Nome">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>751</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="277" parent="270" name="Sexo">
+    <column id="281" parent="272" name="Sexo">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>751</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="278" parent="270" name="Idade">
+    <column id="282" parent="272" name="Idade">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>751</StateNumber>
       <StoredType>date|0s</StoredType>
       <TypeId>1082</TypeId>
     </column>
-    <column id="279" parent="270" name="Endereço">
+    <column id="283" parent="272" name="Endereço">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>751</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="280" parent="270" name="Telefone">
+    <column id="284" parent="272" name="Telefone">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StateNumber>751</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="281" parent="270" name="Email">
+    <column id="285" parent="272" name="Email">
       <NotNull>1</NotNull>
       <Position>7</Position>
       <StateNumber>751</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="282" parent="270" name="Turno">
+    <column id="286" parent="272" name="Turno">
       <NotNull>1</NotNull>
       <Position>8</Position>
       <StateNumber>751</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="283" parent="270" name="Senha_hash">
+    <column id="287" parent="272" name="Senha_hash">
       <NotNull>1</NotNull>
       <Position>9</Position>
       <StateNumber>751</StateNumber>
       <StoredType>text|0s</StoredType>
       <TypeId>25</TypeId>
     </column>
-    <column id="284" parent="270" name="Foto">
+    <column id="288" parent="272" name="Foto">
       <Position>10</Position>
       <StateNumber>751</StateNumber>
       <StoredType>bytea|0s</StoredType>
       <TypeId>17</TypeId>
     </column>
-    <column id="285" parent="270" name="Data_cadastro">
+    <column id="289" parent="272" name="Data_cadastro">
       <NotNull>1</NotNull>
       <Position>11</Position>
       <StateNumber>751</StateNumber>
       <StoredType>date|0s</StoredType>
       <TypeId>1082</TypeId>
     </column>
-    <column id="286" parent="270" name="Observacao">
+    <column id="290" parent="272" name="Observacao">
       <Position>12</Position>
       <StateNumber>751</StateNumber>
       <StoredType>text|0s</StoredType>
       <TypeId>25</TypeId>
     </column>
-    <column id="287" parent="270" name="Data_Nascimento">
+    <column id="291" parent="272" name="Data_Nascimento">
       <Position>13</Position>
       <StateNumber>752</StateNumber>
       <StoredType>date|0s</StoredType>
       <TypeId>1082</TypeId>
     </column>
-    <column id="288" parent="270" name="Altura">
+    <column id="292" parent="272" name="Altura">
       <Position>14</Position>
       <StateNumber>752</StateNumber>
       <StoredType>numeric|0s</StoredType>
       <TypeId>1700</TypeId>
     </column>
-    <column id="289" parent="270" name="Meta">
+    <column id="293" parent="272" name="Meta">
       <Position>15</Position>
       <StateNumber>752</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <index id="290" parent="270" name="Clientes_pkey">
+    <index id="294" parent="272" name="Clientes_pkey">
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16566</ObjectId>
@@ -4412,14 +4448,95 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="291" parent="270" name="Clientes_pkey">
+    <key id="295" parent="272" name="Clientes_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16567</ObjectId>
       <Primary>1</Primary>
       <StateNumber>751</StateNumber>
       <UnderlyingIndexId>16566</UnderlyingIndexId>
     </key>
-    <column id="292" parent="271" name="ID">
+    <column id="296" parent="273" name="ID">
+      <DefaultExpression>nextval(&apos;&quot;Conexoes_ID_seq&quot;&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>761</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>24809</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="297" parent="273" name="Cliente_ID">
+      <Position>2</Position>
+      <StateNumber>761</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="298" parent="273" name="Personal_ID">
+      <Position>3</Position>
+      <StateNumber>761</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="299" parent="273" name="Nutricionista_ID">
+      <Position>4</Position>
+      <StateNumber>761</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="300" parent="273" name="Data_Conexao">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <Position>5</Position>
+      <StateNumber>761</StateNumber>
+      <StoredType>timestamp|0s</StoredType>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="301" parent="273" name="Status">
+      <DefaultExpression>&apos;pendente&apos;::character varying</DefaultExpression>
+      <Position>6</Position>
+      <StateNumber>761</StateNumber>
+      <StoredType>varchar(20)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="302" parent="273" name="Conexoes_Cliente_ID_fkey">
+      <ColNames>Cliente_ID</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24818</ObjectId>
+      <StateNumber>761</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16561</RefTableId>
+    </foreign-key>
+    <foreign-key id="303" parent="273" name="Conexoes_Personal_ID_fkey">
+      <ColNames>Personal_ID</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24823</ObjectId>
+      <StateNumber>761</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16553</RefTableId>
+    </foreign-key>
+    <foreign-key id="304" parent="273" name="Conexoes_Nutricionista_ID_fkey">
+      <ColNames>Nutricionista_ID</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24828</ObjectId>
+      <StateNumber>761</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16545</RefTableId>
+    </foreign-key>
+    <index id="305" parent="273" name="Conexoes_pkey">
+      <ColNames>ID</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24816</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>761</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="306" parent="273" name="Conexoes_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>24817</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>761</StateNumber>
+      <UnderlyingIndexId>24816</UnderlyingIndexId>
+    </key>
+    <column id="307" parent="274" name="ID">
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4428,96 +4545,96 @@ false Zulu
       <SequenceId>16568</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="293" parent="271" name="Data_consulta">
+    <column id="308" parent="274" name="Data_consulta">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>751</StateNumber>
       <StoredType>date|0s</StoredType>
       <TypeId>1082</TypeId>
     </column>
-    <column id="294" parent="271" name="Peso">
+    <column id="309" parent="274" name="Peso">
       <Position>3</Position>
       <StateNumber>751</StateNumber>
       <StoredType>numeric|0s</StoredType>
       <TypeId>1700</TypeId>
     </column>
-    <column id="295" parent="271" name="Altura">
+    <column id="310" parent="274" name="Altura">
       <Position>4</Position>
       <StateNumber>751</StateNumber>
       <StoredType>numeric|0s</StoredType>
       <TypeId>1700</TypeId>
     </column>
-    <column id="296" parent="271" name="IMC">
+    <column id="311" parent="274" name="IMC">
       <Position>5</Position>
       <StateNumber>751</StateNumber>
       <StoredType>numeric|0s</StoredType>
       <TypeId>1700</TypeId>
     </column>
-    <column id="297" parent="271" name="Cintura">
+    <column id="312" parent="274" name="Cintura">
       <Position>6</Position>
       <StateNumber>751</StateNumber>
       <StoredType>numeric|0s</StoredType>
       <TypeId>1700</TypeId>
     </column>
-    <column id="298" parent="271" name="Quadril">
+    <column id="313" parent="274" name="Quadril">
       <Position>7</Position>
       <StateNumber>751</StateNumber>
       <StoredType>numeric|0s</StoredType>
       <TypeId>1700</TypeId>
     </column>
-    <column id="299" parent="271" name="Observacao">
+    <column id="314" parent="274" name="Observacao">
       <Position>8</Position>
       <StateNumber>751</StateNumber>
       <StoredType>text|0s</StoredType>
       <TypeId>25</TypeId>
     </column>
-    <column id="300" parent="271" name="Fotos">
+    <column id="315" parent="274" name="Fotos">
       <Position>9</Position>
       <StateNumber>751</StateNumber>
       <StoredType>bytea|0s</StoredType>
       <TypeId>17</TypeId>
     </column>
-    <column id="301" parent="271" name="Prontuario">
+    <column id="316" parent="274" name="Prontuario">
       <Position>10</Position>
       <StateNumber>751</StateNumber>
       <StoredType>bytea|0s</StoredType>
       <TypeId>17</TypeId>
     </column>
-    <column id="302" parent="271" name="Consulta_Agendada">
+    <column id="317" parent="274" name="Consulta_Agendada">
       <Position>11</Position>
       <StateNumber>751</StateNumber>
       <StoredType>date|0s</StoredType>
       <TypeId>1082</TypeId>
     </column>
-    <column id="303" parent="271" name="ID_Paciente">
+    <column id="318" parent="274" name="ID_Paciente">
       <NotNull>1</NotNull>
       <Position>12</Position>
       <StateNumber>751</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="304" parent="271" name="ID_Nutricionista">
+    <column id="319" parent="274" name="ID_Nutricionista">
       <NotNull>1</NotNull>
       <Position>13</Position>
       <StateNumber>751</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="305" parent="271" name="ID_Personal">
+    <column id="320" parent="274" name="ID_Personal">
       <NotNull>1</NotNull>
       <Position>14</Position>
       <StateNumber>751</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="306" parent="271" name="ID_Treinos">
+    <column id="321" parent="274" name="ID_Treinos">
       <NotNull>1</NotNull>
       <Position>15</Position>
       <StateNumber>751</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <foreign-key id="307" parent="271" name="Consultas_ID_Paciente_fkey">
+    <foreign-key id="322" parent="274" name="Consultas_ID_Paciente_fkey">
       <ColNames>ID_Paciente</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16617</ObjectId>
@@ -4525,7 +4642,7 @@ false Zulu
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16561</RefTableId>
     </foreign-key>
-    <foreign-key id="308" parent="271" name="Consultas_ID_Nutricionista_fkey">
+    <foreign-key id="323" parent="274" name="Consultas_ID_Nutricionista_fkey">
       <ColNames>ID_Nutricionista</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16627</ObjectId>
@@ -4533,7 +4650,7 @@ false Zulu
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16545</RefTableId>
     </foreign-key>
-    <foreign-key id="309" parent="271" name="Consultas_ID_Personal_fkey">
+    <foreign-key id="324" parent="274" name="Consultas_ID_Personal_fkey">
       <ColNames>ID_Personal</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16632</ObjectId>
@@ -4541,7 +4658,7 @@ false Zulu
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16553</RefTableId>
     </foreign-key>
-    <foreign-key id="310" parent="271" name="Consultas_ID_Treinos_fkey">
+    <foreign-key id="325" parent="274" name="Consultas_ID_Treinos_fkey">
       <ColNames>ID_Treinos</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16642</ObjectId>
@@ -4549,7 +4666,7 @@ false Zulu
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16531</RefTableId>
     </foreign-key>
-    <index id="311" parent="271" name="Consultas_pkey">
+    <index id="326" parent="274" name="Consultas_pkey">
       <ColNames>ID
 ID_Paciente
 ID_Nutricionista
@@ -4562,7 +4679,7 @@ ID_Treinos</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="312" parent="271" name="Consultas_ID_key">
+    <index id="327" parent="274" name="Consultas_ID_key">
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16576</ObjectId>
@@ -4570,7 +4687,7 @@ ID_Treinos</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="313" parent="271" name="Consultas_ID_Paciente_key">
+    <index id="328" parent="274" name="Consultas_ID_Paciente_key">
       <ColNames>ID_Paciente</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16578</ObjectId>
@@ -4578,7 +4695,7 @@ ID_Treinos</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="314" parent="271" name="Consultas_ID_Nutricionista_key">
+    <index id="329" parent="274" name="Consultas_ID_Nutricionista_key">
       <ColNames>ID_Nutricionista</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16580</ObjectId>
@@ -4586,7 +4703,7 @@ ID_Treinos</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="315" parent="271" name="Consultas_ID_Personal_key">
+    <index id="330" parent="274" name="Consultas_ID_Personal_key">
       <ColNames>ID_Personal</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16582</ObjectId>
@@ -4594,7 +4711,7 @@ ID_Treinos</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="316" parent="271" name="Consultas_ID_Treinos_key">
+    <index id="331" parent="274" name="Consultas_ID_Treinos_key">
       <ColNames>ID_Treinos</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16584</ObjectId>
@@ -4602,44 +4719,44 @@ ID_Treinos</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="317" parent="271" name="Consultas_pkey">
+    <key id="332" parent="274" name="Consultas_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16575</ObjectId>
       <Primary>1</Primary>
       <StateNumber>751</StateNumber>
       <UnderlyingIndexId>16574</UnderlyingIndexId>
     </key>
-    <key id="318" parent="271" name="Consultas_ID_key">
+    <key id="333" parent="274" name="Consultas_ID_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16577</ObjectId>
       <StateNumber>751</StateNumber>
       <UnderlyingIndexId>16576</UnderlyingIndexId>
     </key>
-    <key id="319" parent="271" name="Consultas_ID_Paciente_key">
+    <key id="334" parent="274" name="Consultas_ID_Paciente_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16579</ObjectId>
       <StateNumber>751</StateNumber>
       <UnderlyingIndexId>16578</UnderlyingIndexId>
     </key>
-    <key id="320" parent="271" name="Consultas_ID_Nutricionista_key">
+    <key id="335" parent="274" name="Consultas_ID_Nutricionista_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16581</ObjectId>
       <StateNumber>751</StateNumber>
       <UnderlyingIndexId>16580</UnderlyingIndexId>
     </key>
-    <key id="321" parent="271" name="Consultas_ID_Personal_key">
+    <key id="336" parent="274" name="Consultas_ID_Personal_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16583</ObjectId>
       <StateNumber>751</StateNumber>
       <UnderlyingIndexId>16582</UnderlyingIndexId>
     </key>
-    <key id="322" parent="271" name="Consultas_ID_Treinos_key">
+    <key id="337" parent="274" name="Consultas_ID_Treinos_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16585</ObjectId>
       <StateNumber>751</StateNumber>
       <UnderlyingIndexId>16584</UnderlyingIndexId>
     </key>
-    <column id="323" parent="272" name="ID">
+    <column id="338" parent="275" name="ID">
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4648,70 +4765,70 @@ ID_Treinos</ColNames>
       <SequenceId>16544</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="324" parent="272" name="Nome">
+    <column id="339" parent="275" name="Nome">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>751</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="325" parent="272" name="Idade">
+    <column id="340" parent="275" name="Idade">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>751</StateNumber>
       <StoredType>date|0s</StoredType>
       <TypeId>1082</TypeId>
     </column>
-    <column id="326" parent="272" name="Endereço">
+    <column id="341" parent="275" name="Endereço">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>751</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="327" parent="272" name="Telefone">
+    <column id="342" parent="275" name="Telefone">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>751</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="328" parent="272" name="Email">
+    <column id="343" parent="275" name="Email">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StateNumber>751</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="329" parent="272" name="CRN">
+    <column id="344" parent="275" name="CRN">
       <NotNull>1</NotNull>
       <Position>7</Position>
       <StateNumber>751</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="330" parent="272" name="Senha_hash">
+    <column id="345" parent="275" name="Senha_hash">
       <NotNull>1</NotNull>
       <Position>8</Position>
       <StateNumber>751</StateNumber>
       <StoredType>text|0s</StoredType>
       <TypeId>25</TypeId>
     </column>
-    <column id="331" parent="272" name="Foto">
+    <column id="346" parent="275" name="Foto">
       <NotNull>1</NotNull>
       <Position>9</Position>
       <StateNumber>751</StateNumber>
       <StoredType>bytea|0s</StoredType>
       <TypeId>17</TypeId>
     </column>
-    <column id="332" parent="272" name="Data_cadastro">
+    <column id="347" parent="275" name="Data_cadastro">
       <NotNull>1</NotNull>
       <Position>10</Position>
       <StateNumber>751</StateNumber>
       <StoredType>date|0s</StoredType>
       <TypeId>1082</TypeId>
     </column>
-    <index id="333" parent="272" name="Nutricionistas_pkey">
+    <index id="348" parent="275" name="Nutricionistas_pkey">
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16550</ObjectId>
@@ -4720,14 +4837,14 @@ ID_Treinos</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="334" parent="272" name="Nutricionistas_pkey">
+    <key id="349" parent="275" name="Nutricionistas_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16551</ObjectId>
       <Primary>1</Primary>
       <StateNumber>751</StateNumber>
       <UnderlyingIndexId>16550</UnderlyingIndexId>
     </key>
-    <column id="335" parent="273" name="ID">
+    <column id="350" parent="276" name="ID">
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4736,70 +4853,70 @@ ID_Treinos</ColNames>
       <SequenceId>16552</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="336" parent="273" name="Nome">
+    <column id="351" parent="276" name="Nome">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>751</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="337" parent="273" name="Idade">
+    <column id="352" parent="276" name="Idade">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>751</StateNumber>
       <StoredType>date|0s</StoredType>
       <TypeId>1082</TypeId>
     </column>
-    <column id="338" parent="273" name="Endereço">
+    <column id="353" parent="276" name="Endereço">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StateNumber>751</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="339" parent="273" name="Telefone">
+    <column id="354" parent="276" name="Telefone">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>751</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="340" parent="273" name="Email">
+    <column id="355" parent="276" name="Email">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StateNumber>751</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="341" parent="273" name="CREF">
+    <column id="356" parent="276" name="CREF">
       <NotNull>1</NotNull>
       <Position>7</Position>
       <StateNumber>751</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="342" parent="273" name="Senha_hash">
+    <column id="357" parent="276" name="Senha_hash">
       <NotNull>1</NotNull>
       <Position>8</Position>
       <StateNumber>751</StateNumber>
       <StoredType>text|0s</StoredType>
       <TypeId>25</TypeId>
     </column>
-    <column id="343" parent="273" name="Foto">
+    <column id="358" parent="276" name="Foto">
       <NotNull>1</NotNull>
       <Position>9</Position>
       <StateNumber>751</StateNumber>
       <StoredType>bytea|0s</StoredType>
       <TypeId>17</TypeId>
     </column>
-    <column id="344" parent="273" name="Data_cadastro">
+    <column id="359" parent="276" name="Data_cadastro">
       <NotNull>1</NotNull>
       <Position>10</Position>
       <StateNumber>751</StateNumber>
       <StoredType>date|0s</StoredType>
       <TypeId>1082</TypeId>
     </column>
-    <index id="345" parent="273" name="Personal_pkey">
+    <index id="360" parent="276" name="Personal_pkey">
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16558</ObjectId>
@@ -4808,14 +4925,97 @@ ID_Treinos</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="346" parent="273" name="Personal_pkey">
+    <key id="361" parent="276" name="Personal_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16559</ObjectId>
       <Primary>1</Primary>
       <StateNumber>751</StateNumber>
       <UnderlyingIndexId>16558</UnderlyingIndexId>
     </key>
-    <column id="347" parent="274" name="ID">
+    <column id="362" parent="277" name="ID">
+      <DefaultExpression>nextval(&apos;&quot;Planos_Alimentares_ID_seq&quot;&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>763</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>33001</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="363" parent="277" name="Nome">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>763</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="364" parent="277" name="Objetivo">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>763</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="365" parent="277" name="Descricao">
+      <Position>4</Position>
+      <StateNumber>763</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="366" parent="277" name="ID_Paciente">
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>763</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="367" parent="277" name="ID_Nutricionista">
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StateNumber>763</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="368" parent="277" name="Data_Criacao">
+      <DefaultExpression>CURRENT_DATE</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+      <StateNumber>763</StateNumber>
+      <StoredType>date|0s</StoredType>
+      <TypeId>1082</TypeId>
+    </column>
+    <foreign-key id="369" parent="277" name="Planos_Alimentares_ID_Paciente_fkey">
+      <ColNames>ID_Paciente</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>33011</ObjectId>
+      <StateNumber>763</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16561</RefTableId>
+    </foreign-key>
+    <foreign-key id="370" parent="277" name="Planos_Alimentares_ID_Nutricionista_fkey">
+      <ColNames>ID_Nutricionista</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>33016</ObjectId>
+      <StateNumber>763</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16545</RefTableId>
+    </foreign-key>
+    <index id="371" parent="277" name="Planos_Alimentares_pkey">
+      <ColNames>ID</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>33009</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>763</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="372" parent="277" name="Planos_Alimentares_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>33010</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>763</StateNumber>
+      <UnderlyingIndexId>33009</UnderlyingIndexId>
+    </key>
+    <column id="373" parent="278" name="ID">
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4824,40 +5024,40 @@ ID_Treinos</ColNames>
       <SequenceId>16530</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="348" parent="274" name="Data_Treino">
+    <column id="374" parent="278" name="Data_Treino">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>751</StateNumber>
       <StoredType>date|0s</StoredType>
       <TypeId>1082</TypeId>
     </column>
-    <column id="349" parent="274" name="Exercicios">
+    <column id="375" parent="278" name="Exercicios">
       <Position>3</Position>
       <StateNumber>751</StateNumber>
       <StoredType>text|0s</StoredType>
       <TypeId>25</TypeId>
     </column>
-    <column id="350" parent="274" name="Observacao">
+    <column id="376" parent="278" name="Observacao">
       <Position>4</Position>
       <StateNumber>751</StateNumber>
       <StoredType>text|0s</StoredType>
       <TypeId>25</TypeId>
     </column>
-    <column id="351" parent="274" name="ID_Paciente">
+    <column id="377" parent="278" name="ID_Paciente">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StateNumber>751</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="352" parent="274" name="ID_Personal">
+    <column id="378" parent="278" name="ID_Personal">
       <NotNull>1</NotNull>
       <Position>6</Position>
       <StateNumber>751</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="353" parent="274" name="Completo">
+    <column id="379" parent="278" name="Completo">
       <DefaultExpression>false</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>7</Position>
@@ -4865,7 +5065,7 @@ ID_Treinos</ColNames>
       <StoredType>boolean|0s</StoredType>
       <TypeId>16</TypeId>
     </column>
-    <foreign-key id="354" parent="274" name="Treinos_ID_Paciente_fkey">
+    <foreign-key id="380" parent="278" name="Treinos_ID_Paciente_fkey">
       <ColNames>ID_Paciente</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16622</ObjectId>
@@ -4873,7 +5073,7 @@ ID_Treinos</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16561</RefTableId>
     </foreign-key>
-    <foreign-key id="355" parent="274" name="Treinos_ID_Personal_fkey">
+    <foreign-key id="381" parent="278" name="Treinos_ID_Personal_fkey">
       <ColNames>ID_Personal</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16637</ObjectId>
@@ -4881,7 +5081,7 @@ ID_Treinos</ColNames>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16553</RefTableId>
     </foreign-key>
-    <index id="356" parent="274" name="Treinos_pkey">
+    <index id="382" parent="278" name="Treinos_pkey">
       <ColNames>ID
 ID_Paciente
 ID_Personal</ColNames>
@@ -4892,7 +5092,7 @@ ID_Personal</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="357" parent="274" name="Treinos_ID_key">
+    <index id="383" parent="278" name="Treinos_ID_key">
       <ColNames>ID</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16538</ObjectId>
@@ -4900,7 +5100,7 @@ ID_Personal</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="358" parent="274" name="Treinos_ID_Paciente_key">
+    <index id="384" parent="278" name="Treinos_ID_Paciente_key">
       <ColNames>ID_Paciente</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16540</ObjectId>
@@ -4908,7 +5108,7 @@ ID_Personal</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="359" parent="274" name="Treinos_ID_Personal_key">
+    <index id="385" parent="278" name="Treinos_ID_Personal_key">
       <ColNames>ID_Personal</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16542</ObjectId>
@@ -4916,26 +5116,26 @@ ID_Personal</ColNames>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="360" parent="274" name="Treinos_pkey">
+    <key id="386" parent="278" name="Treinos_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16537</ObjectId>
       <Primary>1</Primary>
       <StateNumber>751</StateNumber>
       <UnderlyingIndexId>16536</UnderlyingIndexId>
     </key>
-    <key id="361" parent="274" name="Treinos_ID_key">
+    <key id="387" parent="278" name="Treinos_ID_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16539</ObjectId>
       <StateNumber>751</StateNumber>
       <UnderlyingIndexId>16538</UnderlyingIndexId>
     </key>
-    <key id="362" parent="274" name="Treinos_ID_Paciente_key">
+    <key id="388" parent="278" name="Treinos_ID_Paciente_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16541</ObjectId>
       <StateNumber>751</StateNumber>
       <UnderlyingIndexId>16540</UnderlyingIndexId>
     </key>
-    <key id="363" parent="274" name="Treinos_ID_Personal_key">
+    <key id="389" parent="278" name="Treinos_ID_Personal_key">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16543</ObjectId>
       <StateNumber>751</StateNumber>

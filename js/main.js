@@ -1,5 +1,3 @@
-// frontend/js/main.js
-// Funções de validação
 function showMessage(text, type) {
     const messageEl = document.getElementById('message');
     if (messageEl) {
@@ -25,7 +23,6 @@ function validateConfirmPassword(password, confirmPassword) {
     return password === confirmPassword;
 }
 
-// Formulário de Login
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
@@ -44,13 +41,11 @@ if (loginForm) {
             const data = await response.json();
 
             if (response.ok) {
-                // Armazenar token e informações do usuário
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('userType', data.tipo);
                 localStorage.setItem('userId', data.id);
                 localStorage.setItem('userName', data.nome);
 
-                // Redirecionar baseado no tipo de usuário
                 switch (data.tipo) {
                     case 'cliente':
                         window.location.href = '/Cliente/perfil.html';
@@ -73,7 +68,6 @@ if (loginForm) {
     });
 }
 
-// Função para cadastro genérico
 async function handleCadastro(formId, userType, extraFields = []) {
     const form = document.getElementById(formId);
 
@@ -81,13 +75,11 @@ async function handleCadastro(formId, userType, extraFields = []) {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Coletar dados básicos
             const nome = document.getElementById('nome').value;
             const email = document.getElementById('email').value;
             const senha = document.getElementById('senha').value;
             const confirmarSenha = document.getElementById('confirmarSenha').value;
 
-            // Validações
             if (!nome || !email || !senha || !confirmarSenha) {
                 showMessage('Preencha todos os campos obrigatórios', 'error');
                 return;
@@ -108,14 +100,12 @@ async function handleCadastro(formId, userType, extraFields = []) {
                 return;
             }
 
-            // Coletar campos extras
             const extraData = {};
             extraFields.forEach(field => {
                 extraData[field] = document.getElementById(field).value;
             });
 
             try {
-                // Montar objeto de usuário
                 let userData = {
                     Nome: nome,
                     Email: email,
@@ -123,7 +113,6 @@ async function handleCadastro(formId, userType, extraFields = []) {
                     ...extraData
                 };
 
-                // Para clientes, adicionar estrutura específica
                 if (userType === 'cliente') {
                     userData = {
                         Nome: nome,
@@ -140,7 +129,6 @@ async function handleCadastro(formId, userType, extraFields = []) {
                     };
                 }
 
-                // Determinar endpoint correto
                 let endpoint;
                 switch (userType) {
                     case 'cliente': endpoint = '/api/clientes'; break;
@@ -148,7 +136,6 @@ async function handleCadastro(formId, userType, extraFields = []) {
                     case 'personal': endpoint = '/api/personals'; break;
                 }
 
-                // Enviar para o backend
                 const response = await fetch(`http://localhost:3000${endpoint}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -158,7 +145,6 @@ async function handleCadastro(formId, userType, extraFields = []) {
                 if (response.ok) {
                     showMessage('Cadastro realizado com sucesso!', 'success');
                     form.reset();
-
                     setTimeout(() => {
                         window.location.href = 'login.html';
                     }, 2000);
@@ -173,12 +159,8 @@ async function handleCadastro(formId, userType, extraFields = []) {
     }
 }
 
-// Inicialização do dashboard e perfil
 document.addEventListener('DOMContentLoaded', async () => {
-    // Verificar se está em uma página que requer autenticação
-    if (window.location.pathname.includes('dashboard.html') ||
-        window.location.pathname.includes('perfil.html')) {
-
+    if (window.location.pathname.includes('dashboard.html') || window.location.pathname.includes('perfil.html')) {
         const token = localStorage.getItem('token');
         const userType = localStorage.getItem('userType');
         const userId = localStorage.getItem('userId');
@@ -189,7 +171,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         try {
-            // Obter dados do usuário
             const response = await fetch('http://localhost:3000/api/user/me', {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -200,19 +181,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const userData = await response.json();
 
-            // Preencher os dados na página
             if (document.getElementById('userName')) {
                 document.getElementById('userName').textContent = userData.Nome;
             }
 
-            if (document.getElementById('userNameTitle')) {
-                document.getElementById('userNameTitle').textContent = userData.Nome;
-            }
-
-            // Preencher campos comuns
             const commonFields = [
                 'Email', 'Telefone', 'Endereço', 'Data_Nascimento',
-                'CRN', 'CREF', 'Altura', 'Meta', 'Sexo', 'Turno'
+                'CRN', 'CREF', 'Altura', 'Meta', 'Sexo', 'Turno', 'Nome'
             ];
 
             commonFields.forEach(field => {
@@ -222,20 +197,175 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             });
 
-            // Preencher campos específicos por tipo
-            if (userType === 'cliente') {
-                // Campos específicos de cliente
-                if (document.getElementById('userObservacao') && userData.Observacao) {
-                    document.getElementById('userObservacao').textContent = userData.Observacao;
-                }
-            }
-            else if (userType === 'nutricionista') {
-                // Campos específicos de nutricionista
-            }
-            else if (userType === 'personal') {
-                // Campos específicos de personal
+            if (userType === 'cliente' && document.getElementById('userObservacao') && userData.Observacao) {
+                document.getElementById('userObservacao').textContent = userData.Observacao;
             }
 
+            // Carregar clientes e planos
+            if (userType === 'personal' && window.location.pathname.includes('perfil.html')) {
+                const clientsResponse = await fetch('http://localhost:3000/api/personal/clientes', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const clients = await clientsResponse.json();
+                const clientList = document.getElementById('clientList');
+                clientList.innerHTML = clients.map(cliente => `
+                    <li>
+                        <span>${cliente.Nome}</span>
+                        <p>Objetivo: ${cliente.Meta || 'Não especificado'}</p>
+                    </li>
+                `).join('');
+
+                const plansResponse = await fetch('http://localhost:3000/api/personal/treinos', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const plans = await plansResponse.json();
+                const trainingPlans = document.getElementById('trainingPlans');
+                trainingPlans.innerHTML = plans.map(plan => `
+                    <li>
+                        <p><strong>Plano de Treino - ${plan.ClienteNome}</strong></p>
+                        <p>Objetivo: ${plan.Objetivo || 'Não especificado'}</p>
+                        <p>Atualizado: ${new Date(plan.Data_Treino).toLocaleDateString()}</p>
+                        <button>Visualizar</button>
+                        <button>Editar</button>
+                    </li>
+                `).join('');
+
+                const clientSelect = document.getElementById('clientSelect');
+                clientSelect.innerHTML = '<option value="">Selecione...</option>' + clients.map(cliente => `
+                    <option value="${cliente.ID}">${cliente.Nome}</option>
+                `).join('');
+
+                const calcClientSelect = document.getElementById('calcClientSelect');
+                calcClientSelect.innerHTML = '<option value="">Selecione...</option>' + clients.map(cliente => `
+                    <option value="${cliente.ID}">${cliente.Nome}</option>
+                `).join('');
+
+                document.getElementById('createPlanBtn').addEventListener('click', () => {
+                    document.getElementById('createTrainingModal').style.display = 'flex';
+                });
+                document.getElementById('cancelTrainingBtn').addEventListener('click', () => {
+                    document.getElementById('createTrainingModal').style.display = 'none';
+                });
+
+                document.getElementById('addExerciseBtn').addEventListener('click', () => {
+                    const exerciseGroup = document.createElement('div');
+                    exerciseGroup.className = 'exercise-group';
+                    exerciseGroup.innerHTML = `
+                        <input type="text" name="exerciseName[]" placeholder="Exercício" required>
+                        <input type="number" name="sets[]" placeholder="Séries" required>
+                        <input type="number" name="reps[]" placeholder="Repetições" required>
+                        <input type="number" name="weight[]" placeholder="Carga (kg)">
+                    `;
+                    document.getElementById('exercises').appendChild(exerciseGroup);
+                });
+
+                document.getElementById('createTrainingForm').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const formData = new FormData(e.target);
+                    const exercises = [];
+                    document.querySelectorAll('.exercise-group').forEach(group => {
+                        exercises.push({
+                            name: group.querySelector('input[name="exerciseName[]"]').value,
+                            sets: group.querySelector('input[name="sets[]"]').value,
+                            reps: group.querySelector('input[name="reps[]"]').value,
+                            weight: group.querySelector('input[name="weight[]"]').value || null
+                        });
+                    });
+                    const data = {
+                        Cliente_ID: formData.get('client'),
+                        Nome: formData.get('trainingName'),
+                        Objetivo: formData.get('trainingGoal'),
+                        Descricao: formData.get('trainingDescription'),
+                        Exercicios: JSON.stringify(exercises)
+                    };
+                    const response = await fetch('http://localhost:3000/api/personal/treinos', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+                        body: JSON.stringify(data)
+                    });
+                    if (response.ok) {
+                        showMessage('Treino criado com sucesso!', 'success');
+                        document.getElementById('createTrainingModal').style.display = 'none';
+                        location.reload();
+                    } else {
+                        showMessage('Erro ao criar treino', 'error');
+                    }
+                });
+
+                document.getElementById('calc1RMForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const weight = parseFloat(document.getElementById('weightUsed').value);
+                    const reps = parseInt(document.getElementById('maxReps').value);
+                    const oneRM = weight * (1 + reps / 30); // Fórmula de Epley
+                    document.getElementById('result1RM').textContent = oneRM.toFixed(2) + ' kg';
+                });
+
+                document.getElementById('close1RMBtn').addEventListener('click', () => {
+                    document.getElementById('calc1RMModal').style.display = 'none';
+                });
+            } else if (userType === 'nutricionista' && window.location.pathname.includes('perfil.html')) {
+                const clientsResponse = await fetch('http://localhost:3000/api/nutricionista/clientes', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const clients = await clientsResponse.json();
+                const clientList = document.getElementById('clientList');
+                clientList.innerHTML = clients.map(cliente => `
+                    <li>
+                        <span>${cliente.Nome}</span>
+                        <p>Objetivo: ${cliente.Meta || 'Não especificado'}</p>
+                    </li>
+                `).join('');
+
+                const plansResponse = await fetch('http://localhost:3000/api/nutricionista/planos', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const plans = await plansResponse.json();
+                const nutritionPlans = document.getElementById('nutritionPlans');
+                nutritionPlans.innerHTML = plans.map(plan => `
+                    <li>
+                        <p><strong>Plano Alimentar - ${plan.ClienteNome}</strong></p>
+                        <p>Objetivo: ${plan.Objetivo}</p>
+                        <p>Criado em: ${new Date(plan.Data_Criacao).toLocaleDateString()}</p>
+                        <button>Visualizar</button>
+                        <button>Editar</button>
+                    </li>
+                `).join('');
+
+                const clientSelect = document.getElementById('clientSelect');
+                clientSelect.innerHTML = '<option value="">Selecione...</option>' + clients.map(cliente => `
+                    <option value="${cliente.ID}">${cliente.Nome}</option>
+                `).join('');
+
+                document.getElementById('createNutritionPlanBtn').addEventListener('click', () => {
+                    document.getElementById('createNutritionPlanModal').style.display = 'flex';
+                });
+                document.getElementById('cancelNutritionPlanBtn').addEventListener('click', () => {
+                    document.getElementById('createNutritionPlanModal').style.display = 'none';
+                });
+
+                document.getElementById('createNutritionPlanForm').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const formData = new FormData(e.target);
+                    const data = {
+                        Cliente_ID: formData.get('client'),
+                        Nome: formData.get('planName'),
+                        Objetivo: formData.get('planGoal'),
+                        Descricao: formData.get('planDescription')
+                    };
+                    const response = await fetch('http://localhost:3000/api/nutricionista/planos', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+                        body: JSON.stringify(data)
+                    });
+                    if (response.ok) {
+                        showMessage('Plano alimentar criado com sucesso!', 'success');
+                        document.getElementById('createNutritionPlanModal').style.display = 'none';
+                        location.reload();
+                    } else {
+                        showMessage('Erro ao criar plano alimentar', 'error');
+                    }
+                });
+            }
         } catch (error) {
             console.error('Erro:', error);
             alert('Sessão expirada. Faça login novamente.');
@@ -244,7 +374,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    // Inicializar formulários de cadastro
     handleCadastro('cadastroAlunoForm', 'cliente', [
         'sexo', 'data_nascimento', 'endereco', 'telefone', 'turno',
         'altura', 'meta', 'observacao'
@@ -258,7 +387,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         'idade', 'endereco', 'telefone', 'crn'
     ]);
 
-    // Logout
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {

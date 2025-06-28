@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Personal Trainer | FitLink</title>
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h2>Menu</h2>
+    </div>
+    <ul class="sidebar-menu">
+        <li><a href="/acess_p/">Criação de Treinos</a></li>
+        <li><a href="/acess_p">Edição de Exercícios</a></li>
+        <li><a href="/acess_p">Agendas</a></li>
+        <li><a href="/acess_p">Acompanhamento dos Alunos</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <header>
+        <div class="profile-header">
+            <span class="profile-icon">💪</span>
+            <div>
+                <h2 id="userName">Carregando...</h2>
+                <p>Personal Trainer FitLink</p>
+            </div>
+            <button id="logoutBtn" aria-label="Sair da conta">Sair</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="profile-content">
+            <div class="info-section">
+                <h3>Informações Pessoais</h3>
+                <p><strong>Nome Completo:</strong> <span id="userNome">Carregando...</span></p>
+                <p><strong>E-mail:</strong> <span id="userEmail">Carregando...</span></p>
+                <p><strong>Telefone:</strong> <span id="userTelefone">Carregando...</span></p>
+                <p><strong>CREF:</strong> <span id="userCREF">Carregando...</span></p>
+                <button id="editProfileBtn" aria-label="Editar perfil">Editar Perfil</button>
+            </div>
+
+            <div class="clients-section">
+                <h3>Meus Clientes</h3>
+                <ul id="clientList"></ul>
+                <button id="addClientBtn" aria-label="Adicionar novo cliente">Adicionar Cliente</button>
+            </div>
+
+            <div class="plans-section">
+                <h3>Planos de Treino</h3>
+                <ul id="trainingPlans"></ul>
+                <button id="createPlanBtn" aria-label="Criar novo plano de treino">Criar Novo Plano</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>FitLink - o seu parceiro fitness © 2025</p>
+    </footer>
+</div>
+
+<div id="createTrainingModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h2>Criar Novo Treino</h2>
+        <form id="createTrainingForm">
+            <div class="form-group">
+                <label for="clientSelect">Cliente</label>
+                <select id="clientSelect" name="client" required>
+                    <option value="">Selecione...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="trainingName">Nome do Treino</label>
+                <input type="text" id="trainingName" name="trainingName" required>
+            </div>
+            <div class="form-group">
+                <label for="trainingGoal">Objetivo</label>
+                <input type="text" id="trainingGoal" name="trainingGoal" required>
+            </div>
+            <div class="form-group">
+                <label for="trainingDescription">Descrição</label>
+                <textarea id="trainingDescription" name="trainingDescription"></textarea>
+            </div>
+            <div id="exercises">
+                <h3>Exercícios</h3>
+                <div class="exercise-group">
+                    <input type="text" name="exerciseName[]" placeholder="Exercício" required>
+                    <input type="number" name="sets[]" placeholder="Séries" required>
+                    <input type="number" name="reps[]" placeholder="Repetições" required>
+                    <input type="number" name="weight[]" placeholder="Carga (kg)">
+                </div>
+            </div>
+            <button type="button" id="addExerciseBtn">Adicionar Exercício</button>
+            <button type="submit">Salvar Treino</button>
+            <button type="button" id="cancelTrainingBtn">Cancelar</button>
+        </form>
+    </div>
+</div>
+
+<div id="calc1RMModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h2>Cálculo de Carga Máxima (1RM)</h2>
+        <form id="calc1RMForm">
+            <div class="form-group">
+                <label for="calcClientSelect">Cliente</label>
+                <select id="calcClientSelect" name="client" required>
+                    <option value="">Selecione...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exerciseName">Exercício</label>
+                <input type="text" id="exerciseName" name="exerciseName" required>
+            </div>
+            <div class="form-group">
+                <label for="weightUsed">Peso Utilizado (kg)</label>
+                <input type="number" id="weightUsed" name="weightUsed" required>
+            </div>
+            <div class="form-group">
+                <label for="maxReps">Repetições Máximas</label>
+                <input type="number" id="maxReps" name="maxReps" required>
+            </div>
+            <button type="submit">Calcular Carga Máxima</button>
+            <p><strong>Carga Máxima Estimada (1RM):</strong> <span id="result1RM">--</span></p>
+            <p>Esta é uma estimativa baseada na fórmula de Epley</p>
+            <button type="button" id="close1RMBtn">Fechar</button>
+        </form>
+    </div>
+</div>
+
+<script src="/js/main.js"></script>
+</body>
+</html>

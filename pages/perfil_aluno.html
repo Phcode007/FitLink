@@ -1,436 +1,84 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil do Aluno - FitLink</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <style>
-        :root {
-            --primary: #328E6E;
-            --primary-light: #67AE6E;
-            --secondary: #90C67C;
-            --accent: #E1EEBC;
-            --dark: #1a1a2e;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9fbf7;
-            color: var(--dark);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            padding: 20px 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .user-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background-color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--primary);
-            border: 3px solid var(--accent);
-        }
-
-        .user-details h1 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-        }
-
-        .user-details p {
-            opacity: 0.9;
-            font-size: 1.1rem;
-        }
-
-        .btn-logout {
-            background: transparent;
-            border: 2px solid white;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-logout:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .profile-container {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        @media (max-width: 900px) {
-            .profile-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .profile-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            padding: 25px;
-        }
-
-        .profile-card h2 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--accent);
-        }
-
-        .profile-details {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
-
-        .detail-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .detail-label {
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-        }
-
-        .detail-value {
-            color: var(--gray);
-            padding: 10px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            min-height: 40px;
-            display: flex;
-            align-items: center;
-        }
-
-        .progress-section {
-            margin-top: 30px;
-        }
-
-        .progress-bar {
-            height: 10px;
-            background: #e0e0e0;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-top: 10px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--primary);
-            width: 65%;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 10px 0;
-        }
-
-        .stat-label {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .btn-action {
-            flex: 1;
-            padding: 12px;
-            border-radius: 8px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-light);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(50, 142, 110, 0.1);
-        }
-
-        .consultations {
-            margin-top: 40px;
-        }
-
-        .consultation-list {
-            display: grid;
-            gap: 15px;
-        }
-
-        .consultation-item {
-            background: white;
-            border-radius: 10px;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-        }
-
-        .consultation-info h3 {
-            margin-bottom: 5px;
-            color: var(--dark);
-        }
-
-        .consultation-info p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        .consultation-status {
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .status-scheduled {
-            background: rgba(255, 193, 7, 0.2);
-            color: #ff9800;
-        }
-
-        .status-completed {
-            background: rgba(76, 175, 80, 0.2);
-            color: #4caf50;
-        }
-
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 30px 0;
-            margin-top: 50px;
-            text-align: center;
-        }
-    </style>
+    <title>Perfil - Aluno | FitLink</title>
+    <link rel="stylesheet" href="/css/profile.css">
 </head>
 <body>
-<header>
-    <div class="container">
-        <div class="header-content">
-            <div class="user-info">
-                <div class="user-avatar">👤</div>
-                <div class="user-details">
-                    <h1 id="userNameTitle">Carregando...</h1>
-                    <p>Aluno FitLink</p>
-                </div>
-            </div>
-            <button id="logoutBtn" class="btn-logout">Sair</button>
-        </div>
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h2>Menu</h2>
     </div>
-</header>
+    <ul class="sidebar-menu">
+        <li><a href="/pages/dashboard.html">Dashboard de Desempenho</a></li>
+        <li><a href="/pages/">Metas</a></li>
+        <li><a href="/pages/">Planejamento</a></li>
+        <li><a href="/pages/">Dieta</a></li>
+    </ul>
+</div>
 
-<main class="container">
-    <div class="profile-container">
-        <div>
-            <div class="profile-card">
-                <h2>Informações Pessoais</h2>
-                <div class="profile-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Nome Completo</span>
-                        <div class="detail-value" id="userName"></div>
-                    </div>
-
-                    <div class="detail-item">
-                        <span class="detail-label">E-mail</span>
-                        <div class="detail-value" id="userEmail"></div>
-                    </div>
-
-                    <div class="detail-item">
-                        <span class="detail-label">Telefone</span>
-                        <div class="detail-value" id="userTelefone"></div>
-                    </div>
-
-                    <div class="detail-item">
-                        <span class="detail-label">Data de Nascimento</span>
-                        <div class="detail-value" id="userData_Nascimento"></div>
-                    </div>
-
-                    <div class="detail-item">
-                        <span class="detail-label">Sexo</span>
-                        <div class="detail-value" id="userSexo"></div>
-                    </div>
-
-                    <div class="detail-item">
-                        <span class="detail-label">Endereço</span>
-                        <div class="detail-value" id="userEndereço"></div>
-                    </div>
-
-                    <div class="detail-item">
-                        <span class="detail-label">Turno Preferido</span>
-                        <div class="detail-value" id="userTurno"></div>
-                    </div>
-
-                    <div class="detail-item">
-                        <span class="detail-label">Altura</span>
-                        <div class="detail-value" id="userAltura"></div>
-                    </div>
-
-                    <div class="detail-item">
-                        <span class="detail-label">Meta</span>
-                        <div class="detail-value" id="userMeta"></div>
-                    </div>
-
-                    <!-- Campo de Observação adicionado -->
-                    <div class="detail-item">
-                        <span class="detail-label">Observações</span>
-                        <div class="detail-value" id="userObservacao"></div>
-                    </div>
-                </div>
-
-                <div class="action-buttons">
-                    <button class="btn-action btn-primary">Editar Perfil</button>
-                    <button class="btn-action btn-secondary">Mudar Senha</button>
-                </div>
+<div class="main-content">
+    <header>
+        <div class="profile-header">
+            <span class="profile-icon">👤</span>
+            <div>
+                <h2 id="userName">Carregando...</h2>
+                <p>Aluno FitLink</p>
             </div>
-
-            <div class="profile-card progress-section">
-                <h2>Progresso</h2>
-                <div class="detail-item">
-                    <span class="detail-label">Objetivo: <span id="progressMeta"></span></span>
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
-                    <span class="detail-label" id="progressPercentage">65% completo</span>
-                </div>
-            </div>
+            <button id="logoutBtn" aria-label="Sair da conta">Sair</button>
         </div>
+    </header>
 
-        <div>
-            <div class="profile-card">
-                <h2>Estatísticas</h2>
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-label">Consultas Realizadas</div>
-                        <div class="stat-value" id="statConsultas">0</div>
-                        <div class="stat-label">este mês</div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-label">Treinos Completos</div>
-                        <div class="stat-value" id="statTreinos">0</div>
-                        <div class="stat-label">este mês</div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-label">Peso Atual</div>
-                        <div class="stat-value" id="statPeso">0kg</div>
-                        <div class="stat-label" id="statPesoVariacao">-0kg este mês</div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-label">IMC</div>
-                        <div class="stat-value" id="statIMC">0.0</div>
-                        <div class="stat-label" id="statIMCCategoria">--</div>
-                    </div>
-                </div>
+    <main>
+        <section class="profile-content">
+            <div class="info-section">
+                <h3>Informações Pessoais</h3>
+                <p><strong>Nome Completo:</strong> <span id="userNome">Carregando...</span></p>
+                <p><strong>E-mail:</strong> <span id="userEmail">Carregando...</span></p>
+                <p><strong>Telefone:</strong> <span id="userTelefone">Carregando...</span></p>
+                <p><strong>Data de Nascimento:</strong> <span id="userData_Nascimento">Carregando...</span></p>
+                <p><strong>Sexo:</strong> <span id="userSexo">Carregando...</span></p>
+                <p><strong>Endereço:</strong> <span id="userEndereço">Carregando...</span></p>
+                <p><strong>Turno Preferido:</strong> <span id="userTurno">Carregando...</span></p>
+                <p><strong>Altura:</strong> <span id="userAltura">Carregando...</span></p>
+                <p><strong>Meta:</strong> <span id="userMeta">Carregando...</span></p>
+                <p><strong>Observações:</strong> <span id="userObservacao">Carregando...</span></p>
+                <button id="editProfileBtn" aria-label="Editar perfil">Editar Perfil</button>
+                <button id="changePasswordBtn" aria-label="Mudar senha">Mudar Senha</button>
             </div>
 
-            <div class="profile-card consultations">
-                <h2>Próximas Consultas</h2>
-                <div class="consultation-list" id="proximasConsultas">
-                    <!-- Dados serão carregados dinamicamente -->
-                </div>
+            <div class="progress-section">
+                <h3>Progresso</h3>
+                <p><strong>Objetivo:</strong> <span id="userMetaProgress">Carregando...</span></p>
+                <p>65% completo</p>
             </div>
 
-            <div class="profile-card consultations">
-                <h2>Histórico Recente</h2>
-                <div class="consultation-list" id="historicoConsultas">
-                    <!-- Dados serão carregados dinamicamente -->
-                </div>
+            <div class="stats-section">
+                <h3>Estatísticas</h3>
+                <p><strong>Consultas Realizadas:</strong> <span id="consultasMes">0</span> este mês</p>
+                <p><strong>Treinos Completos:</strong> <span id="treinosMes">0</span> este mês</p>
+                <p><strong>Peso Atual:</strong> <span id="pesoAtual">0kg</span> -0kg este mês</p>
+                <p><strong>IMC:</strong> <span id="imcAtual">0.0</span> --</p>
             </div>
-        </div>
-    </div>
-</main>
 
-<footer>
-    <div class="container">
-        <p>FitLink - o seu parceiro fitness &copy; 2025</p>
-    </div>
-</footer>
+            <div class="consultas-section">
+                <h3>Próximas Consultas</h3>
+                <ul id="nextConsultas"></ul>
+            </div>
+
+            <div class="history-section">
+                <h3>Histórico Recente</h3>
+                <ul id="recentHistory"></ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>FitLink - o seu parceiro fitness © 2025</p>
+    </footer>
+</div>
 
 <script src="/js/main.js"></script>
 </body>
