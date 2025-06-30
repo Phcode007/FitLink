@@ -8,19 +8,4 @@
       </scope>
     </mapping>
   </component>
-  <component name="SqlDataSourceStorage">
-    <option name="dataSources">
-      <list>
-        <State>
-          <option name="id" value="fda1c4b3-871e-4cea-9739-6c0093fd9f4a" />
-          <option name="name" value="bdfit_link@localhost (DDL)" />
-          <option name="dbmsName" value="POSTGRES" />
-          <option name="urls">
-            <array />
-          </option>
-          <option name="outLayout" value="File per object by schema.groovy" />
-        </State>
-      </list>
-    </option>
-  </component>
 </project>

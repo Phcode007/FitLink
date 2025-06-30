@@ -5,19 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1a1434f-444b-4546-a6a6-727951671d88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/css/profile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/perfil_nutricionista.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/perfil_personal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/95fa5366-daf0-49ad-a6c0-91a9965a9286.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/95fa5366-daf0-49ad-a6c0-91a9965a9286.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/95fa5366-daf0-49ad-a6c0-91a9965a9286/storage_v2/_src_/database/bdfit_link.qmleUA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/95fa5366-daf0-49ad-a6c0-91a9965a9286/storage_v2/_src_/database/bdfit_link.qmleUA/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqlDataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqlDataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bd/connect bdfitlink.sql" beforeDir="false" afterPath="$PROJECT_DIR$/bd/connect bdfitlink.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/perfil_aluno.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/perfil_aluno.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/perfil_nutricionista.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/perfil_nutricionista.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/perfil_personal.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/perfil_personal.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +137,9 @@
       <workItem from="1751064196069" duration="5573000" />
       <workItem from="1751074002098" duration="1507000" />
       <workItem from="1751112065238" duration="1289000" />
-      <workItem from="1751114002696" duration="2198000" />
+      <workItem from="1751114002696" duration="4891000" />
+      <workItem from="1751292416996" duration="1198000" />
+      <workItem from="1751312726936" duration="2696000" />
     </task>
     <servers />
   </component>
