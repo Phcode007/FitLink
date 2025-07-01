@@ -1,0 +1,231 @@
+/* Estilos para páginas de autenticação */
+.auth-container {
+    display: flex;
+    min-height: 100vh;
+    padding: 120px 0 60px;
+}
+
+.auth-card {
+    flex: 1;
+    max-width: 500px;
+    padding: 40px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(47, 82, 73, 0.1);
+    z-index: 1;
+    margin: 20px;
+}
+
+.auth-image {
+    flex: 1;
+    background: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80') center/cover no-repeat;
+    position: relative;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.auth-image .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(47, 82, 73, 0.8) 0%, rgba(67, 112, 87, 0.6) 100%);
+    border-radius: 10px;
+}
+
+.auth-card h1 {
+    font-size: 2.2rem;
+    color: #2F5249;
+    margin-bottom: 10px;
+}
+
+.auth-card p {
+    color: #437057;
+    margin-bottom: 30px;
+}
+
+.auth-form .form-group {
+    margin-bottom: 20px;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2F5249;
+}
+
+.auth-form input,
+.auth-form select,
+.auth-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.auth-form input:focus,
+.auth-form select:focus,
+.auth-form textarea:focus {
+    border-color: #978067;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(151, 176, 103, 0.2);
+}
+
+.auth-form .form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.auth-form .form-row .form-group {
+    flex: 1;
+}
+
+.auth-form select[multiple] {
+    height: 120px;
+}
+
+.auth-form textarea {
+    resize: vertical;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-options label {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #437057;
+}
+
+.form-options a {
+    color: #978067;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.form-options a:hover {
+    color: #2F5249;
+}
+
+.btn-auth {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #437057 0%, #2F5249 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 20px;
+}
+
+.btn-auth:hover {
+    background: linear-gradient(135deg, #2F5249 0%, #437057 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(67, 112, 87, 0.3);
+}
+
+.auth-divider {
+    position: relative;
+    text-align: center;
+    margin: 25px 0;
+}
+
+.auth-divider span {
+    display: inline-block;
+    padding: 0 15px;
+    background: white;
+    position: relative;
+    z-index: 1;
+    color: #978067;
+}
+
+.auth-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #ddd;
+    z-index: 0;
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.auth-links p {
+    margin-bottom: 10px;
+    color: #437057;
+}
+
+.auth-links a {
+    color: #978067;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.auth-links a:hover {
+    color: #2F5249;
+}
+
+.role-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.role-links a {
+    font-weight: 500;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .auth-container {
+        flex-direction: column;
+        padding: 120px 20px 60px;
+    }
+
+    .auth-card {
+        max-width: 100%;
+        margin: 0 0 40px;
+    }
+
+    .auth-image {
+        min-height: 300px;
+        margin: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .auth-card {
+        padding: 30px 20px;
+    }
+
+    .auth-form .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}

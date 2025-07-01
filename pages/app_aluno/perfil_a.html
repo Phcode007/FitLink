@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLink - Meu Perfil</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">FitLink</div>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="/pages/app_aluno/dashboard_a.html"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+            <li><a href="meus-treinos.html"><i class="fas fa-dumbbell"></i> <span>Meus Treinos</span></a></li>
+            <li><a href="nutricionistas.html"><i class="fas fa-apple-alt"></i> <span>Nutrição</span></a></li>
+            <li><a href="perfil_a.html" class="active"><i class="fas fa-user"></i> <span>Meu Perfil</span></a></li>
+            <li><a href="/index.html"><i class="fas fa-sign-out-alt"></i> <span>Sair</span></a></li>
+        </ul>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <header class="content-header">
+            <h1>Meu Perfil</h1>
+            <div class="user-menu">
+                <div class="user-profile">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Usuário" class="user-avatar">
+                    <div class="user-name">João Silva</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="grid-2">
+            <!-- Informações Pessoais -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h2 class="card-title">Informações Pessoais</h2>
+                    <a href="#" class="card-action">Editar</a>
+                </div>
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="João Silva">
+                        <button class="btn-outline">Alterar Foto</button>
+                    </div>
+                    <div class="profile-details">
+                        <div class="detail-item">
+                            <label>Nome Completo</label>
+                            <p>João Silva</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Email</label>
+                            <p>joao.silva@email.com</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Data de Nascimento</label>
+                            <p>15/03/1990</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Telefone</label>
+                            <p>(11) 98765-4321</p>
+                        </div>
+                        <div class="detail-item">
+                            <label>Localização</label>
+                            <p>São Paulo, SP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objetivos -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h2 class="card-title">Meus Objetivos</h2>
+                    <a href="#" class="card-action">Editar</a>
+                </div>
+                <div class="goals-list">
+                    <div class="goal-item">
+                        <i class="fas fa-bullseye"></i>
+                        <div>
+                            <h3>Perda de Peso</h3>
+                            <p>Meta: Perder 10kg em 3 meses</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 40%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <i class="fas fa-running"></i>
+                        <div>
+                            <h3>Resistência</h3>
+                            <p>Meta: Correr 10km sem parar</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 25%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <i class="fas fa-dumbbell"></i>
+                        <div>
+                            <h3>Força</h3>
+                            <p>Meta: Levantar 100kg no supino</p>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h2 class="card-title">Profissionais</h2>
+                <a href="nutricionistas.html" class="card-action">Ver todos</a>
+            </div>
+            <div class="grid-2">
+                <!-- Personal Trainer -->
+                <div class="professional-item">
+                    <div class="pro-header">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Personal">
+                        <div>
+                            <h3>Carlos Oliveira</h3>
+                            <p>Personal Trainer</p>
+                        </div>
+                    </div>
+                    <div class="pro-details">
+                        <p><i class="fas fa-calendar"></i> Desde: 15/03/2023</p>
+                        <p><i class="fas fa-dumbbell"></i> 12 treinos/mês</p>
+                        <div class="pro-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.7</span>
+                        </div>
+                    </div>
+                    <div class="pro-actions">
+                        <a href="#" class="btn-outline">Mensagem</a>
+                        <a href="#" class="btn-outline">Agendar</a>
+                    </div>
+                </div>
+
+                <!-- Nutricionista -->
+                <div class="professional-item">
+                    <div class="pro-header">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Nutricionista">
+                        <div>
+                            <h3>Mariana Costa</h3>
+                            <p>Nutricionista</p>
+                        </div>
+                    </div>
+                    <div class="pro-details">
+                        <p><i class="fas fa-calendar"></i> Desde: 10/02/2023</p>
+                        <p><i class="fas fa-apple-alt"></i> 4 consultas/mês</p>
+                        <div class="pro-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                    <div class="pro-actions">
+                        <a href="#" class="btn-outline">Mensagem</a>
+                        <a href="#" class="btn-outline">Agendar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

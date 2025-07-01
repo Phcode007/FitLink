@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    color: #2F5249;
+    line-height: 1.6;
+    background-color: #f8f8f8;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #437057;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #437057;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: #437057;
+    color: white;
+}
+
+.btn-cta {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #437057 0%, #2F5249 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    margin: 5px;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 160px;
+    box-shadow: 0 4px 12px rgba(67, 112, 87, 0.25);
+}
+
+.btn-cta:hover {
+    background: linear-gradient(135deg, #2F5249 0%, #437057 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(67, 112, 87, 0.3);
+}
+
+header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(47, 82, 73, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    color: #437057;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #2F5249;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #978067;
+}
+
+footer {
+    background: #2F5249;
+    padding: 40px 0 20px;
+    border-top: 1px solid rgba(151, 176, 103, 0.3);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.footer-brand {
+    flex: 2;
+    min-width: 300px;
+    margin-right: 40px;
+}
+
+.footer-brand .logo {
+    color: #E3DE61;
+    margin-bottom: 15px;
+}
+
+.footer-brand p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #E3DE61;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(151, 176, 103, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+}

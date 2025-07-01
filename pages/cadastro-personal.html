@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLink - Cadastro de Personal Trainer</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="logo">FitLink</div>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="login.html">Entrar</a>
+        </nav>
+    </div>
+</header>
+
+<main class="auth-container">
+    <div class="auth-card">
+        <h1>Cadastre-se como Personal Trainer</h1>
+        <p>Conecte-se com alunos e expanda sua carreira</p>
+
+        <form class="auth-form">
+            <div class="form-group">
+                <label for="name">Nome Completo</label>
+                <input type="text" id="name" placeholder="Seu nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="seu@email.com" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">Confirme a Senha</label>
+                    <input type="password" id="confirm-password" placeholder="••••••••" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cref">Número do CREF</label>
+                <input type="text" id="cref" placeholder="Ex: 012345-G/SP" required>
+            </div>
+
+            <div class="form-group">
+                <label for="specialties">Especialidades</label>
+                <select id="specialties" multiple>
+                    <option value="musculacao">Musculação</option>
+                    <option value="funcional">Treino Funcional</option>
+                    <option value="crossfit">Crossfit</option>
+                    <option value="hiit">HIIT</option>
+                    <option value="reabilitacao">Reabilitação</option>
+                    <option value="emagrecimento">Emagrecimento</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="bio">Sobre Você</label>
+                <textarea id="bio" placeholder="Fale sobre sua experiência e abordagem..." rows="4"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" required> Concordo com os Termos de Uso e Política de Privacidade
+                </label>
+            </div>
+
+            <button type="submit" class="btn-auth">Criar Conta</button>
+
+            <div class="auth-links">
+                <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+                <p><a href="cadastro-aluno.html">Sou Aluno</a> | <a href="cadastro-nutricionista.html">Sou Nutricionista</a></p>
+            </div>
+        </form>
+    </div>
+
+    <div class="auth-image">
+        <div class="overlay"></div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">FitLink</div>
+                <p>Conectando profissionais e alunos para resultados extraordinários</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Termos de Uso</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Contato</a>
+            </div>
+        </div>
+        <div class="copyright">© 2025 FitLink. Todos os direitos reservados.</div>
+    </div>
+</footer>
+</body>
+</html>

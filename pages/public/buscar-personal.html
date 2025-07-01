@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLink - Encontre Personal Trainers</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/app.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="logo">FitLink</div>
+        <nav>
+            <a href="../../index.html">Home</a>
+            <a href="/pages/login.html">Entrar</a>
+            <a href="/pages/cadastro-aluno.html" class="btn-outline">Cadastre-se</a>
+        </nav>
+    </div>
+</header>
+
+<section class="search-hero">
+    <div class="container">
+        <h1>Encontre o Personal Trainer Perfeito</h1>
+        <p>Conecte-se com profissionais qualificados para alcançar seus objetivos</p>
+
+        <div class="search-box">
+            <input type="text" placeholder="Buscar por especialidade, localização...">
+            <button class="btn-primary">Buscar</button>
+        </div>
+    </div>
+</section>
+
+<section class="filters">
+    <div class="container">
+        <div class="filter-options">
+            <div class="filter-group">
+                <label>Especialidade:</label>
+                <select>
+                    <option>Todas</option>
+                    <option>Musculação</option>
+                    <option>Funcional</option>
+                    <option>Crossfit</option>
+                    <option>Emagrecimento</option>
+                    <option>Reabilitação</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Localização:</label>
+                <input type="text" placeholder="Cidade, CEP...">
+            </div>
+
+            <div class="filter-group">
+                <label>Avaliação:</label>
+                <div class="rating-filter">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="professionals-list">
+    <div class="container">
+        <h2>Personal Trainers Disponíveis</h2>
+        <div class="grid-3">
+            <!-- Personal 1 -->
+            <div class="professional-card">
+                <div class="pro-avatar">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Personal">
+                    <div class="pro-rating">
+                        <i class="fas fa-star"></i> 4.8
+                    </div>
+                </div>
+                <div class="pro-info">
+                    <h3>Carla Mendes</h3>
+                    <p>Especialista em Treino Funcional e Emagrecimento</p>
+                    <div class="pro-specialties">
+                        <span>Funcional</span>
+                        <span>HIIT</span>
+                        <span>Emagrecimento</span>
+                    </div>
+                    <div class="pro-location">
+                        <i class="fas fa-map-marker-alt"></i> São Paulo, SP
+                    </div>
+                </div>
+                <div class="pro-actions">
+                    <a href="#" class="btn-outline">Ver Perfil</a>
+                    <a href="#" class="btn-primary">Contratar</a>
+                </div>
+            </div>
+
+            <!-- Personal 2 -->
+            <div class="professional-card">
+                <div class="pro-avatar">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Personal">
+                    <div class="pro-rating">
+                        <i class="fas fa-star"></i> 4.9
+                    </div>
+                </div>
+                <div class="pro-info">
+                    <h3>Carlos Oliveira</h3>
+                    <p>Especialista em Musculação e Hipertrofia</p>
+                    <div class="pro-specialties">
+                        <span>Musculação</span>
+                        <span>Hipertrofia</span>
+                        <span>Força</span>
+                    </div>
+                    <div class="pro-location">
+                        <i class="fas fa-map-marker-alt"></i> Rio de Janeiro, RJ
+                    </div>
+                </div>
+                <div class="pro-actions">
+                    <a href="#" class="btn-outline">Ver Perfil</a>
+                    <a href="#" class="btn-primary">Contratar</a>
+                </div>
+            </div>
+
+            <!-- Personal 3 -->
+            <div class="professional-card">
+                <div class="pro-avatar">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Personal">
+                    <div class="pro-rating">
+                        <i class="fas fa-star"></i> 4.7
+                    </div>
+                </div>
+                <div class="pro-info">
+                    <h3>Ana Santos</h3>
+                    <p>Especialista em Crossfit e Condicionamento Físico</p>
+                    <div class="pro-specialties">
+                        <span>Crossfit</span>
+                        <span>Condicionamento</span>
+                        <span>Resistência</span>
+                    </div>
+                    <div class="pro-location">
+                        <i class="fas fa-map-marker-alt"></i> Belo Horizonte, MG
+                    </div>
+                </div>
+                <div class="pro-actions">
+                    <a href="#" class="btn-outline">Ver Perfil</a>
+                    <a href="#" class="btn-primary">Contratar</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#"><i class="fas fa-chevron-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">FitLink</div>
+                <p>Conectando profissionais e alunos para resultados extraordinários</p>
+            </div>
+            <div class="footer-links">
+                <a href="#">Termos de Uso</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Contato</a>
+            </div>
+        </div>
+        <div class="copyright">© 2025 FitLink. Todos os direitos reservados.</div>
+    </div>
+</footer>
+</body>
+</html>

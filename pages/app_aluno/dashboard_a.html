@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLink - Dashboard do Aluno</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">FitLink</div>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html" class="active"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+            <li><a href="meus-treinos.html"><i class="fas fa-dumbbell"></i> <span>Meus Treinos</span></a></li>
+            <li><a href="nutricionistas.html"><i class="fas fa-apple-alt"></i> <span>Nutrição</span></a></li>
+            <li><a href="perfil.html"><i class="fas fa-user"></i> <span>Meu Perfil</span></a></li>
+            <li><a href="#"><i class="fas fa-chart-line"></i> <span>Progresso</span></a></li>
+            <li><a href="#"><i class="fas fa-calendar"></i> <span>Agenda</span></a></li>
+            <li><a href="#"><i class="fas fa-comments"></i> <span>Mensagens</span></a></li>
+            <li><a href="/index.html"><i class="fas fa-sign-out-alt"></i> <span>Sair</span></a></li>
+        </ul>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <header class="content-header">
+            <h1>Dashboard</h1>
+            <div class="user-menu">
+                <div class="user-profile">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Usuário" class="user-avatar">
+                    <div class="user-name">João Silva</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="grid-3">
+            <!-- Card de Resumo -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h2 class="card-title">Resumo Diário</h2>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-fire"></i>
+                    <div>
+                        <h3>Calorias Queimadas</h3>
+                        <p>420 kcal</p>
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-running"></i>
+                    <div>
+                        <h3>Passos</h3>
+                        <p>8,542</p>
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h3>Atividade</h3>
+                        <p>45 min</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Próximos Treinos -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h2 class="card-title">Próximos Treinos</h2>
+                    <a href="meus-treinos.html" class="card-action">Ver todos</a>
+                </div>
+                <ul class="item-list">
+                    <li>
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Personal" class="item-avatar">
+                        <div class="item-info">
+                            <h4>Treino de Superiores</h4>
+                            <p><i class="far fa-clock"></i> Amanhã, 10:00 AM</p>
+                            <p><i class="fas fa-user"></i> Carlos Oliveira</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Personal" class="item-avatar">
+                        <div class="item-info">
+                            <h4>Treino Funcional</h4>
+                            <p><i class="far fa-clock"></i> Quinta, 09:00 AM</p>
+                            <p><i class="fas fa-user"></i> Ana Santos</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Plano Nutricional -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h2 class="card-title">Plano Nutricional</h2>
+                    <a href="nutricionistas.html" class="card-action">Ver detalhes</a>
+                </div>
+                <div class="meal-plan">
+                    <h3>Refeição mais recente</h3>
+                    <p>Almoço: Frango grelhado, arroz integral e brócolis</p>
+                    <p>650 kcal | 45g proteínas</p>
+                </div>
+                <div class="nutrition-progress">
+                    <div class="progress-item">
+                        <label>Proteínas</label>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 70%"></div>
+                        </div>
+                        <span>70%</span>
+                    </div>
+                    <div class="progress-item">
+                        <label>Carboidratos</label>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 50%"></div>
+                        </div>
+                        <span>50%</span>
+                    </div>
+                    <div class="progress-item">
+                        <label>Gorduras</label>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 40%"></div>
+                        </div>
+                        <span>40%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <!-- Progresso -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h2 class="card-title">Meu Progresso</h2>
+                </div>
+                <div class="progress-chart">
+                    <!-- Aqui viria um gráfico -->
+                    <div class="chart-placeholder">
+                        <i class="fas fa-chart-line"></i>
+                        <p>Gráfico de progresso será exibido aqui</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mensagens -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h2 class="card-title">Mensagens Recentes</h2>
+                    <a href="#" class="card-action">Ver todas</a>
+                </div>
+                <ul class="item-list">
+                    <li>
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Personal" class="item-avatar">
+                        <div class="item-info">
+                            <h4>Ana Santos</h4>
+                            <p>Lembre-se de alongar antes do treino...</p>
+                            <span>2 horas atrás</span>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Nutricionista" class="item-avatar">
+                        <div class="item-info">
+                            <h4>Carlos Oliveira</h4>
+                            <p>Como está o treino de hoje? Preciso do seu...</p>
+                            <span>Ontem</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

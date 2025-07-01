@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitLink - Dashboard do Personal</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div class="app-container">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">FitLink</div>
+    </div>
+    <ul class="sidebar-menu">
+      <li><a href="dashboard.html" class="active"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+      <li><a href="alunos.html"><i class="fas fa-users"></i> <span>Meus Alunos</span></a></li>
+      <li><a href="planos-treino.html"><i class="fas fa-dumbbell"></i> <span>Planos de Treino</span></a></li>
+      <li><a href="perfil.html"><i class="fas fa-user"></i> <span>Meu Perfil</span></a></li>
+      <li><a href="#"><i class="fas fa-calendar"></i> <span>Agenda</span></a></li>
+      <li><a href="#"><i class="fas fa-comments"></i> <span>Mensagens</span></a></li>
+      <li><a href="#"><i class="fas fa-chart-line"></i> <span>Relatórios</span></a></li>
+      <li><a href="/index.html"><i class="fas fa-sign-out-alt"></i> <span>Sair</span></a></li>
+    </ul>
+  </aside>
+
+  <!-- Conteúdo Principal -->
+  <main class="main-content">
+    <header class="content-header">
+      <h1>Dashboard</h1>
+      <div class="user-menu">
+        <div class="user-profile">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Usuário" class="user-avatar">
+          <div class="user-name">Carla Mendes</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid-3">
+      <!-- Estatísticas -->
+      <div class="dashboard-card">
+        <div class="card-header">
+          <h2 class="card-title">Estatísticas</h2>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <i class="fas fa-users"></i>
+            <div>
+              <h3>Total de Alunos</h3>
+              <p>24</p>
+            </div>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-calendar-check"></i>
+            <div>
+              <h3>Sessões Este Mês</h3>
+              <p>86</p>
+            </div>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-star"></i>
+            <div>
+              <h3>Avaliação Média</h3>
+              <p>4.8 <i class="fas fa-star"></i></p>
+            </div>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-chart-line"></i>
+            <div>
+              <h3>Faturamento</h3>
+              <p>R$ 5.420,00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agenda de Hoje -->
+      <div class="dashboard-card">
+        <div class="card-header">
+          <h2 class="card-title">Agenda de Hoje</h2>
+          <a href="#" class="card-action">Ver agenda</a>
+        </div>
+        <ul class="item-list">
+          <li>
+            <div class="agenda-time">
+              <span>09:00</span>
+              <span>10:00</span>
+            </div>
+            <div class="item-info">
+              <h4>Pedro Almeida</h4>
+              <p>Treino de Força</p>
+            </div>
+            <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+          </li>
+          <li>
+            <div class="agenda-time">
+              <span>10:30</span>
+              <span>11:30</span>
+            </div>
+            <div class="item-info">
+              <h4>Mariana Costa</h4>
+              <p>Treino Funcional</p>
+            </div>
+            <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+          </li>
+          <li>
+            <div class="agenda-time">
+              <span>14:00</span>
+              <span>15:00</span>
+            </div>
+            <div class="item-info">
+              <h4>Ricardo Fernandes</h4>
+              <p>HIIT</p>
+            </div>
+            <button class="btn-icon"><i class="fas fa-ellipsis-v"></i></button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Alunos Recentes -->
+      <div class="dashboard-card">
+        <div class="card-header">
+          <h2 class="card-title">Alunos Recentes</h2>
+          <a href="alunos.html" class="card-action">Ver todos</a>
+        </div>
+        <ul class="item-list">
+          <li>
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Aluno" class="item-avatar">
+            <div class="item-info">
+              <h4>João Silva</h4>
+              <p>Iniciou há 2 dias</p>
+              <div class="progress-bar">
+                <div class="progress" style="width: 30%"></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Aluno" class="item-avatar">
+            <div class="item-info">
+              <h4>Fernanda Lima</h4>
+              <p>Membro há 1 semana</p>
+              <div class="progress-bar">
+                <div class="progress" style="width: 65%"></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Atividade Recente -->
+      <div class="dashboard-card">
+        <div class="card-header">
+          <h2 class="card-title">Atividade Recente</h2>
+        </div>
+        <ul class="item-list">
+          <li>
+            <div class="activity-icon">
+              <i class="fas fa-dumbbell"></i>
+            </div>
+            <div class="item-info">
+              <p><strong>Pedro Almeida</strong> completou o treino A</p>
+              <span>2 horas atrás</span>
+            </div>
+          </li>
+          <li>
+            <div class="activity-icon">
+              <i class="fas fa-comment"></i>
+            </div>
+            <div class="item-info">
+              <p><strong>Mariana Costa</strong> enviou uma mensagem</p>
+              <span>Hoje, 08:30</span>
+            </div>
+          </li>
+          <li>
+            <div class="activity-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="item-info">
+              <p><strong>Ricardo Fernandes</strong> marcou nova sessão</p>
+              <span>Ontem, 19:45</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Mensagens -->
+      <div class="dashboard-card">
+        <div class="card-header">
+          <h2 class="card-title">Mensagens</h2>
+          <a href="#" class="card-action">Ver todas</a>
+        </div>
+        <ul class="item-list">
+          <li>
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Aluno" class="item-avatar">
+            <div class="item-info">
+              <h4>João Silva</h4>
+              <p>Podemos aumentar a carga no próximo treino?</p>
+              <span>Não lida</span>
+            </div>
+          </li>
+          <li>
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Aluno" class="item-avatar">
+            <div class="item-info">
+              <h4>Fernanda Lima</h4>
+              <p>Preciso remarcar a sessão de quinta-feira</p>
+              <span>Respondida</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>
